@@ -16,32 +16,28 @@
 .evaluation-image img{width:100%!important;height:100%!important;max-width:100%!important;max-height:100%!important;object-fit:contain!important;object-position:center center!important;display:block!important}
 
 
-
 .radiograph-selector{margin:20px 0}.projection.disabled{opacity:.5;cursor:not-allowed}
-.radiograph-toolbar{display:flex;gap:8px;margin:20px 0 14px;flex-wrap:wrap}
-.radiograph-toggle{border:1px solid rgba(110,150,190,.35);background:rgba(255,255,255,.03);color:inherit;border-radius:999px;padding:10px 16px;cursor:pointer;font-weight:600}
+.radiograph-toolbar{display:flex;gap:10px;margin:20px 0;flex-wrap:wrap}
+.radiograph-toggle{border:1px solid rgba(110,150,190,.35);background:rgba(255,255,255,.03);color:inherit;border-radius:999px;padding:10px 16px;cursor:pointer}
 .radiograph-toggle.active{background:rgba(110,150,190,.25);border-color:rgba(150,190,230,.7)}
-.radiograph-atlas{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:20px;align-items:start;margin-top:14px}
-.radiograph-display{position:relative;display:flex;justify-content:center;align-items:center;background:#07090c;border:1px solid rgba(110,150,190,.25);border-radius:18px;padding:12px;overflow:hidden;min-height:420px}
+.radiograph-atlas{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:18px;align-items:start;margin-top:14px}
+.radiograph-display{display:flex;justify-content:center;background:#080a0d;border:1px solid rgba(110,150,190,.25);border-radius:16px;padding:12px;overflow:hidden}
+.radiograph-image-stage{position:relative;display:inline-block;line-height:0;max-width:100%}
 .radiograph-display img{max-height:720px;width:auto;max-width:100%;border-radius:10px;display:block}
-.anatomy-overlay{position:absolute;inset:12px;display:flex;justify-content:center;align-items:center;pointer-events:none}
-.anatomy-svg{height:100%;width:auto;max-width:100%;aspect-ratio:728/1631;overflow:visible}
-.anatomy-marker{display:none}.anatomy-marker.active{display:block}
-.anatomy-marker line{stroke:#7ec8ff;stroke-width:2.8;stroke-linecap:round;filter:drop-shadow(0 0 3px rgba(126,200,255,.45))}
-.anatomy-marker circle.outer{fill:rgba(126,200,255,.18);stroke:#fff;stroke-width:2}.anatomy-marker circle.inner{fill:#7ec8ff;stroke:#071018;stroke-width:1}
-.anatomy-list{border:1px solid rgba(110,150,190,.28);border-radius:16px;padding:14px;background:rgba(255,255,255,.025);position:sticky;top:14px}
-.anatomy-list h3{margin:3px 6px 6px}.anatomy-list p{font-size:13px;line-height:1.5;margin:0 6px 12px;opacity:.82}
-.anatomy-button{display:flex;align-items:center;gap:9px;width:100%;text-align:left;border:1px solid transparent;border-radius:10px;background:transparent;color:inherit;padding:10px 11px;cursor:pointer;font-size:15px;transition:.18s ease}
-.anatomy-button::before{content:'';width:8px;height:8px;border-radius:50%;background:rgba(160,190,215,.55);flex:none}
-.anatomy-button:hover,.anatomy-button.active{background:rgba(110,150,190,.15);border-color:rgba(126,200,255,.28)}
-.anatomy-button.active::before{background:#7ec8ff;box-shadow:0 0 0 4px rgba(126,200,255,.12)}
-.anatomy-info{margin:14px 2px 4px;padding:12px;border-top:1px solid rgba(110,150,190,.2);font-size:13px;line-height:1.55;color:rgba(235,245,255,.82)}
-.anatomy-info strong{display:block;color:#fff;font-size:14px;margin-bottom:4px}
-.anatomy-clear{margin:8px 2px 0;border:0;background:transparent;color:#9fd0ff;cursor:pointer;font-size:13px;padding:5px 4px}
-.anatomy-note{margin-top:10px;font-size:12px;line-height:1.5;opacity:.68}
+.anatomy-overlay{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.anatomy-svg{width:100%;height:100%;display:block;overflow:visible}
+.anatomy-region{display:none;opacity:.46;transition:opacity .18s ease}
+.anatomy-region.active{display:block}
+.anatomy-region .bone{fill:#9fd0ff;stroke:#e8f6ff;stroke-width:3;stroke-linejoin:round}
+.anatomy-region .joint{fill:none;stroke:#ffd166;stroke-width:18;stroke-linecap:round;stroke-linejoin:round;opacity:.85}
+.anatomy-region .joint-outline{fill:none;stroke:#fff4c2;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.anatomy-list{border:1px solid rgba(110,150,190,.28);border-radius:16px;padding:12px;background:rgba(255,255,255,.02)}
+.anatomy-list h3{margin:4px 8px 10px}.anatomy-list p{font-size:13px;line-height:1.5;margin:0 8px 12px;opacity:.8}
+.anatomy-button{display:block;width:100%;text-align:left;border:0;border-left:3px solid transparent;border-radius:8px;background:transparent;color:inherit;padding:11px 12px;cursor:pointer;font-size:15px}
+.anatomy-button:hover,.anatomy-button.active{background:rgba(110,150,190,.16);border-left-color:#9fd0ff}
+.anatomy-note{margin-top:12px;font-size:13px;line-height:1.5;opacity:.8}
 .radiograph-caption{margin-top:16px}.radiograph-caption h3{margin:0 0 6px}.radiograph-caption p{margin:0;line-height:1.6}
-@media (max-width:850px){.radiograph-atlas{grid-template-columns:1fr}.anatomy-list{order:2;position:static}.anatomy-button{display:inline-flex;width:auto;margin:3px}.radiograph-display{min-height:360px}.anatomy-info{margin-top:12px}}
-
+@media (max-width:850px){.radiograph-atlas{grid-template-columns:1fr}.anatomy-list{order:2}.anatomy-button{display:inline-block;width:auto;margin:3px}}
 
 .overview-intro{margin:12px 0 26px}.overview-intro h2{margin:8px 0 10px}.overview-intro p{max-width:760px;line-height:1.65;margin:0}.projection-errors{margin:24px 0 14px}.projection-errors strong{display:block;margin-top:10px}
 .why-grid,.errors-grid,.trauma-grid{display:grid;gap:16px;margin:26px 0}
@@ -176,33 +172,45 @@
       </div>
       <div class="radiograph-atlas">
         <div class="radiograph-display">
-          <img id="ap-radiograph-image" src="ankle-ap-radiograph.jpg" alt="Normal AP ankle radiograph">
-          <div class="anatomy-overlay" id="anatomy-overlay" aria-hidden="true">
-            <svg class="anatomy-svg" viewBox="0 0 728 1631" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-              <!-- Points are placed directly on the corresponding anatomy of this AP radiograph. -->
-              <g class="anatomy-marker" data-marker="tibia"><line x1="330" y1="760" x2="610" y2="700"/><circle class="outer" cx="330" cy="760" r="9"/><circle class="inner" cx="330" cy="760" r="4"/></g>
-              <g class="anatomy-marker" data-marker="fibula"><line x1="505" y1="790" x2="650" y2="720"/><circle class="outer" cx="505" cy="790" r="9"/><circle class="inner" cx="505" cy="790" r="4"/></g>
-              <g class="anatomy-marker" data-marker="joint"><line x1="332" y1="1092" x2="610" y2="1035"/><circle class="outer" cx="332" cy="1092" r="9"/><circle class="inner" cx="332" cy="1092" r="4"/></g>
-              <g class="anatomy-marker" data-marker="medial"><line x1="150" y1="1165" x2="42" y2="1110"/><circle class="outer" cx="150" cy="1165" r="9"/><circle class="inner" cx="150" cy="1165" r="4"/></g>
-              <g class="anatomy-marker" data-marker="lateral"><line x1="555" y1="1210" x2="685" y2="1160"/><circle class="outer" cx="555" cy="1210" r="9"/><circle class="inner" cx="555" cy="1210" r="4"/></g>
-              <g class="anatomy-marker" data-marker="talus"><line x1="330" y1="1240" x2="75" y2="1305"/><circle class="outer" cx="330" cy="1240" r="9"/><circle class="inner" cx="330" cy="1240" r="4"/></g>
-              <g class="anatomy-marker" data-marker="tibfib"><line x1="450" y1="1085" x2="665" y2="980"/><circle class="outer" cx="450" cy="1085" r="9"/><circle class="inner" cx="450" cy="1085" r="4"/></g>
-            </svg>
+          <div class="radiograph-image-stage">
+            <img id="ap-radiograph-image" src="ankle-ap-radiograph.jpg" alt="Normal AP ankle radiograph">
+            <div class="anatomy-overlay" id="anatomy-overlay" aria-hidden="true">
+              <svg class="anatomy-svg" viewBox="0 0 728 1631" preserveAspectRatio="none">
+                <!-- SVG regions are scaled to the same coordinate system as the radiograph (728 × 1631). -->
+                <g class="anatomy-region" data-marker="tibia">
+                  <path class="bone" d="M250 0 L485 0 L482 760 Q490 885 505 1000 Q520 1080 485 1145 Q430 1195 330 1188 Q240 1178 185 1120 Q155 1070 170 990 Q205 850 220 760 Z"/>
+                </g>
+                <g class="anatomy-region" data-marker="fibula">
+                  <path class="bone" d="M505 0 L625 0 L615 825 Q612 955 640 1085 Q655 1165 625 1225 Q600 1270 555 1255 Q520 1235 505 1180 Q485 1085 475 980 L475 760 Z"/>
+                </g>
+                <g class="anatomy-region" data-marker="joint">
+                  <!-- Highlight follows the radiolucent tibiotalar joint space, not the talus. -->
+                  <path class="joint" d="M190 1110 Q335 1080 475 1110"/>
+                  <path class="joint-outline" d="M190 1110 Q335 1080 475 1110"/>
+                </g>
+                <g class="anatomy-region" data-marker="medial">
+                  <path class="bone" d="M175 1040 Q150 1085 135 1145 Q120 1205 145 1260 Q170 1300 215 1285 Q250 1265 275 1215 L300 1145 Q285 1090 245 1055 Z"/>
+                </g>
+                <g class="anatomy-region" data-marker="lateral">
+                  <path class="bone" d="M545 1080 Q575 1085 610 1130 Q650 1180 655 1250 Q655 1320 615 1365 Q575 1405 535 1370 Q500 1330 505 1260 Q510 1170 525 1110 Z"/>
+                </g>
+                <g class="anatomy-region" data-marker="talus">
+                  <path class="bone" d="M185 1145 Q250 1095 350 1100 Q450 1095 525 1160 Q570 1210 560 1300 Q550 1395 500 1450 Q420 1510 325 1490 Q230 1475 160 1415 Q110 1365 115 1285 Q120 1200 185 1145 Z"/>
+                </g>
+              </svg>
+            </div>
           </div>
         </div>
         <aside class="anatomy-list" aria-label="AP ankle anatomy labels">
           <h3>AP Ankle Anatomy</h3>
-          <p>Select a structure to identify its position on the radiograph.</p>
-          <button class="anatomy-button" data-anatomy="tibia">Tibia</button>
+          <p>Select a structure to highlight the entire anatomical region on the radiograph.</p>
+          <button class="anatomy-button active" data-anatomy="tibia">Tibia</button>
           <button class="anatomy-button" data-anatomy="fibula">Fibula</button>
           <button class="anatomy-button" data-anatomy="joint">Tibiotalar joint space</button>
           <button class="anatomy-button" data-anatomy="medial">Medial malleolus</button>
           <button class="anatomy-button" data-anatomy="lateral">Lateral malleolus</button>
           <button class="anatomy-button" data-anatomy="talus">Talus</button>
-          <button class="anatomy-button" data-anatomy="tibfib">Distal tibiofibular joint</button>
-          <div class="anatomy-info" id="anatomy-info"><strong>Interactive anatomy</strong>Select a structure to display its marker.</div>
-          <button class="anatomy-clear" id="anatomy-clear" type="button">Clear selection</button>
-          <div class="anatomy-note">Markers indicate the relevant anatomical region rather than covering the structure with a permanent label.</div>
+          <div class="anatomy-note">The tibiotalar joint highlight follows the radiolucent joint space between the tibial plafond and talar dome. Each selection uses a scalable SVG overlay rather than a single point marker.</div>
         </aside>
       </div>
       <div class="radiograph-caption">
@@ -227,7 +235,7 @@ const radiographsTab=document.getElementById('radiographs-tab');
 const radiographs=document.getElementById('radiographs-content');
 const radiographToggles=document.querySelectorAll('.radiograph-toggle');
 const anatomyButtons=document.querySelectorAll('.anatomy-button');
-const anatomyMarkers=document.querySelectorAll('.anatomy-marker');
+const anatomyMarkers=document.querySelectorAll('.anatomy-region');
 const anatomyOverlay=document.getElementById('anatomy-overlay');
 const apRadiographImage=document.getElementById('ap-radiograph-image');
 const radiographCaptionTitle=document.getElementById('radiograph-caption-title');
@@ -279,27 +287,9 @@ radiographsTab.addEventListener('click',()=>{
   positioningTab.classList.remove('tab-active');
   radiographsTab.classList.add('tab-active');
 });
-const anatomyInfo=document.getElementById('anatomy-info');
-const anatomyClear=document.getElementById('anatomy-clear');
-const anatomyDescriptions={
-  tibia:['Tibia','The distal tibia forms the superior and medial components of the ankle joint.'],
-  fibula:['Fibula','The distal fibula forms the lateral side of the ankle and continues to the lateral malleolus.'],
-  joint:['Tibiotalar joint space','The marker is placed in the radiolucent space between the distal tibia and the talar dome.'],
-  medial:['Medial malleolus','The medial malleolus is the distal medial projection of the tibia.'],
-  lateral:['Lateral malleolus','The lateral malleolus is the distal projection of the fibula.'],
-  talus:['Talus','The talus articulates superiorly with the tibia at the tibiotalar joint.'],
-  tibfib:['Distal tibiofibular joint','The distal tibiofibular articulation lies between the distal tibia and fibula.']
-};
 function selectAnatomy(name){
   anatomyButtons.forEach(b=>b.classList.toggle('active',b.dataset.anatomy===name));
   anatomyMarkers.forEach(m=>m.classList.toggle('active',m.dataset.marker===name));
-  const item=anatomyDescriptions[name];
-  if(item) anatomyInfo.innerHTML='<strong>'+item[0]+'</strong>'+item[1];
-}
-function clearAnatomy(){
-  anatomyButtons.forEach(b=>b.classList.remove('active'));
-  anatomyMarkers.forEach(m=>m.classList.remove('active'));
-  anatomyInfo.innerHTML='<strong>Interactive anatomy</strong>Select a structure to display its marker.';
 }
 
 radiographToggles.forEach(btn=>btn.addEventListener('click',()=>{
@@ -309,13 +299,12 @@ radiographToggles.forEach(btn=>btn.addEventListener('click',()=>{
   apRadiographImage.alt=interactive?'Interactive AP ankle anatomy radiograph':'Normal AP ankle radiograph';
   radiographCaptionTitle.textContent=interactive?'AP Ankle — Interactive Anatomy':'AP Ankle — Normal';
   radiographCaptionText.textContent=interactive
-    ?'Select an anatomical structure to identify its position on the AP ankle radiograph.'
+    ?'Select an anatomical structure to highlight its full region on the AP ankle radiograph.'
     :'A normal AP ankle radiograph for reviewing projection and anatomy.';
-  if(interactive) clearAnatomy();
+  if(interactive) selectAnatomy(document.querySelector('.anatomy-button.active')?.dataset.anatomy||'tibia');
 }));
 
 anatomyButtons.forEach(btn=>btn.addEventListener('click',()=>selectAnatomy(btn.dataset.anatomy)));
-anatomyClear.addEventListener('click',clearAnatomy);
 anatomyOverlay.style.display='none';
 
 positioningTab.addEventListener('click',()=>showProjection('ap'));
