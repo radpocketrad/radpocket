@@ -8,29 +8,75 @@
 
 
 <style>
-/* RADPOCKET image sizing: natural image proportions, centred, not oversized on desktop */
-.image-card{
-  overflow: hidden !important;
-  height: auto !important;
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
+/* AP teaching layout: positioning + central ray together, descriptions next, evaluation last */
+.ap-visual-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:16px;
+  align-items:start;
+  margin:18px 0 24px;
 }
-.image-card img{
-  width: auto !important;
-  height: auto !important;
-  max-width: min(100%, 900px) !important;
-  max-height: 700px !important;
-  object-fit: contain !important;
-  object-position: center center !important;
-  display: block !important;
-  margin: 0 auto !important;
+.ap-visual h2{
+  margin:0 0 10px;
 }
-@media (max-width: 900px){
-  .image-card img{
-    width: 100% !important;
-    max-width: 100% !important;
-    max-height: none !important;
+.ap-visual .image-card{
+  height:clamp(240px,34vw,420px) !important;
+  overflow:hidden !important;
+  display:flex !important;
+  justify-content:center !important;
+  align-items:center !important;
+}
+.ap-visual .image-card img{
+  width:100% !important;
+  height:100% !important;
+  max-width:100% !important;
+  max-height:100% !important;
+  object-fit:contain !important;
+  object-position:center center !important;
+  display:block !important;
+}
+.evaluation-heading{
+  margin:30px 0 10px;
+}
+.evaluation-image{
+  display:flex !important;
+  justify-content:center !important;
+  align-items:center !important;
+  overflow:hidden !important;
+  max-width:900px;
+  margin:0 auto;
+}
+.evaluation-image img{
+  width:auto !important;
+  height:auto !important;
+  max-width:100% !important;
+  max-height:700px !important;
+  object-fit:contain !important;
+  display:block !important;
+}
+@media (max-width:700px){
+  .ap-visual-grid{
+    gap:8px;
+    margin:14px 0 20px;
+  }
+  .ap-visual h2{
+    font-size:15px;
+    line-height:1.2;
+    margin-bottom:7px;
+  }
+  .ap-visual .image-card{
+    height:260px !important;
+  }
+}
+@media (max-width:420px){
+  .ap-visual-grid{
+    gap:6px;
+  }
+  .ap-visual .image-card{
+    height:235px !important;
+  }
+  .ap-visual h2{
+    font-size:14px;
   }
 }
 </style>
@@ -54,14 +100,25 @@
   <section class="hero"><div class="eyebrow">LOWER LIMB · ANKLE</div><h1>Ankle X-ray – AP <span>(Anteroposterior)</span></h1><p>Standard projection for initial assessment of the ankle.</p></section>
   <section class="projection-switcher"><button class="projection active" data-projection="ap">AP</button><button class="projection" data-projection="mortise">Mortise</button><button class="projection" data-projection="lateral">Lateral</button></section>
   <section id="ap-content" class="content">
-    <h2 style="margin:18px 0 10px;">AP Ankle Positioning</h2><div class="image-card"><img src="ankle-ap-positioning.jpg" alt="Ankle AP radiographic positioning guide"></div>
-    <h2 style="margin:28px 0 10px;">Central Ray</h2><div class="image-card"><img src="ankle-ap-central-ray.jpg" alt="AP ankle central ray guide"></div>
-    <h2 style="margin:28px 0 10px;">AP Ankle Evaluation</h2><div class="image-card"><img src="ankle-ap-evaluation.jpg" alt="AP ankle radiograph evaluation example"></div>
+    <div class="ap-visual-grid">
+      <div class="ap-visual">
+        <h2>AP Ankle Positioning</h2>
+        <div class="image-card"><img src="ankle-ap-positioning.jpg" alt="Ankle AP radiographic positioning guide"></div>
+      </div>
+      <div class="ap-visual">
+        <h2>Central Ray</h2>
+        <div class="image-card"><img src="ankle-ap-central-ray.jpg" alt="AP ankle central ray guide"></div>
+      </div>
+    </div>
+
     <div class="quick-grid">
       <article class="info-card"><h2>① Patient position</h2><ul><li>Patient supine on the X-ray table.</li><li>Leg extended and supported.</li><li>Foot positioned for an AP ankle projection.</li><li>Avoid unnecessary rotation.</li></ul></article>
       <article class="info-card"><h2>② Central ray</h2><ul><li>CR perpendicular to the detector.</li><li>Centre to the ankle joint / midpoint between the malleoli.</li><li>Collimate to the area of interest.</li></ul></article>
       <article class="info-card"><h2>③ Evaluation</h2><ul><li>Distal tibia and fibula included.</li><li>Medial and lateral malleoli demonstrated.</li><li>Talar dome and ankle joint visible.</li><li>Assess for rotation and image quality.</li></ul></article>
     </div>
+
+    <h2 class="evaluation-heading">AP Ankle Evaluation</h2>
+    <div class="image-card evaluation-image"><img src="ankle-ap-evaluation.jpg" alt="AP ankle radiograph evaluation example"></div>
     <div class="pearl"><strong>💡 Positioning pearl:</strong> Compare the malleoli and overall ankle alignment to help identify unwanted rotation.</div>
   </section>
   <section id="placeholder-content" class="placeholder hidden"><h2 id="placeholder-title">Mortise view</h2><p>This projection module is ready for the next positioning visual and teaching content.</p><button id="back-ap">Return to AP module</button></section>
