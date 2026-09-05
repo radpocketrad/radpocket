@@ -3,6 +3,38 @@
 <head>
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>RADPOCKET – Ankle AP Positioning</title><link rel="stylesheet" href="styles.css">
+
+
+
+
+<style>
+/* RADPOCKET image sizing: natural image proportions, centred, not oversized on desktop */
+.image-card{
+  overflow: hidden !important;
+  height: auto !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+.image-card img{
+  width: auto !important;
+  height: auto !important;
+  max-width: min(100%, 900px) !important;
+  max-height: 700px !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+  display: block !important;
+  margin: 0 auto !important;
+}
+@media (max-width: 900px){
+  .image-card img{
+    width: 100% !important;
+    max-width: 100% !important;
+    max-height: none !important;
+  }
+}
+</style>
+
 </head>
 <body>
 <div class="app">
