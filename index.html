@@ -14,6 +14,17 @@
 .evaluation-copy ul{margin:0;padding-left:20px;line-height:1.7}
 .evaluation-image{margin:0!important;width:100%;max-width:100%;height:clamp(320px,42vw,620px)!important;display:flex!important;justify-content:center!important;align-items:center!important;overflow:hidden!important}
 .evaluation-image img{width:100%!important;height:100%!important;max-width:100%!important;max-height:100%!important;object-fit:contain!important;object-position:center center!important;display:block!important}
+
+.why-grid,.errors-grid,.trauma-grid{display:grid;gap:16px;margin:26px 0}
+.why-grid,.errors-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+.why-card,.error-card,.trauma-card{border:1px solid rgba(110,150,190,.28);border-radius:14px;padding:18px;background:rgba(255,255,255,.02)}
+.why-card h3,.error-card h3,.trauma-card h2{margin:0 0 10px}
+.why-card p,.error-card p{margin:0;line-height:1.6}
+.error-card ul,.trauma-card ul{margin:0;padding-left:20px;line-height:1.65}
+.error-card strong{display:block;margin-top:10px}
+.trauma-card{border-left:4px solid rgba(110,150,190,.75)}
+@media (max-width:850px){.why-grid,.errors-grid{grid-template-columns:1fr}}
+
 @media (max-width:700px){
   .ap-visual-grid{gap:8px;margin:14px 0 20px}
   .ap-visual h2{font-size:15px;line-height:1.2;margin-bottom:7px}
@@ -93,6 +104,23 @@
     </section>
     <div class="pearl"><strong>💡 Positioning pearl:</strong> Aim for a true lateral by minimising rotation and achieving appropriate superimposition of the ankle structures.</div>
   </section>
+
+  <section class="why-grid" aria-label="Why this view">
+    <article class="why-card"><h3>🎯 AP — Why this view?</h3><p>Provides an overall frontal assessment of the ankle and demonstrates the distal tibia, distal fibula, talus and ankle region.</p></article>
+    <article class="why-card"><h3>🎯 Mortise — Why this view?</h3><p>Designed to demonstrate the ankle mortise and joint spaces with reduced superimposition of the malleoli.</p></article>
+    <article class="why-card"><h3>🎯 Lateral — Why this view?</h3><p>Demonstrates the ankle in lateral projection and provides complementary assessment of the distal tibia, talus and hindfoot anatomy.</p></article>
+  </section>
+
+  <section class="errors-grid" aria-label="Common positioning errors">
+    <article class="error-card"><h3>⚠️ AP — Common errors</h3><ul><li>Unwanted internal or external rotation.</li><li>Failure to include the distal tibia and fibula.</li><li>Suboptimal foot positioning where dorsiflexion is achievable.</li></ul><strong>Correction:</strong><p>Recheck leg and foot alignment, centring and collimation before exposure.</p></article>
+    <article class="error-card"><h3>⚠️ Mortise — Common errors</h3><ul><li>Insufficient internal rotation, leaving the mortise inadequately demonstrated.</li><li>Excessive rotation causing inappropriate overlap.</li><li>Rotating the foot without rotating the whole lower limb consistently.</li></ul><strong>Correction:</strong><p>Rotate the leg and foot together and reassess the intermalleolar alignment.</p></article>
+    <article class="error-card"><h3>⚠️ Lateral — Common errors</h3><ul><li>Not achieving a true lateral position.</li><li>Excessive rotation of the lower leg.</li><li>Inadequate demonstration of the required ankle and hindfoot anatomy.</li></ul><strong>Correction:</strong><p>Support the patient comfortably and adjust positioning to minimise rotation without unnecessary movement.</p></article>
+  </section>
+
+  <section class="trauma-grid" aria-label="Trauma considerations">
+    <article class="trauma-card"><h2>🚑 Trauma considerations</h2><ul><li>Avoid unnecessary movement of the injured limb.</li><li>Do not force dorsiflexion or rotation when this causes pain or may compromise the injury.</li><li>Adapt positioning to the patient's clinical condition and tolerance.</li><li>Use trauma or horizontal-beam techniques when clinically indicated and in accordance with local protocols.</li><li>Communicate clearly with the patient and clinical team before moving or repositioning the limb.</li></ul></article>
+  </section>
+
   <footer><strong>RADPOCKET</strong> · Educational reference and learning tool. Follow local departmental protocols and professional judgement.</footer>
 </main></div>
 
