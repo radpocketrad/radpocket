@@ -79,6 +79,57 @@
     font-size:14px;
   }
 }
+
+/* Evaluation: criteria beside the radiograph to reduce vertical scrolling */
+.evaluation-section{
+  display:grid;
+  grid-template-columns:minmax(220px,0.85fr) minmax(0,1.15fr);
+  gap:18px;
+  align-items:center;
+  margin:28px 0 10px;
+}
+.evaluation-copy{
+  border:1px solid rgba(110,150,190,.28);
+  border-radius:14px;
+  padding:18px;
+}
+.evaluation-copy h2{
+  margin:0 0 12px;
+}
+.evaluation-copy ul{
+  margin:0;
+  padding-left:20px;
+  line-height:1.7;
+}
+.evaluation-image{
+  margin:0 !important;
+  width:100%;
+  max-width:100%;
+  height:clamp(320px,42vw,620px) !important;
+  display:flex !important;
+  justify-content:center !important;
+  align-items:center !important;
+  overflow:hidden !important;
+}
+.evaluation-image img{
+  width:100% !important;
+  height:100% !important;
+  max-width:100% !important;
+  max-height:100% !important;
+  object-fit:contain !important;
+  object-position:center center !important;
+  display:block !important;
+}
+@media (max-width:700px){
+  .evaluation-section{
+    grid-template-columns:1fr;
+    gap:12px;
+  }
+  .evaluation-image{
+    height:520px !important;
+  }
+}
+
 </style>
 
 </head>
@@ -117,8 +168,20 @@
       <article class="info-card"><h2>③ Evaluation</h2><ul><li>Distal tibia and fibula included.</li><li>Medial and lateral malleoli demonstrated.</li><li>Talar dome and ankle joint visible.</li><li>Assess for rotation and image quality.</li></ul></article>
     </div>
 
-    <h2 class="evaluation-heading">AP Ankle Evaluation</h2>
-    <div class="image-card evaluation-image"><img src="ankle-ap-evaluation.jpg" alt="AP ankle radiograph evaluation example"></div>
+    <section class="evaluation-section">
+      <div class="evaluation-copy">
+        <h2>AP Ankle Evaluation</h2>
+        <ul>
+          <li>Distal tibia and fibula included.</li>
+          <li>Medial and lateral malleoli demonstrated.</li>
+          <li>Talar dome and ankle joint visible.</li>
+          <li>Assess for rotation and overall image quality.</li>
+        </ul>
+      </div>
+      <div class="image-card evaluation-image">
+        <img src="ankle-ap-evaluation.jpg" alt="AP ankle radiograph evaluation example">
+      </div>
+    </section>
     <div class="pearl"><strong>💡 Positioning pearl:</strong> Compare the malleoli and overall ankle alignment to help identify unwanted rotation.</div>
   </section>
   <section id="placeholder-content" class="placeholder hidden"><h2 id="placeholder-title">Mortise view</h2><p>This projection module is ready for the next positioning visual and teaching content.</p><button id="back-ap">Return to AP module</button></section>
