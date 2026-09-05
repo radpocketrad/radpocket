@@ -78,7 +78,21 @@
     <div class="pearl"><strong>💡 Positioning pearl:</strong> Rotate the whole leg and foot together to avoid unwanted rotation at the knee or ankle.</div>
   </section>
 
-  <section id="placeholder-content" class="placeholder hidden"><h2>Lateral view</h2><p>This projection module is ready for the next positioning visual and teaching content.</p><button id="back-ap">Return to AP module</button></section>
+  <section id="lateral-content" class="content hidden">
+    <div class="ap-visual-grid">
+      <div class="ap-visual"><h2>Lateral Ankle Positioning</h2><div class="image-card"><img src="ankle-lateral-positioning.jpg" alt="Ankle lateral radiographic positioning guide"></div></div>
+      <div class="ap-visual"><h2>Central Ray</h2><div class="image-card"><img src="ankle-lateral-central-ray.jpg" alt="Ankle lateral central ray guide"></div></div>
+    </div>
+    <div class="quick-grid">
+      <article class="info-card"><h2>① Patient position</h2><ul><li>Patient positioned lateral recumbent or seated as tolerated.</li><li>Affected side placed against the detector.</li><li>Adjust the ankle to a true lateral position.</li><li>Dorsiflex the foot where possible and support the opposite limb clear of the field.</li></ul></article>
+      <article class="info-card"><h2>② Central ray</h2><ul><li>CR perpendicular to the detector.</li><li>Centre to the ankle joint.</li><li>Direct the central ray approximately midway between the malleoli.</li><li>Collimate to include the distal tibia and fibula, talus and calcaneus.</li></ul></article>
+    </div>
+    <section class="evaluation-section">
+      <div class="evaluation-copy"><h2>③ Lateral Ankle Evaluation</h2><ul><li>Distal tibia and fibula included.</li><li>Talus and ankle joint demonstrated in lateral projection.</li><li>Talar domes and malleoli reasonably superimposed for a true lateral.</li><li>Calcaneus and relevant hindfoot anatomy included.</li><li>Assess positioning, rotation and overall image quality.</li></ul></div>
+      <div class="image-card evaluation-image"><img src="ankle-lateral-evaluation.jpg" alt="Ankle lateral radiograph evaluation example"></div>
+    </section>
+    <div class="pearl"><strong>💡 Positioning pearl:</strong> Aim for a true lateral by minimising rotation and achieving appropriate superimposition of the ankle structures.</div>
+  </section>
   <footer><strong>RADPOCKET</strong> · Educational reference and learning tool. Follow local departmental protocols and professional judgement.</footer>
 </main></div>
 
@@ -86,7 +100,7 @@
 const buttons=document.querySelectorAll('.projection');
 const ap=document.getElementById('ap-content');
 const mortise=document.getElementById('mortise-content');
-const placeholder=document.getElementById('placeholder-content');
+const lateral=document.getElementById('lateral-content');
 const title=document.getElementById('projection-title');
 const subtitle=document.getElementById('projection-subtitle');
 const back=document.getElementById('back-ap');
@@ -95,7 +109,7 @@ function showProjection(projection){
   buttons.forEach(b=>b.classList.toggle('active',b.dataset.projection===projection));
   ap.classList.toggle('hidden',projection!=='ap');
   mortise.classList.toggle('hidden',projection!=='mortise');
-  placeholder.classList.toggle('hidden',projection!=='lateral');
+  lateral.classList.toggle('hidden',projection!=='lateral');
 
   if(projection==='ap'){
     title.innerHTML='Ankle X-ray – AP <span>(Anteroposterior)</span>';
@@ -105,10 +119,10 @@ function showProjection(projection){
     subtitle.textContent='Projection designed to demonstrate the ankle mortise with minimal superimposition.';
   }else{
     title.innerHTML='Ankle X-ray – Lateral';
-    subtitle.textContent='This projection module is ready for the next positioning visual and teaching content.';
+    subtitle.textContent='Standard lateral projection demonstrating the distal tibia and fibula, talus and hindfoot anatomy.';
   }
 }
 buttons.forEach(btn=>btn.addEventListener('click',()=>showProjection(btn.dataset.projection)));
-back.addEventListener('click',()=>showProjection('ap'));
+if(back) back.addEventListener('click',()=>showProjection('ap'));
 </script>
 </body></html>
