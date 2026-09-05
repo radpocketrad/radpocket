@@ -28,6 +28,10 @@
 .anatomy-svg{width:100%;height:100%;display:block;overflow:visible}
 .anatomy-region{display:none;opacity:.46;transition:opacity .18s ease}
 .anatomy-region.active{display:block}
+.anatomy-svg.trace-mode .anatomy-region{display:block!important;opacity:.72}
+.anatomy-svg.trace-mode .bone{fill:rgba(159,208,255,.10);stroke:#9fd0ff;stroke-width:3}
+.anatomy-svg.trace-mode .joint{stroke:#ffd166;opacity:.9}
+.trace-toggle.active{background:rgba(255,209,102,.16);border-color:rgba(255,209,102,.75)}
 .anatomy-region .bone{fill:#9fd0ff;stroke:#e8f6ff;stroke-width:3;stroke-linejoin:round}
 .anatomy-region .joint{fill:none;stroke:#ffd166;stroke-width:18;stroke-linecap:round;stroke-linejoin:round;opacity:.85}
 .anatomy-region .joint-outline{fill:none;stroke:#fff4c2;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
@@ -169,6 +173,7 @@
       <div class="radiograph-toolbar">
         <button class="radiograph-toggle active" data-image="normal">Normal</button>
         <button class="radiograph-toggle" data-image="anatomy">Interactive Anatomy</button>
+        <button class="radiograph-toggle trace-toggle" id="trace-toggle" type="button" aria-pressed="false">Trace Mode</button>
       </div>
       <div class="radiograph-atlas">
         <div class="radiograph-display">
@@ -194,8 +199,19 @@
                 <g class="anatomy-region" data-marker="lateral">
                   <path class="bone" d="M545 1080 Q575 1085 610 1130 Q650 1180 655 1250 Q655 1320 615 1365 Q575 1405 535 1370 Q500 1330 505 1260 Q510 1170 525 1110 Z"/>
                 </g>
+                <!-- Talus: refined against the visible outline on the uploaded 728 × 1631 AP radiograph. -->
                 <g class="anatomy-region" data-marker="talus">
-                  <path class="bone" d="M185 1145 Q250 1095 350 1100 Q450 1095 525 1160 Q570 1210 560 1300 Q550 1395 500 1450 Q420 1510 325 1490 Q230 1475 160 1415 Q110 1365 115 1285 Q120 1200 185 1145 Z"/>
+                  <path class="bone" d="M165 1195
+                    C178 1155 202 1123 238 1102
+                    C278 1079 332 1078 381 1090
+                    C430 1101 473 1128 500 1165
+                    C523 1197 533 1236 529 1278
+                    C525 1322 510 1364 485 1400
+                    C458 1438 425 1470 385 1490
+                    C345 1510 302 1507 260 1492
+                    C213 1476 170 1450 140 1414
+                    C115 1384 103 1350 108 1314
+                    C113 1270 133 1228 165 1195 Z"/>
                 </g>
               </svg>
             </div>
@@ -237,6 +253,8 @@ const radiographToggles=document.querySelectorAll('.radiograph-toggle');
 const anatomyButtons=document.querySelectorAll('.anatomy-button');
 const anatomyMarkers=document.querySelectorAll('.anatomy-region');
 const anatomyOverlay=document.getElementById('anatomy-overlay');
+const anatomySvg=document.querySelector('.anatomy-svg');
+const traceToggle=document.getElementById('trace-toggle');
 const apRadiographImage=document.getElementById('ap-radiograph-image');
 const radiographCaptionTitle=document.getElementById('radiograph-caption-title');
 const radiographCaptionText=document.getElementById('radiograph-caption-text');
@@ -296,6 +314,7 @@ radiographToggles.forEach(btn=>btn.addEventListener('click',()=>{
   const interactive=btn.dataset.image==='anatomy';
   radiographToggles.forEach(b=>b.classList.toggle('active',b===btn));
   anatomyOverlay.style.display=interactive?'flex':'none';
+  if(!interactive){ anatomySvg.classList.remove('trace-mode'); traceToggle.classList.remove('active'); traceToggle.setAttribute('aria-pressed','false'); }
   apRadiographImage.alt=interactive?'Interactive AP ankle anatomy radiograph':'Normal AP ankle radiograph';
   radiographCaptionTitle.textContent=interactive?'AP Ankle — Interactive Anatomy':'AP Ankle — Normal';
   radiographCaptionText.textContent=interactive
@@ -305,6 +324,16 @@ radiographToggles.forEach(btn=>btn.addEventListener('click',()=>{
 }));
 
 anatomyButtons.forEach(btn=>btn.addEventListener('click',()=>selectAnatomy(btn.dataset.anatomy)));
+traceToggle.addEventListener('click',()=>{
+  const enabled=anatomySvg.classList.toggle('trace-mode');
+  traceToggle.classList.toggle('active',enabled);
+  traceToggle.setAttribute('aria-pressed',String(enabled));
+  if(enabled){
+    anatomyOverlay.style.display='flex';
+    radiographToggles.forEach(b=>b.classList.toggle('active',b.dataset.image==='anatomy'));
+  }
+});
+
 anatomyOverlay.style.display='none';
 
 positioningTab.addEventListener('click',()=>showProjection('ap'));
