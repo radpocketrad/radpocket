@@ -181,6 +181,14 @@
   .anatomy-marker text{font-size:24px}
 }
 
+/* Interactive radiograph stages for AP, Mortise and Lateral */
+.radiograph-stage{width:min(100%,620px);background:#05070a;}
+.radiograph-stage .radiograph-image{position:absolute;top:0;height:100%;max-width:none!important;max-height:none!important;object-fit:fill;border-radius:0;display:block;}
+.stage-ap{aspect-ratio:1200/1631}.stage-ap .radiograph-image{left:19.666667%;width:60.666667%;}
+.stage-mortise{aspect-ratio:1200/1470}.stage-mortise .radiograph-image{left:23.673469%;width:52.653061%;}
+.stage-lateral{aspect-ratio:1200/1683}.stage-lateral .radiograph-image{left:22.225786%;width:55.548428%;}
+.radiograph-panel.hidden{display:none!important;}
+
 </style>
 </head>
 <body>
@@ -275,87 +283,97 @@
     <section class="overview-intro">
       <div class="eyebrow">NORMAL RADIOGRAPHIC ANATOMY</div>
       <h2>Ankle Radiographs</h2>
-      <p>Explore the normal AP ankle radiograph and switch between the clean image and labelled anatomy.</p>
+      <p>Select AP, Mortise or Lateral, then click an anatomical structure to display a precise point, leader line and label outside the radiograph.</p>
     </section>
 
-    <div class="projection-selector radiograph-selector">
-      <button class="projection active" data-radview="ap">AP</button>
-      <button class="projection disabled" disabled>Mortise <small>Coming soon</small></button>
-      <button class="projection disabled" disabled>Lateral <small>Coming soon</small></button>
+    <div class="projection-selector radiograph-selector" id="radiograph-view-selector">
+      <button class="projection active" data-radview="ap" type="button">AP</button>
+      <button class="projection" data-radview="mortise" type="button">Mortise</button>
+      <button class="projection" data-radview="lateral" type="button">Lateral</button>
     </div>
 
+    <!-- AP -->
     <section id="ap-radiograph" class="radiograph-panel">
       <div class="radiograph-toolbar anatomy-toolbar">
-        <div>
-          <strong>Interactive anatomy</strong>
-          <span>Click a structure or show all labels.</span>
-        </div>
-        <button class="anatomy-show-all" id="anatomy-show-all" type="button">Show all anatomy</button>
+        <div><strong>AP Ankle — Interactive Anatomy</strong><span>Click a structure or show all labels.</span></div>
+        <button class="anatomy-show-all" data-show-all="ap" type="button">Show all anatomy</button>
       </div>
       <div class="radiograph-atlas">
-        <div class="radiograph-display">
-          <div class="radiograph-stage" id="ap-radiograph-stage">
-            <img id="ap-radiograph-image" src="ankle-ap-radiograph.jpg" alt="AP ankle radiograph">
-            <div class="anatomy-overlay" id="anatomy-overlay" aria-hidden="true">
-              <svg class="anatomy-svg" viewBox="0 0 1200 1631" preserveAspectRatio="none" aria-hidden="true">
-                <!-- Full-stage coordinate system: the radiograph occupies x=236–964, y=0–1631. -->
-                <g class="anatomy-marker" data-marker="tibia">
-                  <line x1="566" y1="760" x2="220" y2="520"/><circle class="outer" cx="566" cy="760" r="10"/><circle class="inner" cx="566" cy="760" r="4"/>
-                  <text class="label-left" x="25" y="528">Tibia</text>
-                </g>
-                <g class="anatomy-marker" data-marker="fibula">
-                  <line x1="741" y1="790" x2="970" y2="680"/><circle class="outer" cx="741" cy="790" r="10"/><circle class="inner" cx="741" cy="790" r="4"/>
-                  <text class="label-right" x="985" y="688">Fibula</text>
-                </g>
-                <g class="anatomy-marker" data-marker="tibfib">
-                  <line x1="686" y1="1085" x2="970" y2="850"/><circle class="outer" cx="686" cy="1085" r="10"/><circle class="inner" cx="686" cy="1085" r="4"/>
-                  <text class="label-right" x="985" y="842">Distal tibiofibular joint</text>
-                </g>
-                <g class="anatomy-marker" data-marker="joint">
-                  <line x1="568" y1="1092" x2="970" y2="1030"/><circle class="outer" cx="568" cy="1092" r="10"/><circle class="inner" cx="568" cy="1092" r="4"/>
-                  <text class="label-right" x="985" y="1038">Tibiotalar joint</text>
-                </g>
-                <!-- Ankle mortise: point placed within the ankle joint space, not on the talus. -->
-                <g class="anatomy-marker" data-marker="mortise">
-                  <line x1="520" y1="1098" x2="220" y2="970"/><circle class="outer" cx="520" cy="1098" r="10"/><circle class="inner" cx="520" cy="1098" r="4"/>
-                  <text class="label-left" x="25" y="978">Ankle mortise</text>
-                </g>
-                <g class="anatomy-marker" data-marker="medial">
-                  <line x1="386" y1="1165" x2="220" y2="1085"/><circle class="outer" cx="386" cy="1165" r="10"/><circle class="inner" cx="386" cy="1165" r="4"/>
-                  <text class="label-left" x="25" y="1078">Medial malleolus</text>
-                </g>
-                <g class="anatomy-marker" data-marker="lateral">
-                  <line x1="791" y1="1210" x2="970" y2="1190"/><circle class="outer" cx="791" cy="1210" r="10"/><circle class="inner" cx="791" cy="1210" r="4"/>
-                  <text class="label-right" x="985" y="1198">Lateral malleolus</text>
-                </g>
-                <g class="anatomy-marker" data-marker="talus">
-                  <line x1="566" y1="1240" x2="220" y2="1325"/><circle class="outer" cx="566" cy="1240" r="10"/><circle class="inner" cx="566" cy="1240" r="4"/>
-                  <text class="label-left" x="25" y="1318">Talus</text>
-                </g>
-              </svg>
-            </div>
-          </div>
-        </div>
-        <aside class="anatomy-list" aria-label="AP ankle anatomy labels">
-          <h3>AP Ankle Anatomy</h3>
-          <p>Click a structure to display a precise point, leader line and anatomy label.</p>
-          <button class="anatomy-button" data-anatomy="tibia">Tibia</button>
-          <button class="anatomy-button" data-anatomy="fibula">Fibula</button>
-          <button class="anatomy-button" data-anatomy="joint">Tibiotalar joint space</button>
-          <button class="anatomy-button" data-anatomy="mortise">Ankle mortise</button>
-          <button class="anatomy-button" data-anatomy="medial">Medial malleolus</button>
-          <button class="anatomy-button" data-anatomy="lateral">Lateral malleolus</button>
-          <button class="anatomy-button" data-anatomy="talus">Talus</button>
-          <button class="anatomy-button" data-anatomy="tibfib">Distal tibiofibular joint</button>
-          <div class="anatomy-info" id="anatomy-info"><strong>Interactive anatomy</strong>Select a structure to display its point, leader line and label.</div>
-          <button class="anatomy-clear" id="anatomy-clear" type="button">Clear selection</button>
-          <div class="anatomy-note">Each selection shows one anatomy at a time to keep the radiograph clean and easy to interpret.</div>
+        <div class="radiograph-display"><div class="radiograph-stage stage-ap">
+          <img class="radiograph-image" src="ankle-ap-radiograph.jpg" alt="AP ankle radiograph">
+          <div class="anatomy-overlay" aria-hidden="true"><svg class="anatomy-svg" viewBox="0 0 1200 1631" preserveAspectRatio="none">
+            <g class="anatomy-marker" data-view="ap" data-marker="tibia"><line x1="566" y1="760" x2="220" y2="520"/><circle class="outer" cx="566" cy="760" r="10"/><circle class="inner" cx="566" cy="760" r="4"/><text class="label-left" x="25" y="528">Tibia</text></g>
+            <g class="anatomy-marker" data-view="ap" data-marker="fibula"><line x1="741" y1="790" x2="970" y2="680"/><circle class="outer" cx="741" cy="790" r="10"/><circle class="inner" cx="741" cy="790" r="4"/><text class="label-right" x="985" y="688">Fibula</text></g>
+            <g class="anatomy-marker" data-view="ap" data-marker="tibfib"><line x1="686" y1="1085" x2="970" y2="850"/><circle class="outer" cx="686" cy="1085" r="10"/><circle class="inner" cx="686" cy="1085" r="4"/><text class="label-right" x="985" y="842">Distal tibiofibular joint</text></g>
+            <g class="anatomy-marker" data-view="ap" data-marker="joint"><line x1="568" y1="1092" x2="970" y2="1030"/><circle class="outer" cx="568" cy="1092" r="10"/><circle class="inner" cx="568" cy="1092" r="4"/><text class="label-right" x="985" y="1038">Tibiotalar joint</text></g>
+            <g class="anatomy-marker" data-view="ap" data-marker="mortise"><line x1="520" y1="1098" x2="220" y2="970"/><circle class="outer" cx="520" cy="1098" r="10"/><circle class="inner" cx="520" cy="1098" r="4"/><text class="label-left" x="25" y="978">Ankle mortise</text></g>
+            <g class="anatomy-marker" data-view="ap" data-marker="medial"><line x1="386" y1="1165" x2="220" y2="1085"/><circle class="outer" cx="386" cy="1165" r="10"/><circle class="inner" cx="386" cy="1165" r="4"/><text class="label-left" x="25" y="1078">Medial malleolus</text></g>
+            <g class="anatomy-marker" data-view="ap" data-marker="lateral"><line x1="791" y1="1210" x2="970" y2="1190"/><circle class="outer" cx="791" cy="1210" r="10"/><circle class="inner" cx="791" cy="1210" r="4"/><text class="label-right" x="985" y="1198">Lateral malleolus</text></g>
+            <g class="anatomy-marker" data-view="ap" data-marker="talus"><line x1="566" y1="1240" x2="220" y2="1325"/><circle class="outer" cx="566" cy="1240" r="10"/><circle class="inner" cx="566" cy="1240" r="4"/><text class="label-left" x="25" y="1318">Talus</text></g>
+          </svg></div>
+        </div></div>
+        <aside class="anatomy-list"><h3>AP Ankle Anatomy</h3><p>Click a structure to display its label.</p>
+          <button class="anatomy-button" data-view="ap" data-anatomy="tibia">Tibia</button><button class="anatomy-button" data-view="ap" data-anatomy="fibula">Fibula</button><button class="anatomy-button" data-view="ap" data-anatomy="joint">Tibiotalar joint space</button><button class="anatomy-button" data-view="ap" data-anatomy="mortise">Ankle mortise</button><button class="anatomy-button" data-view="ap" data-anatomy="medial">Medial malleolus</button><button class="anatomy-button" data-view="ap" data-anatomy="lateral">Lateral malleolus</button><button class="anatomy-button" data-view="ap" data-anatomy="talus">Talus</button><button class="anatomy-button" data-view="ap" data-anatomy="tibfib">Distal tibiofibular joint</button>
+          <div class="anatomy-info" data-info="ap"><strong>Interactive anatomy</strong>Select a structure to display its point, leader line and label.</div><button class="anatomy-clear" data-clear="ap" type="button">Clear selection</button><div class="anatomy-note">Labels stay outside the radiograph for a clearer view.</div>
         </aside>
       </div>
-      <div class="radiograph-caption">
-        <h3 id="radiograph-caption-title">AP Ankle — Interactive Anatomy</h3>
-        <p id="radiograph-caption-text">Click an anatomical structure for an individual label, or use Show all anatomy to review every labelled structure.</p>
+      <div class="radiograph-caption"><h3>AP Ankle — Interactive Anatomy</h3><p>Review individual structures or show all anatomy labels.</p></div>
+    </section>
+
+    <!-- MORTISE -->
+    <section id="mortise-radiograph" class="radiograph-panel hidden">
+      <div class="radiograph-toolbar anatomy-toolbar">
+        <div><strong>Mortise Ankle — Interactive Anatomy</strong><span>The mortise view demonstrates the ankle joint with reduced malleolar superimposition.</span></div>
+        <button class="anatomy-show-all" data-show-all="mortise" type="button">Show all anatomy</button>
       </div>
+      <div class="radiograph-atlas">
+        <div class="radiograph-display"><div class="radiograph-stage stage-mortise">
+          <img class="radiograph-image" src="ankle-mortise-radiograph.jpg" alt="Mortise ankle radiograph">
+          <div class="anatomy-overlay" aria-hidden="true"><svg class="anatomy-svg" viewBox="0 0 1200 1470" preserveAspectRatio="none">
+            <g class="anatomy-marker" data-view="mortise" data-marker="tibia"><line x1="570" y1="610" x2="190" y2="440"/><circle class="outer" cx="570" cy="610" r="10"/><circle class="inner" cx="570" cy="610" r="4"/><text class="label-left" x="25" y="448">Tibia</text></g>
+            <g class="anatomy-marker" data-view="mortise" data-marker="fibula"><line x1="790" y1="620" x2="985" y2="490"/><circle class="outer" cx="790" cy="620" r="10"/><circle class="inner" cx="790" cy="620" r="4"/><text class="label-right" x="1000" y="498">Fibula</text></g>
+            <g class="anatomy-marker" data-view="mortise" data-marker="tibfib"><line x1="735" y1="885" x2="985" y2="760"/><circle class="outer" cx="735" cy="885" r="10"/><circle class="inner" cx="735" cy="885" r="4"/><text class="label-right" x="1000" y="768">Distal tibiofibular joint</text></g>
+            <g class="anatomy-marker" data-view="mortise" data-marker="joint"><line x1="600" y1="945" x2="985" y2="940"/><circle class="outer" cx="600" cy="945" r="10"/><circle class="inner" cx="600" cy="945" r="4"/><text class="label-right" x="1000" y="948">Tibiotalar joint space</text></g>
+            <g class="anatomy-marker" data-view="mortise" data-marker="mortise"><line x1="600" y1="940" x2="190" y2="800"/><circle class="outer" cx="600" cy="940" r="10"/><circle class="inner" cx="600" cy="940" r="4"/><text class="label-left" x="25" y="808">Ankle mortise</text></g>
+            <g class="anatomy-marker" data-view="mortise" data-marker="medial"><line x1="405" y1="1010" x2="190" y2="1040"/><circle class="outer" cx="405" cy="1010" r="10"/><circle class="inner" cx="405" cy="1010" r="4"/><text class="label-left" x="25" y="1048">Medial malleolus</text></g>
+            <g class="anatomy-marker" data-view="mortise" data-marker="lateral"><line x1="820" y1="1100" x2="985" y2="1110"/><circle class="outer" cx="820" cy="1100" r="10"/><circle class="inner" cx="820" cy="1100" r="4"/><text class="label-right" x="1000" y="1118">Lateral malleolus</text></g>
+            <g class="anatomy-marker" data-view="mortise" data-marker="talus"><line x1="600" y1="1060" x2="190" y2="1200"/><circle class="outer" cx="600" cy="1060" r="10"/><circle class="inner" cx="600" cy="1060" r="4"/><text class="label-left" x="25" y="1208">Talus</text></g>
+            <g class="anatomy-marker" data-view="mortise" data-marker="dome"><line x1="590" y1="980" x2="985" y2="1010"/><circle class="outer" cx="590" cy="980" r="10"/><circle class="inner" cx="590" cy="980" r="4"/><text class="label-right" x="1000" y="1018">Talar dome</text></g>
+          </svg></div>
+        </div></div>
+        <aside class="anatomy-list"><h3>Mortise Ankle Anatomy</h3><p>Labels are placed outside the radiograph.</p>
+          <button class="anatomy-button" data-view="mortise" data-anatomy="tibia">Tibia</button><button class="anatomy-button" data-view="mortise" data-anatomy="fibula">Fibula</button><button class="anatomy-button" data-view="mortise" data-anatomy="tibfib">Distal tibiofibular joint</button><button class="anatomy-button" data-view="mortise" data-anatomy="joint">Tibiotalar joint space</button><button class="anatomy-button" data-view="mortise" data-anatomy="mortise">Ankle mortise</button><button class="anatomy-button" data-view="mortise" data-anatomy="medial">Medial malleolus</button><button class="anatomy-button" data-view="mortise" data-anatomy="lateral">Lateral malleolus</button><button class="anatomy-button" data-view="mortise" data-anatomy="dome">Talar dome</button><button class="anatomy-button" data-view="mortise" data-anatomy="talus">Talus</button>
+          <div class="anatomy-info" data-info="mortise"><strong>Interactive anatomy</strong>Select a structure to display its point, leader line and label.</div><button class="anatomy-clear" data-clear="mortise" type="button">Clear selection</button><div class="anatomy-note">Use Show all anatomy for a full labelled overview.</div>
+        </aside>
+      </div>
+      <div class="radiograph-caption"><h3>Mortise Ankle — Interactive Anatomy</h3><p>Focus on the ankle mortise, joint spaces and distal tibiofibular relationship.</p></div>
+    </section>
+
+    <!-- LATERAL -->
+    <section id="lateral-radiograph" class="radiograph-panel hidden">
+      <div class="radiograph-toolbar anatomy-toolbar">
+        <div><strong>Lateral Ankle — Interactive Anatomy</strong><span>Review the distal tibia, talus, calcaneus and key joint spaces in lateral projection.</span></div>
+        <button class="anatomy-show-all" data-show-all="lateral" type="button">Show all anatomy</button>
+      </div>
+      <div class="radiograph-atlas">
+        <div class="radiograph-display"><div class="radiograph-stage stage-lateral">
+          <img class="radiograph-image" src="ankle-lateral-radiograph.jpg" alt="Lateral ankle radiograph">
+          <div class="anatomy-overlay" aria-hidden="true"><svg class="anatomy-svg" viewBox="0 0 1200 1683" preserveAspectRatio="none">
+            <g class="anatomy-marker" data-view="lateral" data-marker="tibia"><line x1="560" y1="560" x2="180" y2="420"/><circle class="outer" cx="560" cy="560" r="10"/><circle class="inner" cx="560" cy="560" r="4"/><text class="label-left" x="25" y="428">Tibia</text></g>
+            <g class="anatomy-marker" data-view="lateral" data-marker="fibula"><line x1="650" y1="760" x2="990" y2="620"/><circle class="outer" cx="650" cy="760" r="10"/><circle class="inner" cx="650" cy="760" r="4"/><text class="label-right" x="1005" y="628">Fibula</text></g>
+            <g class="anatomy-marker" data-view="lateral" data-marker="joint"><line x1="565" y1="895" x2="990" y2="880"/><circle class="outer" cx="565" cy="895" r="10"/><circle class="inner" cx="565" cy="895" r="4"/><text class="label-right" x="1005" y="888">Tibiotalar joint space</text></g>
+            <g class="anatomy-marker" data-view="lateral" data-marker="talus"><line x1="570" y1="1010" x2="180" y2="1080"/><circle class="outer" cx="570" cy="1010" r="10"/><circle class="inner" cx="570" cy="1010" r="4"/><text class="label-left" x="25" y="1088">Talus</text></g>
+            <g class="anatomy-marker" data-view="lateral" data-marker="subtalar"><line x1="520" y1="1175" x2="180" y2="1240"/><circle class="outer" cx="520" cy="1175" r="10"/><circle class="inner" cx="520" cy="1175" r="4"/><text class="label-left" x="25" y="1248">Subtalar joint</text></g>
+            <g class="anatomy-marker" data-view="lateral" data-marker="calcaneus"><line x1="700" y1="1280" x2="990" y2="1360"/><circle class="outer" cx="700" cy="1280" r="10"/><circle class="inner" cx="700" cy="1280" r="4"/><text class="label-right" x="1005" y="1368">Calcaneus</text></g>
+            <g class="anatomy-marker" data-view="lateral" data-marker="navicular"><line x1="330" y1="1110" x2="180" y2="970"/><circle class="outer" cx="330" cy="1110" r="10"/><circle class="inner" cx="330" cy="1110" r="4"/><text class="label-left" x="25" y="978">Navicular</text></g>
+          </svg></div>
+        </div></div>
+        <aside class="anatomy-list"><h3>Lateral Ankle Anatomy</h3><p>Click a structure to display its label.</p>
+          <button class="anatomy-button" data-view="lateral" data-anatomy="tibia">Tibia</button><button class="anatomy-button" data-view="lateral" data-anatomy="fibula">Fibula</button><button class="anatomy-button" data-view="lateral" data-anatomy="joint">Tibiotalar joint space</button><button class="anatomy-button" data-view="lateral" data-anatomy="talus">Talus</button><button class="anatomy-button" data-view="lateral" data-anatomy="subtalar">Subtalar joint</button><button class="anatomy-button" data-view="lateral" data-anatomy="calcaneus">Calcaneus</button><button class="anatomy-button" data-view="lateral" data-anatomy="navicular">Navicular</button>
+          <div class="anatomy-info" data-info="lateral"><strong>Interactive anatomy</strong>Select a structure to display its point, leader line and label.</div><button class="anatomy-clear" data-clear="lateral" type="button">Clear selection</button><div class="anatomy-note">Each selection shows one structure at a time for a clean view.</div>
+        </aside>
+      </div>
+      <div class="radiograph-caption"><h3>Lateral Ankle — Interactive Anatomy</h3><p>Review the ankle and hindfoot anatomy visible in lateral projection.</p></div>
     </section>
   </section>
 
@@ -363,7 +381,7 @@
 </main></div>
 
 <script>
-const buttons=document.querySelectorAll('.projection');
+const buttons=document.querySelectorAll('[data-projection]');
 const overview=document.getElementById('overview-content');
 const ap=document.getElementById('ap-content');
 const mortise=document.getElementById('mortise-content');
@@ -374,104 +392,49 @@ const radiographsTab=document.getElementById('radiographs-tab');
 const radiographs=document.getElementById('radiographs-content');
 const anatomyButtons=document.querySelectorAll('.anatomy-button');
 const anatomyMarkers=document.querySelectorAll('.anatomy-marker');
-const anatomyOverlay=document.getElementById('anatomy-overlay');
-const anatomyShowAll=document.getElementById('anatomy-show-all');
-const title=document.getElementById('projection-title');
-const subtitle=document.getElementById('projection-subtitle');
-const back=document.getElementById('back-ap');
-const positioningHero=document.getElementById('positioning-hero');
-const positioningSwitcher=document.getElementById('positioning-switcher');
-
-function setPositioningChrome(visible){
-  positioningHero.classList.toggle('hidden',!visible);
-  positioningSwitcher.classList.toggle('hidden',!visible);
-}
-
-function showProjection(projection){
-  setPositioningChrome(true);
-  overview.classList.add('hidden');
-  radiographs.classList.add('hidden');
-  overviewTab.classList.remove('tab-active');
-  radiographsTab.classList.remove('tab-active');
-  positioningTab.classList.add('tab-active');
-  buttons.forEach(b=>b.classList.toggle('active',b.dataset.projection===projection));
-  ap.classList.toggle('hidden',projection!=='ap');
-  mortise.classList.toggle('hidden',projection!=='mortise');
-  lateral.classList.toggle('hidden',projection!=='lateral');
-
-  if(projection==='ap'){
-    title.innerHTML='Ankle X-ray – AP <span>(Anteroposterior)</span>';
-    subtitle.textContent='Standard projection for initial assessment of the ankle.';
-  }else if(projection==='mortise'){
-    title.innerHTML='Ankle X-ray – Mortise <span>(AP Oblique)</span>';
-    subtitle.textContent='Projection designed to demonstrate the ankle mortise with minimal superimposition.';
-  }else{
-    title.innerHTML='Ankle X-ray – Lateral';
-    subtitle.textContent='Standard lateral projection demonstrating the distal tibia and fibula, talus and hindfoot anatomy.';
-  }
-}
-overviewTab.addEventListener('click',()=>{
-  setPositioningChrome(false);
-  overview.classList.remove('hidden');
-  ap.classList.add('hidden');
-  mortise.classList.add('hidden');
-  lateral.classList.add('hidden');
-  radiographs.classList.add('hidden');
-  radiographsTab.classList.remove('tab-active');
-  overviewTab.classList.add('tab-active');
-  positioningTab.classList.remove('tab-active');
-});
-
-radiographsTab.addEventListener('click',()=>{
-  setPositioningChrome(false);
-  overview.classList.add('hidden');
-  ap.classList.add('hidden');
-  mortise.classList.add('hidden');
-  lateral.classList.add('hidden');
-  radiographs.classList.remove('hidden');
-  overviewTab.classList.remove('tab-active');
-  positioningTab.classList.remove('tab-active');
-  radiographsTab.classList.add('tab-active');
-});
-const anatomyInfo=document.getElementById('anatomy-info');
-const anatomyClear=document.getElementById('anatomy-clear');
-const anatomyDescriptions={
-  tibia:['Tibia','The distal tibia forms the superior and medial components of the ankle joint.'],
-  fibula:['Fibula','The distal fibula forms the lateral side of the ankle and continues to the lateral malleolus.'],
-  joint:['Tibiotalar joint space','The marker is placed in the radiolucent space between the distal tibia and the talar dome.'],
-  mortise:['Ankle mortise','The ankle mortise is the space formed by the distal tibia and fibula surrounding the talus. The point is placed within the joint space rather than on the talus.'],
-  medial:['Medial malleolus','The medial malleolus is the distal medial projection of the tibia.'],
-  lateral:['Lateral malleolus','The lateral malleolus is the distal projection of the fibula.'],
-  talus:['Talus','The talus articulates superiorly with the tibia at the tibiotalar joint.'],
-  tibfib:['Distal tibiofibular joint','The distal tibiofibular articulation lies between the distal tibia and fibula.']
+const anatomyShowAllButtons=document.querySelectorAll('.anatomy-show-all');
+const anatomyClearButtons=document.querySelectorAll('.anatomy-clear');
+const radiographViewButtons=document.querySelectorAll('[data-radview]');
+const radiographPanels={
+  ap:document.getElementById('ap-radiograph'),
+  mortise:document.getElementById('mortise-radiograph'),
+  lateral:document.getElementById('lateral-radiograph')
 };
-function selectAnatomy(name){
-  anatomyShowAll.classList.remove('active');
-  anatomyButtons.forEach(b=>b.classList.toggle('active',b.dataset.anatomy===name));
-  anatomyMarkers.forEach(m=>m.classList.toggle('active',m.dataset.marker===name));
-  const item=anatomyDescriptions[name];
-  if(item) anatomyInfo.innerHTML='<strong>'+item[0]+'</strong>'+item[1];
+const anatomyDescriptions={
+  ap:{tibia:['Tibia','The distal tibia forms the superior and medial components of the ankle joint.'],fibula:['Fibula','The distal fibula forms the lateral side of the ankle and continues to the lateral malleolus.'],joint:['Tibiotalar joint space','The marker is placed in the radiolucent space between the distal tibia and the talar dome.'],mortise:['Ankle mortise','The ankle mortise is the space formed by the distal tibia and fibula surrounding the talus.'],medial:['Medial malleolus','The medial malleolus is the distal medial projection of the tibia.'],lateral:['Lateral malleolus','The lateral malleolus is the distal projection of the fibula.'],talus:['Talus','The talus articulates superiorly with the tibia at the tibiotalar joint.'],tibfib:['Distal tibiofibular joint','The distal tibiofibular articulation lies between the distal tibia and fibula.']},
+  mortise:{tibia:['Tibia','The distal tibia forms the roof and medial side of the ankle mortise.'],fibula:['Fibula','The distal fibula forms the lateral side of the mortise.'],tibfib:['Distal tibiofibular joint','The distal tibiofibular articulation is assessed for appropriate overlap and alignment.'],joint:['Tibiotalar joint space','The joint space lies between the tibial plafond and talar dome.'],mortise:['Ankle mortise','The mortise is the space formed by the distal tibia and fibula around the talus.'],medial:['Medial malleolus','The medial malleolus forms the medial boundary of the ankle mortise.'],lateral:['Lateral malleolus','The lateral malleolus is the distal end of the fibula.'],dome:['Talar dome','The superior articular surface of the talus articulates with the tibial plafond.'],talus:['Talus','The talus is centred within the ankle mortise.']},
+  lateral:{tibia:['Tibia','The distal tibia is seen in lateral projection above the talus.'],fibula:['Fibula','The distal fibula projects posteriorly and is assessed for appropriate superimposition on a true lateral.'],joint:['Tibiotalar joint space','The radiolucent space between the distal tibia and talar dome.'],talus:['Talus','The talus lies beneath the distal tibia and articulates with the calcaneus inferiorly.'],subtalar:['Subtalar joint','The articulation between the talus and calcaneus.'],calcaneus:['Calcaneus','The calcaneus forms the posterior and inferior part of the hindfoot.'],navicular:['Navicular','The navicular lies anterior to the talar head in the medial midfoot.']}
+};
+function getInfo(view){return document.querySelector('[data-info="'+view+'"]');}
+function selectAnatomy(view,name){
+  document.querySelectorAll('.anatomy-button[data-view="'+view+'"]').forEach(b=>b.classList.toggle('active',b.dataset.anatomy===name));
+  document.querySelectorAll('.anatomy-marker[data-view="'+view+'"]').forEach(m=>m.classList.toggle('active',m.dataset.marker===name));
+  const showAll=document.querySelector('[data-show-all="'+view+'"]'); if(showAll) showAll.classList.remove('active');
+  const item=anatomyDescriptions[view]?.[name], info=getInfo(view);
+  if(item&&info) info.innerHTML='<strong>'+item[0]+'</strong>'+item[1];
 }
-function showAllAnatomy(){
-  anatomyShowAll.classList.add('active');
-  anatomyButtons.forEach(b=>b.classList.remove('active'));
-  anatomyMarkers.forEach(m=>m.classList.add('active'));
-  anatomyInfo.innerHTML='<strong>All anatomy labels</strong>All available structures are displayed with leader lines outside the radiograph.';
+function showAllAnatomy(view){
+  document.querySelectorAll('.anatomy-button[data-view="'+view+'"]').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.anatomy-marker[data-view="'+view+'"]').forEach(m=>m.classList.add('active'));
+  const showAll=document.querySelector('[data-show-all="'+view+'"]'); if(showAll) showAll.classList.add('active');
+  const info=getInfo(view); if(info) info.innerHTML='<strong>All anatomy labels</strong>All available structures are displayed with leader lines outside the radiograph.';
 }
-function clearAnatomy(){
-  anatomyShowAll.classList.remove('active');
-  anatomyButtons.forEach(b=>b.classList.remove('active'));
-  anatomyMarkers.forEach(m=>m.classList.remove('active'));
-  anatomyInfo.innerHTML='<strong>Interactive anatomy</strong>Select a structure to display its point, leader line and label.';
+function clearAnatomy(view){
+  document.querySelectorAll('.anatomy-button[data-view="'+view+'"]').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.anatomy-marker[data-view="'+view+'"]').forEach(m=>m.classList.remove('active'));
+  const showAll=document.querySelector('[data-show-all="'+view+'"]'); if(showAll) showAll.classList.remove('active');
+  const info=getInfo(view); if(info) info.innerHTML='<strong>Interactive anatomy</strong>Select a structure to display its point, leader line and label.';
 }
-
-anatomyButtons.forEach(btn=>btn.addEventListener('click',()=>selectAnatomy(btn.dataset.anatomy)));
-anatomyClear.addEventListener('click',clearAnatomy);
-anatomyShowAll.addEventListener('click',showAllAnatomy);
-anatomyOverlay.style.display='flex';
-clearAnatomy();
-setPositioningChrome(false);
-
+function showRadiographView(view){
+  Object.entries(radiographPanels).forEach(([key,panel])=>panel.classList.toggle('hidden',key!==view));
+  radiographViewButtons.forEach(b=>b.classList.toggle('active',b.dataset.radview===view));
+  clearAnatomy(view);
+}
+anatomyButtons.forEach(btn=>btn.addEventListener('click',()=>selectAnatomy(btn.dataset.view,btn.dataset.anatomy)));
+anatomyClearButtons.forEach(btn=>btn.addEventListener('click',()=>clearAnatomy(btn.dataset.clear)));
+anatomyShowAllButtons.forEach(btn=>btn.addEventListener('click',()=>showAllAnatomy(btn.dataset.showAll)));
+radiographViewButtons.forEach(btn=>btn.addEventListener('click',()=>showRadiographView(btn.dataset.radview)));
+['ap','mortise','lateral'].forEach(clearAnatomy);
 positioningTab.addEventListener('click',()=>showProjection('ap'));
 buttons.forEach(btn=>btn.addEventListener('click',()=>showProjection(btn.dataset.projection)));
 if(back) back.addEventListener('click',()=>showProjection('ap'));
