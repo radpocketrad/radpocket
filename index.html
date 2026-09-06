@@ -69,6 +69,23 @@
   .ap-visual .image-card{height:235px!important}
   .ap-visual h2{font-size:14px}
 }
+
+
+/* Integrated interactive anatomy with labels outside the radiograph */
+.anatomy-toolbar{display:flex;align-items:center;justify-content:space-between;gap:14px}
+.anatomy-toolbar strong{display:block}
+.anatomy-toolbar span{display:block;font-size:13px;opacity:.72;margin-top:3px}
+.anatomy-show-all{border:1px solid rgba(126,200,255,.55);background:rgba(126,200,255,.12);color:#dff2ff;border-radius:10px;padding:10px 13px;font-weight:700;cursor:pointer}
+.anatomy-show-all:hover,.anatomy-show-all.active{background:rgba(126,200,255,.24)}
+.radiograph-display{overflow:visible;padding:12px 150px}
+.anatomy-overlay{overflow:visible}
+.anatomy-svg{overflow:visible;max-width:none}
+.anatomy-marker text{font-size:24px}
+@media(max-width:850px){
+  .radiograph-display{padding:12px 75px}
+  .anatomy-marker text{font-size:20px}
+  .anatomy-toolbar{align-items:flex-start;flex-direction:column}
+}
 </style>
 </head>
 <body>
@@ -173,23 +190,26 @@
     </div>
 
     <section id="ap-radiograph" class="radiograph-panel">
-      <div class="radiograph-toolbar">
-        <button class="radiograph-toggle active" data-image="normal">Normal</button>
-        <button class="radiograph-toggle" data-image="anatomy">Click Anatomy</button>
+      <div class="radiograph-toolbar anatomy-toolbar">
+        <div>
+          <strong>Interactive anatomy</strong>
+          <span>Click a structure or show all labels.</span>
+        </div>
+        <button class="anatomy-show-all" id="anatomy-show-all" type="button">Show all anatomy</button>
       </div>
       <div class="radiograph-atlas">
         <div class="radiograph-display">
           <img id="ap-radiograph-image" src="ankle-ap-radiograph.jpg" alt="Normal AP ankle radiograph">
           <div class="anatomy-overlay" id="anatomy-overlay" aria-hidden="true">
-            <svg class="anatomy-svg" viewBox="0 0 728 1631" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+            <svg class="anatomy-svg" viewBox="-260 0 1248 1631" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
               <!-- Points are placed directly on the corresponding anatomy of this AP radiograph. -->
-              <g class="anatomy-marker" data-marker="tibia"><line x1="330" y1="760" x2="610" y2="700"/><circle class="outer" cx="330" cy="760" r="9"/><circle class="inner" cx="330" cy="760" r="4"/><text class="label-right" x="618" y="708">Tibia</text></g>
-              <g class="anatomy-marker" data-marker="fibula"><line x1="505" y1="790" x2="650" y2="720"/><circle class="outer" cx="505" cy="790" r="9"/><circle class="inner" cx="505" cy="790" r="4"/><text class="label-left" x="642" y="728">Fibula</text></g>
-              <g class="anatomy-marker" data-marker="joint"><line x1="332" y1="1092" x2="610" y2="1035"/><circle class="outer" cx="332" cy="1092" r="9"/><circle class="inner" cx="332" cy="1092" r="4"/><text class="label-right" x="618" y="1043">Tibiotalar joint</text></g>
-              <g class="anatomy-marker" data-marker="medial"><line x1="150" y1="1165" x2="42" y2="1110"/><circle class="outer" cx="150" cy="1165" r="9"/><circle class="inner" cx="150" cy="1165" r="4"/><text class="label-right" x="50" y="1100">Medial malleolus</text></g>
-              <g class="anatomy-marker" data-marker="lateral"><line x1="555" y1="1210" x2="685" y2="1160"/><circle class="outer" cx="555" cy="1210" r="9"/><circle class="inner" cx="555" cy="1210" r="4"/><text class="label-left" x="677" y="1150">Lateral malleolus</text></g>
-              <g class="anatomy-marker" data-marker="talus"><line x1="330" y1="1240" x2="75" y2="1305"/><circle class="outer" cx="330" cy="1240" r="9"/><circle class="inner" cx="330" cy="1240" r="4"/><text class="label-right" x="83" y="1313">Talus</text></g>
-              <g class="anatomy-marker" data-marker="tibfib"><line x1="450" y1="1085" x2="665" y2="980"/><circle class="outer" cx="450" cy="1085" r="9"/><circle class="inner" cx="450" cy="1085" r="4"/><text class="label-left" x="657" y="970">Distal tibiofibular joint</text></g>
+              <g class="anatomy-marker" data-marker="tibia"><line x1="330" y1="760" x2="900" y2="650"/><circle class="outer" cx="330" cy="760" r="9"/><circle class="inner" cx="330" cy="760" r="4"/><text class="label-right" x="915" y="658">Tibia</text></g>
+              <g class="anatomy-marker" data-marker="fibula"><line x1="505" y1="790" x2="900" y2="800"/><circle class="outer" cx="505" cy="790" r="9"/><circle class="inner" cx="505" cy="790" r="4"/><text class="label-right" x="915" y="808">Fibula</text></g>
+              <g class="anatomy-marker" data-marker="joint"><line x1="332" y1="1092" x2="900" y2="1040"/><circle class="outer" cx="332" cy="1092" r="9"/><circle class="inner" cx="332" cy="1092" r="4"/><text class="label-right" x="915" y="1048">Tibiotalar joint</text></g>
+              <g class="anatomy-marker" data-marker="medial"><line x1="150" y1="1165" x2="-210" y2="1090"/><circle class="outer" cx="150" cy="1165" r="9"/><circle class="inner" cx="150" cy="1165" r="4"/><text class="label-right" x="-200" y="1082">Medial malleolus</text></g>
+              <g class="anatomy-marker" data-marker="lateral"><line x1="555" y1="1210" x2="900" y2="1190"/><circle class="outer" cx="555" cy="1210" r="9"/><circle class="inner" cx="555" cy="1210" r="4"/><text class="label-right" x="915" y="1198">Lateral malleolus</text></g>
+              <g class="anatomy-marker" data-marker="talus"><line x1="330" y1="1240" x2="-210" y2="1320"/><circle class="outer" cx="330" cy="1240" r="9"/><circle class="inner" cx="330" cy="1240" r="4"/><text class="label-right" x="-200" y="1312">Talus</text></g>
+              <g class="anatomy-marker" data-marker="tibfib"><line x1="450" y1="1085" x2="900" y2="920"/><circle class="outer" cx="450" cy="1085" r="9"/><circle class="inner" cx="450" cy="1085" r="4"/><text class="label-right" x="915" y="928">Distal tibiofibular joint</text></g>
             </svg>
           </div>
         </div>
@@ -209,8 +229,8 @@
         </aside>
       </div>
       <div class="radiograph-caption">
-        <h3 id="radiograph-caption-title">AP Ankle — Normal</h3>
-        <p id="radiograph-caption-text">A normal AP ankle radiograph for reviewing projection and anatomy.</p>
+        <h3 id="radiograph-caption-title">AP Ankle — Interactive Anatomy</h3>
+        <p id="radiograph-caption-text">Click an anatomical structure for an individual label, or use Show all anatomy to review every labelled structure.</p>
       </div>
     </section>
   </section>
@@ -228,13 +248,10 @@ const overviewTab=document.getElementById('overview-tab');
 const positioningTab=document.getElementById('positioning-tab');
 const radiographsTab=document.getElementById('radiographs-tab');
 const radiographs=document.getElementById('radiographs-content');
-const radiographToggles=document.querySelectorAll('.radiograph-toggle');
 const anatomyButtons=document.querySelectorAll('.anatomy-button');
 const anatomyMarkers=document.querySelectorAll('.anatomy-marker');
 const anatomyOverlay=document.getElementById('anatomy-overlay');
-const apRadiographImage=document.getElementById('ap-radiograph-image');
-const radiographCaptionTitle=document.getElementById('radiograph-caption-title');
-const radiographCaptionText=document.getElementById('radiograph-caption-text');
+const anatomyShowAll=document.getElementById('anatomy-show-all');
 const title=document.getElementById('projection-title');
 const subtitle=document.getElementById('projection-subtitle');
 const back=document.getElementById('back-ap');
@@ -294,32 +311,30 @@ const anatomyDescriptions={
   tibfib:['Distal tibiofibular joint','The distal tibiofibular articulation lies between the distal tibia and fibula.']
 };
 function selectAnatomy(name){
+  anatomyShowAll.classList.remove('active');
   anatomyButtons.forEach(b=>b.classList.toggle('active',b.dataset.anatomy===name));
   anatomyMarkers.forEach(m=>m.classList.toggle('active',m.dataset.marker===name));
   const item=anatomyDescriptions[name];
   if(item) anatomyInfo.innerHTML='<strong>'+item[0]+'</strong>'+item[1];
 }
+function showAllAnatomy(){
+  anatomyShowAll.classList.add('active');
+  anatomyButtons.forEach(b=>b.classList.remove('active'));
+  anatomyMarkers.forEach(m=>m.classList.add('active'));
+  anatomyInfo.innerHTML='<strong>All anatomy labels</strong>All available structures are displayed with leader lines outside the radiograph.';
+}
 function clearAnatomy(){
+  anatomyShowAll.classList.remove('active');
   anatomyButtons.forEach(b=>b.classList.remove('active'));
   anatomyMarkers.forEach(m=>m.classList.remove('active'));
   anatomyInfo.innerHTML='<strong>Interactive anatomy</strong>Select a structure to display its point, leader line and label.';
 }
 
-radiographToggles.forEach(btn=>btn.addEventListener('click',()=>{
-  const interactive=btn.dataset.image==='anatomy';
-  radiographToggles.forEach(b=>b.classList.toggle('active',b===btn));
-  anatomyOverlay.style.display=interactive?'flex':'none';
-  apRadiographImage.alt=interactive?'Interactive AP ankle anatomy radiograph':'Normal AP ankle radiograph';
-  radiographCaptionTitle.textContent=interactive?'AP Ankle — Interactive Anatomy':'AP Ankle — Normal';
-  radiographCaptionText.textContent=interactive
-    ?'Select an anatomical structure to identify its position on the AP ankle radiograph.'
-    :'A normal AP ankle radiograph for reviewing projection and anatomy.';
-  if(interactive) clearAnatomy();
-}));
-
 anatomyButtons.forEach(btn=>btn.addEventListener('click',()=>selectAnatomy(btn.dataset.anatomy)));
 anatomyClear.addEventListener('click',clearAnatomy);
-anatomyOverlay.style.display='none';
+anatomyShowAll.addEventListener('click',showAllAnatomy);
+anatomyOverlay.style.display='flex';
+clearAnatomy();
 
 positioningTab.addEventListener('click',()=>showProjection('ap'));
 buttons.forEach(btn=>btn.addEventListener('click',()=>showProjection(btn.dataset.projection)));
