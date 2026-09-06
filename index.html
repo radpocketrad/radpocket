@@ -86,6 +86,101 @@
   .anatomy-marker text{font-size:20px}
   .anatomy-toolbar{align-items:flex-start;flex-direction:column}
 }
+
+
+/* ===== AP INTERACTIVE ANATOMY: SINGLE-STAGE LAYOUT =====
+   The radiograph and SVG share one coordinate system.
+   Stage: 1200 × 1631. Radiograph: x=236–964, y=0–1631.
+*/
+.radiograph-display{
+  position:relative;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:#07090c;
+  border:1px solid rgba(110,150,190,.25);
+  border-radius:18px;
+  padding:16px;
+  overflow:visible !important;
+  min-height:0;
+}
+.radiograph-stage{
+  position:relative;
+  width:min(100%, 620px);
+  aspect-ratio:1200 / 1631;
+  background:#05070a;
+  overflow:visible;
+}
+.radiograph-stage #ap-radiograph-image{
+  position:absolute;
+  top:0;
+  left:19.666667%;
+  width:60.666667%;
+  height:100%;
+  max-width:none !important;
+  max-height:none !important;
+  object-fit:fill;
+  border-radius:0;
+  display:block;
+}
+.radiograph-stage .anatomy-overlay{
+  position:absolute !important;
+  inset:0 !important;
+  width:100%;
+  height:100%;
+  display:block !important;
+  overflow:visible !important;
+  pointer-events:none;
+}
+.radiograph-stage .anatomy-svg{
+  position:absolute;
+  inset:0;
+  width:100% !important;
+  height:100% !important;
+  max-width:none !important;
+  aspect-ratio:auto !important;
+  overflow:visible !important;
+  display:block;
+}
+.anatomy-marker{display:none}
+.anatomy-marker.active{display:block}
+.anatomy-marker line{
+  stroke:#63c5ff;
+  stroke-width:3.5;
+  stroke-linecap:round;
+  vector-effect:non-scaling-stroke;
+  filter:drop-shadow(0 0 2px rgba(99,197,255,.45));
+}
+.anatomy-marker circle.outer{
+  fill:rgba(99,197,255,.18);
+  stroke:#e8f8ff;
+  stroke-width:3;
+  vector-effect:non-scaling-stroke;
+}
+.anatomy-marker circle.inner{fill:#63c5ff}
+.anatomy-marker text{
+  fill:#eef8ff;
+  font-family:Arial,Helvetica,sans-serif;
+  font-size:28px;
+  font-weight:700;
+  paint-order:stroke;
+  stroke:#07090c;
+  stroke-width:7px;
+  stroke-linejoin:round;
+}
+.anatomy-marker .label-right{text-anchor:start}
+.anatomy-marker .label-left{text-anchor:start}
+
+@media(max-width:900px){
+  .radiograph-atlas{grid-template-columns:1fr}
+  .radiograph-stage{width:min(100%, 560px)}
+}
+@media(max-width:620px){
+  .radiograph-display{padding:8px; border-radius:12px}
+  .radiograph-stage{width:100%}
+  .anatomy-marker text{font-size:24px}
+}
+
 </style>
 </head>
 <body>
@@ -199,21 +294,44 @@
       </div>
       <div class="radiograph-atlas">
         <div class="radiograph-display">
-          <img id="ap-radiograph-image" src="ankle-ap-radiograph.jpg" alt="Normal AP ankle radiograph">
-          <div class="anatomy-overlay" id="anatomy-overlay" aria-hidden="true">
-            <svg class="anatomy-svg" viewBox="-260 0 1248 1631" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-              <!-- Points are placed directly on the corresponding anatomy of this AP radiograph. -->
-              <g class="anatomy-marker" data-marker="tibia"><line x1="330" y1="760" x2="900" y2="650"/><circle class="outer" cx="330" cy="760" r="9"/><circle class="inner" cx="330" cy="760" r="4"/><text class="label-right" x="915" y="658">Tibia</text></g>
-              <g class="anatomy-marker" data-marker="fibula"><line x1="505" y1="790" x2="900" y2="800"/><circle class="outer" cx="505" cy="790" r="9"/><circle class="inner" cx="505" cy="790" r="4"/><text class="label-right" x="915" y="808">Fibula</text></g>
-              <g class="anatomy-marker" data-marker="joint"><line x1="332" y1="1092" x2="900" y2="1040"/><circle class="outer" cx="332" cy="1092" r="9"/><circle class="inner" cx="332" cy="1092" r="4"/><text class="label-right" x="915" y="1048">Tibiotalar joint</text></g>
-              <g class="anatomy-marker" data-marker="medial"><line x1="150" y1="1165" x2="-210" y2="1090"/><circle class="outer" cx="150" cy="1165" r="9"/><circle class="inner" cx="150" cy="1165" r="4"/><text class="label-right" x="-200" y="1082">Medial malleolus</text></g>
-              <g class="anatomy-marker" data-marker="lateral"><line x1="555" y1="1210" x2="900" y2="1190"/><circle class="outer" cx="555" cy="1210" r="9"/><circle class="inner" cx="555" cy="1210" r="4"/><text class="label-right" x="915" y="1198">Lateral malleolus</text></g>
-              <g class="anatomy-marker" data-marker="talus"><line x1="330" y1="1240" x2="-210" y2="1320"/><circle class="outer" cx="330" cy="1240" r="9"/><circle class="inner" cx="330" cy="1240" r="4"/><text class="label-right" x="-200" y="1312">Talus</text></g>
-              <g class="anatomy-marker" data-marker="tibfib"><line x1="450" y1="1085" x2="900" y2="920"/><circle class="outer" cx="450" cy="1085" r="9"/><circle class="inner" cx="450" cy="1085" r="4"/><text class="label-right" x="915" y="928">Distal tibiofibular joint</text></g>
-            </svg>
+          <div class="radiograph-stage" id="ap-radiograph-stage">
+            <img id="ap-radiograph-image" src="ankle-ap-radiograph.jpg" alt="AP ankle radiograph">
+            <div class="anatomy-overlay" id="anatomy-overlay" aria-hidden="true">
+              <svg class="anatomy-svg" viewBox="0 0 1200 1631" preserveAspectRatio="none" aria-hidden="true">
+                <!-- Full-stage coordinate system: the radiograph occupies x=236–964, y=0–1631. -->
+                <g class="anatomy-marker" data-marker="tibia">
+                  <line x1="566" y1="760" x2="970" y2="520"/><circle class="outer" cx="566" cy="760" r="10"/><circle class="inner" cx="566" cy="760" r="4"/>
+                  <text class="label-right" x="985" y="528">Tibia</text>
+                </g>
+                <g class="anatomy-marker" data-marker="fibula">
+                  <line x1="741" y1="790" x2="970" y2="680"/><circle class="outer" cx="741" cy="790" r="10"/><circle class="inner" cx="741" cy="790" r="4"/>
+                  <text class="label-right" x="985" y="688">Fibula</text>
+                </g>
+                <g class="anatomy-marker" data-marker="tibfib">
+                  <line x1="686" y1="1085" x2="970" y2="850"/><circle class="outer" cx="686" cy="1085" r="10"/><circle class="inner" cx="686" cy="1085" r="4"/>
+                  <text class="label-right" x="985" y="842">Distal tibiofibular joint</text>
+                </g>
+                <g class="anatomy-marker" data-marker="joint">
+                  <line x1="568" y1="1092" x2="970" y2="1030"/><circle class="outer" cx="568" cy="1092" r="10"/><circle class="inner" cx="568" cy="1092" r="4"/>
+                  <text class="label-right" x="985" y="1038">Tibiotalar joint</text>
+                </g>
+                <g class="anatomy-marker" data-marker="medial">
+                  <line x1="386" y1="1165" x2="220" y2="1085"/><circle class="outer" cx="386" cy="1165" r="10"/><circle class="inner" cx="386" cy="1165" r="4"/>
+                  <text class="label-left" x="25" y="1078">Medial malleolus</text>
+                </g>
+                <g class="anatomy-marker" data-marker="lateral">
+                  <line x1="791" y1="1210" x2="970" y2="1190"/><circle class="outer" cx="791" cy="1210" r="10"/><circle class="inner" cx="791" cy="1210" r="4"/>
+                  <text class="label-right" x="985" y="1198">Lateral malleolus</text>
+                </g>
+                <g class="anatomy-marker" data-marker="talus">
+                  <line x1="566" y1="1240" x2="220" y2="1325"/><circle class="outer" cx="566" cy="1240" r="10"/><circle class="inner" cx="566" cy="1240" r="4"/>
+                  <text class="label-left" x="25" y="1318">Talus</text>
+                </g>
+              </svg>
+            </div>
           </div>
         </div>
-        <aside class="anatomy-list" aria-label="AP ankle anatomy labels">
+        <aside class="anatomy-list aria-label="AP ankle anatomy labels">
           <h3>AP Ankle Anatomy</h3>
           <p>Click a structure to display a precise point, leader line and anatomy label.</p>
           <button class="anatomy-button" data-anatomy="tibia">Tibia</button>
