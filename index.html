@@ -381,62 +381,220 @@
 </main></div>
 
 <script>
-const buttons=document.querySelectorAll('[data-projection]');
-const overview=document.getElementById('overview-content');
-const ap=document.getElementById('ap-content');
-const mortise=document.getElementById('mortise-content');
-const lateral=document.getElementById('lateral-content');
-const overviewTab=document.getElementById('overview-tab');
-const positioningTab=document.getElementById('positioning-tab');
-const radiographsTab=document.getElementById('radiographs-tab');
-const radiographs=document.getElementById('radiographs-content');
-const anatomyButtons=document.querySelectorAll('.anatomy-button');
-const anatomyMarkers=document.querySelectorAll('.anatomy-marker');
-const anatomyShowAllButtons=document.querySelectorAll('.anatomy-show-all');
-const anatomyClearButtons=document.querySelectorAll('.anatomy-clear');
-const radiographViewButtons=document.querySelectorAll('[data-radview]');
-const radiographPanels={
-  ap:document.getElementById('ap-radiograph'),
-  mortise:document.getElementById('mortise-radiograph'),
-  lateral:document.getElementById('lateral-radiograph')
-};
-const anatomyDescriptions={
-  ap:{tibia:['Tibia','The distal tibia forms the superior and medial components of the ankle joint.'],fibula:['Fibula','The distal fibula forms the lateral side of the ankle and continues to the lateral malleolus.'],joint:['Tibiotalar joint space','The marker is placed in the radiolucent space between the distal tibia and the talar dome.'],mortise:['Ankle mortise','The ankle mortise is the space formed by the distal tibia and fibula surrounding the talus.'],medial:['Medial malleolus','The medial malleolus is the distal medial projection of the tibia.'],lateral:['Lateral malleolus','The lateral malleolus is the distal projection of the fibula.'],talus:['Talus','The talus articulates superiorly with the tibia at the tibiotalar joint.'],tibfib:['Distal tibiofibular joint','The distal tibiofibular articulation lies between the distal tibia and fibula.']},
-  mortise:{tibia:['Tibia','The distal tibia forms the roof and medial side of the ankle mortise.'],fibula:['Fibula','The distal fibula forms the lateral side of the mortise.'],tibfib:['Distal tibiofibular joint','The distal tibiofibular articulation is assessed for appropriate overlap and alignment.'],joint:['Tibiotalar joint space','The joint space lies between the tibial plafond and talar dome.'],mortise:['Ankle mortise','The mortise is the space formed by the distal tibia and fibula around the talus.'],medial:['Medial malleolus','The medial malleolus forms the medial boundary of the ankle mortise.'],lateral:['Lateral malleolus','The lateral malleolus is the distal end of the fibula.'],dome:['Talar dome','The superior articular surface of the talus articulates with the tibial plafond.'],talus:['Talus','The talus is centred within the ankle mortise.']},
-  lateral:{tibia:['Tibia','The distal tibia is seen in lateral projection above the talus.'],fibula:['Fibula','The distal fibula projects posteriorly and is assessed for appropriate superimposition on a true lateral.'],joint:['Tibiotalar joint space','The radiolucent space between the distal tibia and talar dome.'],talus:['Talus','The talus lies beneath the distal tibia and articulates with the calcaneus inferiorly.'],subtalar:['Subtalar joint','The articulation between the talus and calcaneus.'],calcaneus:['Calcaneus','The calcaneus forms the posterior and inferior part of the hindfoot.'],navicular:['Navicular','The navicular lies anterior to the talar head in the medial midfoot.']}
-};
-function getInfo(view){return document.querySelector('[data-info="'+view+'"]');}
-function selectAnatomy(view,name){
-  document.querySelectorAll('.anatomy-button[data-view="'+view+'"]').forEach(b=>b.classList.toggle('active',b.dataset.anatomy===name));
-  document.querySelectorAll('.anatomy-marker[data-view="'+view+'"]').forEach(m=>m.classList.toggle('active',m.dataset.marker===name));
-  const showAll=document.querySelector('[data-show-all="'+view+'"]'); if(showAll) showAll.classList.remove('active');
-  const item=anatomyDescriptions[view]?.[name], info=getInfo(view);
-  if(item&&info) info.innerHTML='<strong>'+item[0]+'</strong>'+item[1];
-}
-function showAllAnatomy(view){
-  document.querySelectorAll('.anatomy-button[data-view="'+view+'"]').forEach(b=>b.classList.remove('active'));
-  document.querySelectorAll('.anatomy-marker[data-view="'+view+'"]').forEach(m=>m.classList.add('active'));
-  const showAll=document.querySelector('[data-show-all="'+view+'"]'); if(showAll) showAll.classList.add('active');
-  const info=getInfo(view); if(info) info.innerHTML='<strong>All anatomy labels</strong>All available structures are displayed with leader lines outside the radiograph.';
-}
-function clearAnatomy(view){
-  document.querySelectorAll('.anatomy-button[data-view="'+view+'"]').forEach(b=>b.classList.remove('active'));
-  document.querySelectorAll('.anatomy-marker[data-view="'+view+'"]').forEach(m=>m.classList.remove('active'));
-  const showAll=document.querySelector('[data-show-all="'+view+'"]'); if(showAll) showAll.classList.remove('active');
-  const info=getInfo(view); if(info) info.innerHTML='<strong>Interactive anatomy</strong>Select a structure to display its point, leader line and label.';
-}
-function showRadiographView(view){
-  Object.entries(radiographPanels).forEach(([key,panel])=>panel.classList.toggle('hidden',key!==view));
-  radiographViewButtons.forEach(b=>b.classList.toggle('active',b.dataset.radview===view));
-  clearAnatomy(view);
-}
-anatomyButtons.forEach(btn=>btn.addEventListener('click',()=>selectAnatomy(btn.dataset.view,btn.dataset.anatomy)));
-anatomyClearButtons.forEach(btn=>btn.addEventListener('click',()=>clearAnatomy(btn.dataset.clear)));
-anatomyShowAllButtons.forEach(btn=>btn.addEventListener('click',()=>showAllAnatomy(btn.dataset.showAll)));
-radiographViewButtons.forEach(btn=>btn.addEventListener('click',()=>showRadiographView(btn.dataset.radview)));
-['ap','mortise','lateral'].forEach(clearAnatomy);
-positioningTab.addEventListener('click',()=>showProjection('ap'));
-buttons.forEach(btn=>btn.addEventListener('click',()=>showProjection(btn.dataset.projection)));
-if(back) back.addEventListener('click',()=>showProjection('ap'));
+document.addEventListener('DOMContentLoaded', () => {
+  const projectionButtons = document.querySelectorAll('[data-projection]');
+  const overview = document.getElementById('overview-content');
+  const ap = document.getElementById('ap-content');
+  const mortise = document.getElementById('mortise-content');
+  const lateral = document.getElementById('lateral-content');
+  const radiographs = document.getElementById('radiographs-content');
+
+  const overviewTab = document.getElementById('overview-tab');
+  const positioningTab = document.getElementById('positioning-tab');
+  const radiographsTab = document.getElementById('radiographs-tab');
+
+  const hero = document.getElementById('positioning-hero');
+  const switcher = document.getElementById('positioning-switcher');
+  const title = document.getElementById('projection-title');
+  const subtitle = document.getElementById('projection-subtitle');
+
+  const projectionPanels = { ap, mortise, lateral };
+  const projectionText = {
+    ap: {
+      title: 'Ankle X-ray – AP <span>(Anteroposterior)</span>',
+      subtitle: 'Standard projection for initial assessment of the ankle.'
+    },
+    mortise: {
+      title: 'Ankle X-ray – Mortise',
+      subtitle: 'Oblique projection designed to demonstrate the ankle mortise and joint spaces.'
+    },
+    lateral: {
+      title: 'Ankle X-ray – Lateral',
+      subtitle: 'Lateral projection demonstrating the distal tibia, talus and hindfoot.'
+    }
+  };
+
+  const anatomyButtons = document.querySelectorAll('.anatomy-button');
+  const anatomyShowAllButtons = document.querySelectorAll('.anatomy-show-all');
+  const anatomyClearButtons = document.querySelectorAll('.anatomy-clear');
+  const radiographViewButtons = document.querySelectorAll('[data-radview]');
+
+  const radiographPanels = {
+    ap: document.getElementById('ap-radiograph'),
+    mortise: document.getElementById('mortise-radiograph'),
+    lateral: document.getElementById('lateral-radiograph')
+  };
+
+  const anatomyDescriptions = {
+    ap: {
+      tibia:['Tibia','The distal tibia forms the superior and medial components of the ankle joint.'],
+      fibula:['Fibula','The distal fibula forms the lateral side of the ankle and continues to the lateral malleolus.'],
+      joint:['Tibiotalar joint space','The marker is placed in the radiolucent space between the distal tibia and the talar dome.'],
+      medial:['Medial malleolus','The medial malleolus is the distal medial projection of the tibia.'],
+      lateral:['Lateral malleolus','The lateral malleolus is the distal projection of the fibula.'],
+      talus:['Talus','The talus articulates superiorly with the tibia at the tibiotalar joint.'],
+      tibfib:['Distal tibiofibular joint','The distal tibiofibular articulation lies between the distal tibia and fibula.']
+    },
+    mortise: {
+      tibia:['Tibia','The distal tibia forms the roof and medial side of the ankle mortise.'],
+      fibula:['Fibula','The distal fibula forms the lateral side of the mortise.'],
+      tibfib:['Distal tibiofibular joint','The distal tibiofibular articulation is assessed for appropriate overlap and alignment.'],
+      joint:['Tibiotalar joint space','The joint space lies between the tibial plafond and talar dome.'],
+      mortise:['Ankle mortise','The mortise is the space formed by the distal tibia and fibula around the talus.'],
+      medial:['Medial malleolus','The medial malleolus forms the medial boundary of the ankle mortise.'],
+      lateral:['Lateral malleolus','The lateral malleolus is the distal end of the fibula.'],
+      dome:['Talar dome','The superior articular surface of the talus articulates with the tibial plafond.'],
+      talus:['Talus','The talus is centred within the ankle mortise.']
+    },
+    lateral: {
+      tibia:['Tibia','The distal tibia is seen in lateral projection above the talus.'],
+      fibula:['Fibula','The distal fibula projects posteriorly and is assessed for appropriate superimposition on a true lateral.'],
+      joint:['Tibiotalar joint space','The radiolucent space between the distal tibia and talar dome.'],
+      talus:['Talus','The talus lies beneath the distal tibia and articulates with the calcaneus inferiorly.'],
+      subtalar:['Subtalar joint','The articulation between the talus and calcaneus.'],
+      calcaneus:['Calcaneus','The calcaneus forms the posterior and inferior part of the hindfoot.'],
+      navicular:['Navicular','The navicular lies anterior to the talar head in the medial midfoot.']
+    }
+  };
+
+  function setActiveTab(tab) {
+    [overviewTab, positioningTab, radiographsTab].forEach(t => {
+      if (t) t.classList.toggle('tab-active', t === tab);
+    });
+  }
+
+  function hideMainSections() {
+    [overview, ap, mortise, lateral, radiographs].forEach(section => {
+      if (section) section.classList.add('hidden');
+    });
+  }
+
+  function showProjection(view) {
+    hideMainSections();
+    if (hero) hero.classList.remove('hidden');
+    if (switcher) switcher.classList.remove('hidden');
+
+    const panel = projectionPanels[view] || projectionPanels.ap;
+    if (panel) panel.classList.remove('hidden');
+
+    projectionButtons.forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.projection === view);
+    });
+
+    if (title && projectionText[view]) title.innerHTML = projectionText[view].title;
+    if (subtitle && projectionText[view]) subtitle.textContent = projectionText[view].subtitle;
+
+    setActiveTab(positioningTab);
+  }
+
+  function showOverview() {
+    hideMainSections();
+    if (hero) hero.classList.add('hidden');
+    if (switcher) switcher.classList.add('hidden');
+    if (overview) overview.classList.remove('hidden');
+    setActiveTab(overviewTab);
+  }
+
+  function showRadiographs() {
+    hideMainSections();
+    if (hero) hero.classList.add('hidden');
+    if (switcher) switcher.classList.add('hidden');
+    if (radiographs) radiographs.classList.remove('hidden');
+    setActiveTab(radiographsTab);
+    showRadiographView('ap');
+  }
+
+  function getInfo(view) {
+    return document.querySelector('[data-info="' + view + '"]');
+  }
+
+  function selectAnatomy(view, name) {
+    document.querySelectorAll('.anatomy-button[data-view="' + view + '"]').forEach(button => {
+      button.classList.toggle('active', button.dataset.anatomy === name);
+    });
+
+    document.querySelectorAll('.anatomy-marker[data-view="' + view + '"]').forEach(marker => {
+      marker.classList.toggle('active', marker.dataset.marker === name);
+    });
+
+    const showAll = document.querySelector('[data-show-all="' + view + '"]');
+    if (showAll) showAll.classList.remove('active');
+
+    const item = anatomyDescriptions[view] && anatomyDescriptions[view][name];
+    const info = getInfo(view);
+    if (item && info) info.innerHTML = '<strong>' + item[0] + '</strong>' + item[1];
+  }
+
+  function showAllAnatomy(view) {
+    document.querySelectorAll('.anatomy-button[data-view="' + view + '"]').forEach(button => {
+      button.classList.remove('active');
+    });
+
+    document.querySelectorAll('.anatomy-marker[data-view="' + view + '"]').forEach(marker => {
+      marker.classList.add('active');
+    });
+
+    const showAll = document.querySelector('[data-show-all="' + view + '"]');
+    if (showAll) showAll.classList.add('active');
+
+    const info = getInfo(view);
+    if (info) info.innerHTML = '<strong>All anatomy labels</strong>All available structures are displayed with leader lines outside the radiograph.';
+  }
+
+  function clearAnatomy(view) {
+    document.querySelectorAll('.anatomy-button[data-view="' + view + '"]').forEach(button => {
+      button.classList.remove('active');
+    });
+
+    document.querySelectorAll('.anatomy-marker[data-view="' + view + '"]').forEach(marker => {
+      marker.classList.remove('active');
+    });
+
+    const showAll = document.querySelector('[data-show-all="' + view + '"]');
+    if (showAll) showAll.classList.remove('active');
+
+    const info = getInfo(view);
+    if (info) info.innerHTML = '<strong>Interactive anatomy</strong>Select a structure to display its point, leader line and label.';
+  }
+
+  function showRadiographView(view) {
+    Object.entries(radiographPanels).forEach(([key, panel]) => {
+      if (panel) panel.classList.toggle('hidden', key !== view);
+    });
+
+    radiographViewButtons.forEach(button => {
+      button.classList.toggle('active', button.dataset.radview === view);
+    });
+
+    clearAnatomy(view);
+  }
+
+  projectionButtons.forEach(button => {
+    button.addEventListener('click', () => showProjection(button.dataset.projection));
+  });
+
+  if (overviewTab) overviewTab.addEventListener('click', showOverview);
+  if (positioningTab) positioningTab.addEventListener('click', () => showProjection('ap'));
+  if (radiographsTab) radiographsTab.addEventListener('click', showRadiographs);
+
+  anatomyButtons.forEach(button => {
+    button.addEventListener('click', () => selectAnatomy(button.dataset.view, button.dataset.anatomy));
+  });
+
+  anatomyClearButtons.forEach(button => {
+    button.addEventListener('click', () => clearAnatomy(button.dataset.clear));
+  });
+
+  anatomyShowAllButtons.forEach(button => {
+    button.addEventListener('click', () => showAllAnatomy(button.dataset.showAll));
+  });
+
+  radiographViewButtons.forEach(button => {
+    button.addEventListener('click', () => showRadiographView(button.dataset.radview));
+  });
+
+  ['ap', 'mortise', 'lateral'].forEach(clearAnatomy);
+  showOverview();
+});
 </script>
 </body></html>
