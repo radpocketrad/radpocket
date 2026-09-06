@@ -198,8 +198,8 @@
 <main class="main">
   <header class="topbar"><button class="section-title">Ankle⌄</button><div class="profile">☼ <span>DR</span></div></header>
   <div class="tabs"><button id="overview-tab" class="tab-active">Overview</button><button id="positioning-tab">Positioning</button><button id="radiographs-tab">Radiographs</button><button>Assessment</button><button>Teach</button></div>
-  <section class="hero"><div class="eyebrow">LOWER LIMB · ANKLE</div><h1 id="projection-title">Ankle X-ray – AP <span>(Anteroposterior)</span></h1><p id="projection-subtitle">Standard projection for initial assessment of the ankle.</p></section>
-  <section class="projection-switcher"><button class="projection active" data-projection="ap">AP</button><button class="projection" data-projection="mortise">Mortise</button><button class="projection" data-projection="lateral">Lateral</button></section>
+  <section class="hero" id="positioning-hero"><div class="eyebrow">LOWER LIMB · ANKLE</div><h1 id="projection-title">Ankle X-ray – AP <span>(Anteroposterior)</span></h1><p id="projection-subtitle">Standard projection for initial assessment of the ankle.</p></section>
+  <section class="projection-switcher" id="positioning-switcher"><button class="projection active" data-projection="ap">AP</button><button class="projection" data-projection="mortise">Mortise</button><button class="projection" data-projection="lateral">Lateral</button></section>
 
   <section id="overview-content" class="content">
     <section class="overview-intro">
@@ -300,8 +300,8 @@
               <svg class="anatomy-svg" viewBox="0 0 1200 1631" preserveAspectRatio="none" aria-hidden="true">
                 <!-- Full-stage coordinate system: the radiograph occupies x=236–964, y=0–1631. -->
                 <g class="anatomy-marker" data-marker="tibia">
-                  <line x1="566" y1="760" x2="970" y2="520"/><circle class="outer" cx="566" cy="760" r="10"/><circle class="inner" cx="566" cy="760" r="4"/>
-                  <text class="label-left" x="985" y="528">Tibia</text>
+                  <line x1="566" y1="760" x2="220" y2="520"/><circle class="outer" cx="566" cy="760" r="10"/><circle class="inner" cx="566" cy="760" r="4"/>
+                  <text class="label-left" x="25" y="528">Tibia</text>
                 </g>
                 <g class="anatomy-marker" data-marker="fibula">
                   <line x1="741" y1="790" x2="970" y2="680"/><circle class="outer" cx="741" cy="790" r="10"/><circle class="inner" cx="741" cy="790" r="4"/>
@@ -331,7 +331,7 @@
             </div>
           </div>
         </div>
-        <aside class="anatomy-list aria-label="AP ankle anatomy labels">
+        <aside class="anatomy-list" aria-label="AP ankle anatomy labels">
           <h3>AP Ankle Anatomy</h3>
           <p>Click a structure to display a precise point, leader line and anatomy label.</p>
           <button class="anatomy-button" data-anatomy="tibia">Tibia</button>
@@ -373,8 +373,16 @@ const anatomyShowAll=document.getElementById('anatomy-show-all');
 const title=document.getElementById('projection-title');
 const subtitle=document.getElementById('projection-subtitle');
 const back=document.getElementById('back-ap');
+const positioningHero=document.getElementById('positioning-hero');
+const positioningSwitcher=document.getElementById('positioning-switcher');
+
+function setPositioningChrome(visible){
+  positioningHero.classList.toggle('hidden',!visible);
+  positioningSwitcher.classList.toggle('hidden',!visible);
+}
 
 function showProjection(projection){
+  setPositioningChrome(true);
   overview.classList.add('hidden');
   radiographs.classList.add('hidden');
   overviewTab.classList.remove('tab-active');
@@ -397,6 +405,7 @@ function showProjection(projection){
   }
 }
 overviewTab.addEventListener('click',()=>{
+  setPositioningChrome(false);
   overview.classList.remove('hidden');
   ap.classList.add('hidden');
   mortise.classList.add('hidden');
@@ -408,6 +417,7 @@ overviewTab.addEventListener('click',()=>{
 });
 
 radiographsTab.addEventListener('click',()=>{
+  setPositioningChrome(false);
   overview.classList.add('hidden');
   ap.classList.add('hidden');
   mortise.classList.add('hidden');
@@ -453,6 +463,7 @@ anatomyClear.addEventListener('click',clearAnatomy);
 anatomyShowAll.addEventListener('click',showAllAnatomy);
 anatomyOverlay.style.display='flex';
 clearAnatomy();
+setPositioningChrome(false);
 
 positioningTab.addEventListener('click',()=>showProjection('ap'));
 buttons.forEach(btn=>btn.addEventListener('click',()=>showProjection(btn.dataset.projection)));
