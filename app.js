@@ -70,9 +70,9 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   const anatomyPoints = {
-    tibia: { label: 'Tibia', x: 45, y: 28, line: 18, side: 'right' },
+    tibia: { label: 'Tibia', x: 25, y: 20, line: 18, side: 'right' },
     fibula: { label: 'Fibula', x: 63, y: 34, line: 18, side: 'left' },
-    talus: { label: 'Talus', x: 52, y: 63, line: 18, side: 'right' },
+    talus: { label: 'Talus', x: 45, y: 55, line: 18, side: 'right' },
     'medial-malleolus': {
       label: 'Medial malleolus', x: 37, y: 51, line: 20, side: 'right'
     },
@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
       label: 'Lateral malleolus', x: 67, y: 52, line: 20, side: 'left'
     },
     'tibiotalar-joint': {
-      label: 'Tibiotalar joint', x: 51, y: 53, line: 22, side: 'right'
+      label: 'Tibiotalar joint', x: 45, y: 43, line: 22, side: 'right'
     }
   };
 
