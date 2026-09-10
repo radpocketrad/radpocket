@@ -192,6 +192,15 @@
 
 /* ===== ASSESSMENT ===== */
 .assessment-intro{margin-bottom:24px}.assessment-intro h2{margin:8px 0 10px}.assessment-intro p{max-width:760px;line-height:1.65;margin:0}.assessment-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.assessment-card{padding:22px;border:1px solid rgba(255,255,255,.10);border-radius:16px;background:rgba(255,255,255,.035)}.assessment-card h3{margin-top:0}.assessment-card ul{padding-left:20px;margin-bottom:0}.assessment-card li{margin:8px 0;line-height:1.5}.assessment-card details{margin-top:14px;padding-top:12px;border-top:1px solid rgba(255,255,255,.08)}.assessment-card summary{cursor:pointer;font-weight:700}.systematic-search{margin-top:22px;padding:24px;border:1px solid rgba(126,200,255,.22);border-radius:18px;background:rgba(126,200,255,.045)}.systematic-search h2{margin:8px 0 10px}.systematic-search p{line-height:1.6}.abcs-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:18px}.abcs-item{display:flex;gap:12px;align-items:flex-start;text-align:left;padding:16px;border:1px solid rgba(255,255,255,.10);border-radius:14px;background:rgba(255,255,255,.03);color:inherit;cursor:pointer;font:inherit}.abcs-item b{font-size:24px;line-height:1}.abcs-item:hover,.abcs-item.active{border-color:rgba(126,200,255,.65);background:rgba(126,200,255,.10)}.abcs-item span{font-size:13px;line-height:1.45}.assessment-feedback{margin-top:14px;padding:14px 16px;border-radius:12px;background:rgba(255,255,255,.04);font-size:14px;line-height:1.5}@media(max-width:850px){.assessment-grid{grid-template-columns:1fr}.abcs-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:520px){.abcs-grid{grid-template-columns:1fr}}
+
+/* Assessment tab active state */
+.tabs button.tab-active,
+.tabs button.active{
+  background:rgba(110,150,190,.22);
+  border-color:rgba(126,200,255,.55);
+  color:#fff;
+}
+
 </style>
 </head>
 <body>
@@ -208,7 +217,7 @@
 </aside>
 <main class="main">
   <header class="topbar"><button class="section-title">Ankle⌄</button><div class="profile">☼ <span>DR</span></div></header>
-  <div class="tabs"><button id="overview-tab" class="tab-active">Overview</button><button id="positioning-tab">Positioning</button><button id="radiographs-tab">Radiographs</button><button>Assessment</button><button>Teach</button></div>
+  <div class="tabs"><button id="overview-tab" class="tab-active">Overview</button><button id="positioning-tab">Positioning</button><button id="radiographs-tab">Radiographs</button><button id="assessment-tab">Assessment</button><button>Teach</button></div>
   <section class="hero" id="positioning-hero"><div class="eyebrow">LOWER LIMB · ANKLE</div><h1 id="projection-title">Ankle X-ray – AP <span>(Anteroposterior)</span></h1><p id="projection-subtitle">Standard projection for initial assessment of the ankle.</p></section>
   <section class="projection-switcher" id="positioning-switcher"><button class="projection active" data-projection="ap">AP</button><button class="projection" data-projection="mortise">Mortise</button><button class="projection" data-projection="lateral">Lateral</button></section>
 
@@ -410,14 +419,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const overviewTab = document.getElementById('overview-tab');
   const positioningTab = document.getElementById('positioning-tab');
   const radiographsTab = document.getElementById('radiographs-tab');
-  const assessmentTab = Array.from(document.querySelectorAll('.tabs button')).find(b => b.textContent.trim().toLowerCase() === 'assessment');
+  const assessmentTab = document.getElementById('assessment-tab');
 
   const hero = document.getElementById('positioning-hero');
   const switcher = document.getElementById('positioning-switcher');
   const title = document.getElementById('projection-title');
   const subtitle = document.getElementById('projection-subtitle');
 
-  const projectionPanels = { ap, mortise, lateral };
+  const projectionPanels = {ap, mortise, lateral};
   const projectionText = {
     ap: {
       title: 'Ankle X-ray – AP <span>(Anteroposterior)</span>',
@@ -476,10 +485,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
+  const assessmentFeedback = {
+    A: 'Alignment: check the talar position, ankle mortise and distal tibiofibular relationship.',
+    B: 'Bones: trace each visible cortex and look for interruption, fracture lines, displacement or angulation.',
+    C: 'Cartilage / joints: assess joint spaces, the tibiotalar joint and the talar dome.',
+    S: 'Soft tissues: assess for swelling, effusion and other visible soft-tissue abnormalities.'
+  };
+
   function setActiveTab(tab) {
-    [overviewTab, positioningTab, radiographsTab].forEach(t => {
-      if (t) t.classList.toggle('tab-active', t === tab);
+    document.querySelectorAll('.tabs button').forEach(button => {
+      button.classList.remove('tab-active', 'active');
     });
+    if (tab) {
+      tab.classList.add('tab-active');
+    }
   }
 
   function hideMainSections() {
@@ -539,7 +558,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.anatomy-button[data-view="' + view + '"]').forEach(button => {
       button.classList.toggle('active', button.dataset.anatomy === name);
     });
-
     document.querySelectorAll('.anatomy-marker[data-view="' + view + '"]').forEach(marker => {
       marker.classList.toggle('active', marker.dataset.marker === name);
     });
@@ -556,7 +574,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.anatomy-button[data-view="' + view + '"]').forEach(button => {
       button.classList.remove('active');
     });
-
     document.querySelectorAll('.anatomy-marker[data-view="' + view + '"]').forEach(marker => {
       marker.classList.add('active');
     });
@@ -572,7 +589,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.anatomy-button[data-view="' + view + '"]').forEach(button => {
       button.classList.remove('active');
     });
-
     document.querySelectorAll('.anatomy-marker[data-view="' + view + '"]').forEach(marker => {
       marker.classList.remove('active');
     });
@@ -588,21 +604,9 @@ document.addEventListener('DOMContentLoaded', () => {
     Object.entries(radiographPanels).forEach(([key, panel]) => {
       if (panel) panel.classList.toggle('hidden', key !== view);
     });
-
-    const assessmentFeedback = {A:'Alignment: check the talar position, ankle mortise and distal tibiofibular relationship.',B:'Bones: trace each visible cortex and look for interruption, fracture lines, displacement or angulation.',C:'Cartilage / joints: assess joint spaces, the tibiotalar joint and the talar dome.',S:'Soft tissues: assess for swelling, effusion and other visible soft-tissue abnormalities.'};
-  document.querySelectorAll('.abcs-item').forEach(button => {
-    button.addEventListener('click', () => {
-      document.querySelectorAll('.abcs-item').forEach(item => item.classList.remove('active'));
-      button.classList.add('active');
-      const feedback = document.getElementById('assessment-feedback');
-      if (feedback) feedback.textContent = assessmentFeedback[button.dataset.assess] || '';
-    });
-  });
-
-  radiographViewButtons.forEach(button => {
+    radiographViewButtons.forEach(button => {
       button.classList.toggle('active', button.dataset.radview === view);
     });
-
     clearAnatomy(view);
   }
 
@@ -629,6 +633,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
   radiographViewButtons.forEach(button => {
     button.addEventListener('click', () => showRadiographView(button.dataset.radview));
+  });
+
+  document.querySelectorAll('.abcs-item').forEach(button => {
+    button.addEventListener('click', () => {
+      document.querySelectorAll('.abcs-item').forEach(item => item.classList.remove('active'));
+      button.classList.add('active');
+      const feedback = document.getElementById('assessment-feedback');
+      if (feedback && assessmentFeedback[button.dataset.assess]) {
+        feedback.textContent = assessmentFeedback[button.dataset.assess];
+      }
+    });
   });
 
   ['ap', 'mortise', 'lateral'].forEach(clearAnatomy);
