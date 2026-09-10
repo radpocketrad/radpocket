@@ -204,6 +204,42 @@
 
 .assessment-case{margin-top:24px;padding:24px;border:1px solid rgba(110,150,190,.28);border-radius:18px;background:rgba(255,255,255,.025)}
 .case-header{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;margin-bottom:18px}.case-header h2{margin:7px 0 8px}.case-header p{margin:0;line-height:1.6;max-width:760px}.case-badge{border:1px solid rgba(126,200,255,.35);background:rgba(126,200,255,.08);border-radius:999px;padding:8px 12px;font-size:12px;font-weight:700;white-space:nowrap}.case-images{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.case-image-card{border:1px solid rgba(255,255,255,.10);border-radius:14px;padding:10px;background:#07090c}.case-image-card img{display:block;width:100%;height:320px;object-fit:contain;border-radius:9px}.case-image-card strong{display:block;margin:9px 4px 2px}.case-image-card span{display:block;margin:0 4px 4px;font-size:12px;opacity:.7}.case-question{margin-top:18px;padding:18px;border-radius:14px;background:rgba(126,200,255,.045);border:1px solid rgba(126,200,255,.18)}.case-question h3{margin:0 0 8px}.case-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:14px}.case-option{padding:13px 15px;text-align:left;border:1px solid rgba(255,255,255,.11);border-radius:11px;background:rgba(255,255,255,.03);color:inherit;cursor:pointer;font:inherit}.case-option:hover{border-color:rgba(126,200,255,.55);background:rgba(126,200,255,.08)}.case-option.correct{border-color:rgba(100,220,150,.7);background:rgba(100,220,150,.10)}.case-option.incorrect{border-color:rgba(255,110,110,.7);background:rgba(255,110,110,.08)}.case-feedback{margin-top:14px;padding:15px;border-radius:11px;background:rgba(255,255,255,.04);line-height:1.6;display:none}.case-feedback.show{display:block}.case-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}.case-reveal,.case-reset{border:1px solid rgba(126,200,255,.45);background:rgba(126,200,255,.10);color:inherit;border-radius:10px;padding:10px 14px;font-weight:700;cursor:pointer}.case-reveal:hover,.case-reset:hover{background:rgba(126,200,255,.18)}.case-key-point{margin-top:14px;padding:14px;border-left:3px solid rgba(126,200,255,.7);background:rgba(126,200,255,.045);line-height:1.6}@media(max-width:850px){.case-images{grid-template-columns:1fr}.case-image-card img{height:360px}.case-header{flex-direction:column}.case-options{grid-template-columns:1fr}}
+
+/* ===== TEACH ===== */
+.teach-intro{margin-bottom:24px}
+.teach-intro h2{margin:8px 0 10px}
+.teach-intro p{max-width:780px;line-height:1.65;margin:0}
+.teach-path{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin:22px 0 26px}
+.teach-step{padding:14px;border:1px solid rgba(255,255,255,.10);border-radius:14px;background:rgba(255,255,255,.03);text-align:center}
+.teach-step b{display:block;font-size:22px;margin-bottom:6px}
+.teach-step span{font-size:12px;line-height:1.35;opacity:.8}
+.teach-lesson{margin-top:20px;padding:22px;border:1px solid rgba(110,150,190,.28);border-radius:18px;background:rgba(255,255,255,.025)}
+.teach-lesson h3{margin:7px 0 9px}
+.teach-lesson p{line-height:1.6}
+.projection-teach-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:18px}
+.projection-teach-card{padding:18px;border:1px solid rgba(255,255,255,.10);border-radius:14px;background:rgba(255,255,255,.03)}
+.projection-teach-card h4{margin:0 0 8px}
+.projection-teach-card p{margin:0 0 10px;font-size:14px}
+.think-tag{display:inline-block;padding:6px 9px;border-radius:999px;background:rgba(126,200,255,.10);border:1px solid rgba(126,200,255,.25);font-size:12px;font-weight:700}
+.teach-abcs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:18px}
+.teach-abcs button{padding:17px;text-align:left;border:1px solid rgba(255,255,255,.10);border-radius:14px;background:rgba(255,255,255,.03);color:inherit;cursor:pointer;font:inherit}
+.teach-abcs button:hover,.teach-abcs button.active{background:rgba(126,200,255,.10);border-color:rgba(126,200,255,.60)}
+.teach-abcs b{font-size:25px;margin-right:9px}
+.teach-panel{margin-top:14px;padding:16px;border-radius:12px;background:rgba(255,255,255,.04);line-height:1.6;min-height:54px}
+.teach-pitfalls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:18px}
+.teach-pitfall{padding:18px;border:1px solid rgba(255,255,255,.10);border-radius:14px}
+.teach-pitfall h4{margin:0 0 8px}
+.teach-pitfall p{margin:0;font-size:14px}
+.teach-case{margin-top:18px;padding:20px;border-radius:16px;background:rgba(126,200,255,.045);border:1px solid rgba(126,200,255,.20)}
+.teach-reveal{margin-top:13px;border:1px solid rgba(126,200,255,.45);background:rgba(126,200,255,.10);color:inherit;border-radius:10px;padding:10px 14px;font-weight:700;cursor:pointer}
+.teach-answer{display:none;margin-top:13px;padding:14px;border-radius:11px;background:rgba(255,255,255,.04);line-height:1.6}
+.teach-answer.show{display:block}
+@media(max-width:850px){
+  .teach-path{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .projection-teach-grid,.teach-abcs,.teach-pitfalls{grid-template-columns:1fr}
+}
+@media(max-width:520px){.teach-path{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body>
@@ -220,7 +256,7 @@
 </aside>
 <main class="main">
   <header class="topbar"><button class="section-title">Ankle⌄</button><div class="profile">☼ <span>DR</span></div></header>
-  <div class="tabs"><button id="overview-tab" class="tab-active">Overview</button><button id="positioning-tab">Positioning</button><button id="radiographs-tab">Radiographs</button><button id="assessment-tab">Assessment</button><button>Teach</button></div>
+  <div class="tabs"><button id="overview-tab" class="tab-active">Overview</button><button id="positioning-tab">Positioning</button><button id="radiographs-tab">Radiographs</button><button id="assessment-tab">Assessment</button><button id="teach-tab">Teach</button></div>
   <section class="hero" id="positioning-hero"><div class="eyebrow">LOWER LIMB · ANKLE</div><h1 id="projection-title">Ankle X-ray – AP <span>(Anteroposterior)</span></h1><p id="projection-subtitle">Standard projection for initial assessment of the ankle.</p></section>
   <section class="projection-switcher" id="positioning-switcher"><button class="projection active" data-projection="ap">AP</button><button class="projection" data-projection="mortise">Mortise</button><button class="projection" data-projection="lateral">Lateral</button></section>
 
@@ -408,6 +444,105 @@
     <section class="assessment-case"><div class="case-header"><div><div class="eyebrow">INTERACTIVE CASE · 01</div><h2>Assess a normal ankle series</h2><p>Review the AP, Mortise and Lateral radiographs. Use the ABCS approach and decide whether the series demonstrates satisfactory alignment and visible anatomy.</p></div><div class="case-badge">NORMAL CASE</div></div><div class="case-images"><div class="case-image-card"><img src="ankle-ap-radiograph.jpg" alt="AP ankle assessment case"><strong>AP</strong><span>Frontal assessment</span></div><div class="case-image-card"><img src="ankle-mortise-radiograph.jpg" alt="Mortise ankle assessment case"><strong>Mortise</strong><span>Mortise and joint-space assessment</span></div><div class="case-image-card"><img src="ankle-lateral-radiograph.jpg" alt="Lateral ankle assessment case"><strong>Lateral</strong><span>Lateral and hindfoot assessment</span></div></div><div class="case-question"><h3>Question 1 — What is the most appropriate first step?</h3><p>Before concentrating on a suspected fracture or focal abnormality, what should you do?</p><div class="case-options" data-case="1"><button class="case-option" data-answer="wrong" type="button">Look only at the area of reported pain.</button><button class="case-option" data-answer="correct" type="button">Assess the images systematically, beginning with overall image quality and alignment.</button><button class="case-option" data-answer="wrong" type="button">Start with the soft tissues and ignore the bones initially.</button><button class="case-option" data-answer="wrong" type="button">Only assess the Mortise view because it is the most important projection.</button></div><div class="case-feedback" id="case-feedback-1" aria-live="polite"></div><div class="case-actions"><button class="case-reveal" type="button" data-reveal="1">Reveal answer</button><button class="case-reset" type="button" data-reset="1">Reset</button></div><div class="case-key-point"><strong>Key learning point:</strong> A systematic search reduces the risk of overlooking an abnormality elsewhere in the image.</div></div><div class="case-question"><h3>Question 2 — What should you check under “B” in ABCS?</h3><p>Choose the best approach when assessing the bones.</p><div class="case-options" data-case="2"><button class="case-option" data-answer="correct" type="button">Trace the visible cortices systematically from bone to bone.</button><button class="case-option" data-answer="wrong" type="button">Look only for a large displaced fracture.</button><button class="case-option" data-answer="wrong" type="button">Assess only the distal fibula.</button><button class="case-option" data-answer="wrong" type="button">Ignore small fragments because they are usually insignificant.</button></div><div class="case-feedback" id="case-feedback-2" aria-live="polite"></div><div class="case-actions"><button class="case-reveal" type="button" data-reveal="2">Reveal answer</button><button class="case-reset" type="button" data-reset="2">Reset</button></div></div></section>
   </section>
 
+
+  <section id="teach-content" class="content hidden" data-tab-section="teach">
+    <section class="teach-intro">
+      <div class="eyebrow">ANKLE · TEACH</div>
+      <h2>Learn how to think about the ankle series</h2>
+      <p>Move beyond memorising positioning. Understand what each projection contributes, how to approach the images systematically, and how to apply that reasoning to trauma.</p>
+    </section>
+
+    <div class="teach-path" aria-label="Teaching pathway">
+      <div class="teach-step"><b>①</b><span>Understand the projections</span></div>
+      <div class="teach-step"><b>②</b><span>Know what to look for</span></div>
+      <div class="teach-step"><b>③</b><span>Use ABCS</span></div>
+      <div class="teach-step"><b>④</b><span>Recognise pitfalls</span></div>
+      <div class="teach-step"><b>⑤</b><span>Apply clinically</span></div>
+    </div>
+
+    <section class="teach-lesson">
+      <div class="eyebrow">LESSON 1</div>
+      <h3>Why do we take three ankle projections?</h3>
+      <p>Each projection provides complementary information. Avoid treating the AP, Mortise and Lateral as three isolated pictures.</p>
+
+      <div class="projection-teach-grid">
+        <article class="projection-teach-card">
+          <h4>AP</h4>
+          <p>Provides an overall frontal assessment of the distal tibia, distal fibula, malleoli and tibiotalar relationship.</p>
+          <span class="think-tag">Think: overall alignment</span>
+        </article>
+        <article class="projection-teach-card">
+          <h4>Mortise</h4>
+          <p>Helps demonstrate the ankle mortise and allows assessment of joint-space symmetry and the distal tibiofibular relationship.</p>
+          <span class="think-tag">Think: mortise alignment</span>
+        </article>
+        <article class="projection-teach-card">
+          <h4>Lateral</h4>
+          <p>Provides a lateral assessment of the distal tibia, talus and hindfoot, including the tibiotalar and subtalar regions.</p>
+          <span class="think-tag">Think: lateral relationships</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="teach-lesson">
+      <div class="eyebrow">LESSON 2</div>
+      <h3>How to read an ankle X-ray</h3>
+      <p>Use the same search pattern every time. A consistent method helps reduce the chance of overlooking an abnormality.</p>
+
+      <div class="teach-abcs">
+        <button type="button" data-teach="A"><b>A</b><strong>Alignment</strong><br><small>Check talar position and the mortise.</small></button>
+        <button type="button" data-teach="B"><b>B</b><strong>Bones</strong><br><small>Trace every visible cortex.</small></button>
+        <button type="button" data-teach="C"><b>C</b><strong>Cartilage / joints</strong><br><small>Check spaces and the talar dome.</small></button>
+        <button type="button" data-teach="S"><b>S</b><strong>Soft tissues</strong><br><small>Look for swelling and effusion.</small></button>
+      </div>
+
+      <div id="teach-abcs-panel" class="teach-panel" aria-live="polite">
+        Select A, B, C or S to explore the search step.
+      </div>
+    </section>
+
+    <section class="teach-lesson">
+      <div class="eyebrow">LESSON 3</div>
+      <h3>Trauma reasoning — don't just look where it hurts</h3>
+      <p>In trauma, a systematic search is especially important. Trace the cortex and assess alignment rather than stopping when you find the first abnormality.</p>
+
+      <div class="teach-pitfalls">
+        <article class="teach-pitfall">
+          <h4>🦴 Trace the cortex</h4>
+          <p>Follow the visible cortical margins of the distal tibia, fibula, malleoli and talus. Look for interruption, fracture lines and small fragments.</p>
+        </article>
+        <article class="teach-pitfall">
+          <h4>↔️ Check alignment</h4>
+          <p>Assess talar position within the mortise and look for abnormal displacement, tilt or widening of relevant relationships.</p>
+        </article>
+        <article class="teach-pitfall">
+          <h4>🔎 Look beyond the obvious</h4>
+          <p>Small avulsion fragments, subtle cortical breaks and abnormalities away from the reported pain can be easy to miss.</p>
+        </article>
+        <article class="teach-pitfall">
+          <h4>🩻 Compare all views</h4>
+          <p>Use AP, Mortise and Lateral together. A finding that is subtle on one projection may be clearer on another.</p>
+        </article>
+      </div>
+
+      <div class="teach-case">
+        <strong>Clinical thinking checkpoint</strong>
+        <p>A patient presents following an ankle injury. You notice a small possible cortical irregularity on one view. What should you do next?</p>
+        <button class="teach-reveal" type="button" id="teach-reveal-case">Reveal reasoning</button>
+        <div class="teach-answer" id="teach-case-answer">
+          <strong>Think systematically.</strong> Review the finding on the other projections, trace the surrounding cortex, reassess alignment and inspect the remainder of the ankle series. Do not stop the search after finding one possible abnormality.
+        </div>
+      </div>
+    </section>
+
+    <section class="teach-lesson">
+      <div class="eyebrow">LESSON 4</div>
+      <h3>Build the habit</h3>
+      <p>Before calling an ankle series normal, mentally complete the sequence:</p>
+      <p><strong>Image quality → Alignment → Bones → Cartilage/joints → Soft tissues → Compare all projections.</strong></p>
+    </section>
+  </section>
+
   <footer><strong>RADPOCKET</strong> · Educational reference and learning tool. Follow local departmental protocols and professional judgement.</footer>
 </main></div>
 
@@ -420,11 +555,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const lateral = document.getElementById('lateral-content');
   const radiographs = document.getElementById('radiographs-content');
   const assessment = document.getElementById('assessment-content');
+  const teach = document.getElementById('teach-content');
 
   const overviewTab = document.getElementById('overview-tab');
   const positioningTab = document.getElementById('positioning-tab');
   const radiographsTab = document.getElementById('radiographs-tab');
   const assessmentTab = document.getElementById('assessment-tab');
+  const teachTab = document.getElementById('teach-tab');
 
   const hero = document.getElementById('positioning-hero');
   const switcher = document.getElementById('positioning-switcher');
@@ -507,7 +644,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function hideMainSections() {
-    [overview, ap, mortise, lateral, radiographs, assessment].forEach(section => {
+    [overview, ap, mortise, lateral, radiographs, assessment, teach].forEach(section => {
       if (section) section.classList.add('hidden');
     });
   }
@@ -553,6 +690,14 @@ document.addEventListener('DOMContentLoaded', () => {
     if (switcher) switcher.classList.add('hidden');
     if (assessment) assessment.classList.remove('hidden');
     setActiveTab(assessmentTab);
+  }
+
+  function showTeach() {
+    hideMainSections();
+    if (hero) hero.classList.add('hidden');
+    if (switcher) switcher.classList.add('hidden');
+    if (teach) teach.classList.remove('hidden');
+    setActiveTab(teachTab);
   }
 
   function getInfo(view) {
@@ -623,6 +768,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (positioningTab) positioningTab.addEventListener('click', () => showProjection('ap'));
   if (radiographsTab) radiographsTab.addEventListener('click', showRadiographs);
   if (assessmentTab) assessmentTab.addEventListener('click', showAssessment);
+  if (teachTab) teachTab.addEventListener('click', showTeach);
 
   anatomyButtons.forEach(button => {
     button.addEventListener('click', () => selectAnatomy(button.dataset.view, button.dataset.anatomy));
@@ -652,6 +798,36 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   ['ap', 'mortise', 'lateral'].forEach(clearAnatomy);
+
+
+  const teachMessages = {
+    A: '<strong>Alignment:</strong> Check that the talus is appropriately positioned beneath the tibial plafond. Assess the ankle mortise and distal tibiofibular relationship for abnormal widening, displacement or tilt.',
+    B: '<strong>Bones:</strong> Trace the visible cortex systematically. Check the distal tibia, malleoli, fibula, talus and visible hindfoot for cortical interruption, fracture lines or fragments.',
+    C: '<strong>Cartilage / joints:</strong> Assess the tibiotalar joint, distal tibiofibular relationship and subtalar region where visible. Look at joint-space width and symmetry and inspect the talar dome.',
+    S: '<strong>Soft tissues:</strong> Look for swelling, effusion and other visible soft-tissue abnormalities. Keep soft-tissue findings in context with the bony and alignment assessment.'
+  };
+
+  document.querySelectorAll('[data-teach]').forEach(button => {
+    button.addEventListener('click', () => {
+      document.querySelectorAll('[data-teach]').forEach(item => item.classList.remove('active'));
+      button.classList.add('active');
+      const panel = document.getElementById('teach-abcs-panel');
+      if (panel && teachMessages[button.dataset.teach]) {
+        panel.innerHTML = teachMessages[button.dataset.teach];
+      }
+    });
+  });
+
+  const teachReveal = document.getElementById('teach-reveal-case');
+  if (teachReveal) {
+    teachReveal.addEventListener('click', () => {
+      const answer = document.getElementById('teach-case-answer');
+      if (answer) {
+        const visible = answer.classList.toggle('show');
+        teachReveal.textContent = visible ? 'Hide reasoning' : 'Reveal reasoning';
+      }
+    });
+  }
 
   document.querySelectorAll('.case-option').forEach(option => { option.addEventListener('click', () => { const c=option.closest('.case-options'); const n=c&&c.dataset.case; const f=document.getElementById('case-feedback-'+n); if(!c||!f)return; c.querySelectorAll('.case-option').forEach(x=>x.classList.remove('correct','incorrect')); if(option.dataset.answer==='correct'){option.classList.add('correct');f.innerHTML='<strong>✓ Correct.</strong> Use a systematic approach: first check image quality and alignment, then assess bones, joints and soft tissues.';}else{option.classList.add('incorrect');f.innerHTML='<strong>Not quite.</strong> Avoid focusing only on the reported painful area. Use a systematic search so that the whole radiograph is assessed.'} f.classList.add('show');});});
   document.querySelectorAll('.case-reveal').forEach(b=>b.addEventListener('click',()=>{const n=b.dataset.reveal,c=document.querySelector('.case-options[data-case="'+n+'"]'),f=document.getElementById('case-feedback-'+n);if(!c||!f)return;c.querySelectorAll('.case-option').forEach(x=>{x.classList.toggle('correct',x.dataset.answer==='correct');x.classList.remove('incorrect')});f.classList.add('show');f.innerHTML=n==='1'?'<strong>✓ Answer:</strong> Assess the images systematically, beginning with overall image quality and alignment. Then continue through ABCS.':'<strong>✓ Answer:</strong> Trace the visible cortices systematically from bone to bone, looking for cortical interruption, fracture lines, displacement or angulation.';}));
