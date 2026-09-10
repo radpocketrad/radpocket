@@ -189,6 +189,9 @@
 .stage-lateral{aspect-ratio:1200/1683}.stage-lateral .radiograph-image{left:22.225786%;width:55.548428%;}
 .radiograph-panel.hidden{display:none!important;}
 
+
+/* ===== ASSESSMENT ===== */
+.assessment-intro{margin-bottom:24px}.assessment-intro h2{margin:8px 0 10px}.assessment-intro p{max-width:760px;line-height:1.65;margin:0}.assessment-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.assessment-card{padding:22px;border:1px solid rgba(255,255,255,.10);border-radius:16px;background:rgba(255,255,255,.035)}.assessment-card h3{margin-top:0}.assessment-card ul{padding-left:20px;margin-bottom:0}.assessment-card li{margin:8px 0;line-height:1.5}.assessment-card details{margin-top:14px;padding-top:12px;border-top:1px solid rgba(255,255,255,.08)}.assessment-card summary{cursor:pointer;font-weight:700}.systematic-search{margin-top:22px;padding:24px;border:1px solid rgba(126,200,255,.22);border-radius:18px;background:rgba(126,200,255,.045)}.systematic-search h2{margin:8px 0 10px}.systematic-search p{line-height:1.6}.abcs-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:18px}.abcs-item{display:flex;gap:12px;align-items:flex-start;text-align:left;padding:16px;border:1px solid rgba(255,255,255,.10);border-radius:14px;background:rgba(255,255,255,.03);color:inherit;cursor:pointer;font:inherit}.abcs-item b{font-size:24px;line-height:1}.abcs-item:hover,.abcs-item.active{border-color:rgba(126,200,255,.65);background:rgba(126,200,255,.10)}.abcs-item span{font-size:13px;line-height:1.45}.assessment-feedback{margin-top:14px;padding:14px 16px;border-radius:12px;background:rgba(255,255,255,.04);font-size:14px;line-height:1.5}@media(max-width:850px){.assessment-grid{grid-template-columns:1fr}.abcs-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:520px){.abcs-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -377,6 +380,20 @@
     </section>
   </section>
 
+
+  <section id="assessment-content" class="content hidden" data-tab-section="assessment">
+    <section class="assessment-intro"><div class="eyebrow">ANKLE · ASSESSMENT</div><h2>Assess the ankle systematically</h2><p>Use a structured approach to check image quality, alignment, bones, joints and soft tissues before moving on to specific pathology.</p></section>
+    <div class="assessment-grid">
+      <article class="assessment-card"><h3>Image quality &amp; positioning</h3><ul><li>Correct side marker present.</li><li>Entire ankle joint included.</li><li>Distal tibia and fibula included.</li><li>Talus and relevant hindfoot anatomy demonstrated.</li><li>Adequate exposure and no significant motion artefact.</li></ul><details><summary>Projection-specific checks</summary><p><strong>AP:</strong> assess the distal tibiofibular relationship and tibiotalar joint.</p><p><strong>Mortise:</strong> assess the mortise, joint-space symmetry and distal tibiofibular relationship.</p><p><strong>Lateral:</strong> assess the lateral relationship of the distal fibula and tibia and demonstrate the tibiotalar joint.</p></details></article>
+      <article class="assessment-card"><h3>Alignment</h3><ul><li>Talar dome centred beneath the tibial plafond.</li><li>Medial, lateral and superior joint spaces assessed.</li><li>Distal tibiofibular relationship assessed.</li><li>Look for abnormal talar tilt or displacement.</li></ul></article>
+      <article class="assessment-card"><h3>Bones</h3><p><strong>Trace the cortex systematically.</strong></p><ul><li>Distal tibia and medial malleolus.</li><li>Fibula and lateral malleolus.</li><li>Talus and talar dome.</li><li>Calcaneus and visible hindfoot anatomy.</li><li>Look for cortical interruption, fracture lines, displacement or angulation.</li></ul></article>
+      <article class="assessment-card"><h3>Joints</h3><ul><li>Tibiotalar joint.</li><li>Distal tibiofibular joint.</li><li>Subtalar joint, particularly on the lateral view.</li><li>Assess joint-space width and symmetry.</li><li>Look at the talar dome for focal irregularity or an osteochondral abnormality.</li></ul></article>
+      <article class="assessment-card"><h3>Soft tissues</h3><ul><li>Look for soft-tissue swelling.</li><li>Assess for joint effusion where visible.</li><li>Look for soft-tissue abnormality or foreign body where relevant.</li></ul></article>
+      <article class="assessment-card trauma-card"><h3>Trauma &amp; common abnormalities</h3><details open><summary>Fracture</summary><p>Look for cortical disruption, a fracture line, displacement, angulation and small avulsion fragments.</p></details><details><summary>Mortise disruption</summary><p>Look for widened medial clear space, abnormal talar position and widening of the distal tibiofibular relationship.</p></details><details><summary>Degenerative change</summary><p>Look for joint-space narrowing, osteophytes, subchondral sclerosis and cystic change.</p></details></article>
+    </div>
+    <section class="systematic-search"><div><div class="eyebrow">SYSTEMATIC SEARCH</div><h2>ABCS approach</h2><p>Complete the whole search pattern rather than stopping after finding the first abnormality.</p></div><div class="abcs-grid"><button class="abcs-item" data-assess="A" type="button"><b>A</b><span><strong>Alignment</strong> — Is the ankle mortise aligned?</span></button><button class="abcs-item" data-assess="B" type="button"><b>B</b><span><strong>Bones</strong> — Trace every visible cortex.</span></button><button class="abcs-item" data-assess="C" type="button"><b>C</b><span><strong>Cartilage / joints</strong> — Check joint spaces and the talar dome.</span></button><button class="abcs-item" data-assess="S" type="button"><b>S</b><span><strong>Soft tissues</strong> — Look for swelling, effusion and other abnormalities.</span></button></div><div id="assessment-feedback" class="assessment-feedback" aria-live="polite">Select an ABCS step to highlight the key search point.</div></section>
+  </section>
+
   <footer><strong>RADPOCKET</strong> · Educational reference and learning tool. Follow local departmental protocols and professional judgement.</footer>
 </main></div>
 
@@ -388,10 +405,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const mortise = document.getElementById('mortise-content');
   const lateral = document.getElementById('lateral-content');
   const radiographs = document.getElementById('radiographs-content');
+  const assessment = document.getElementById('assessment-content');
 
   const overviewTab = document.getElementById('overview-tab');
   const positioningTab = document.getElementById('positioning-tab');
   const radiographsTab = document.getElementById('radiographs-tab');
+  const assessmentTab = Array.from(document.querySelectorAll('.tabs button')).find(b => b.textContent.trim().toLowerCase() === 'assessment');
 
   const hero = document.getElementById('positioning-hero');
   const switcher = document.getElementById('positioning-switcher');
@@ -464,7 +483,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function hideMainSections() {
-    [overview, ap, mortise, lateral, radiographs].forEach(section => {
+    [overview, ap, mortise, lateral, radiographs, assessment].forEach(section => {
       if (section) section.classList.add('hidden');
     });
   }
@@ -502,6 +521,14 @@ document.addEventListener('DOMContentLoaded', () => {
     if (radiographs) radiographs.classList.remove('hidden');
     setActiveTab(radiographsTab);
     showRadiographView('ap');
+  }
+
+  function showAssessment() {
+    hideMainSections();
+    if (hero) hero.classList.add('hidden');
+    if (switcher) switcher.classList.add('hidden');
+    if (assessment) assessment.classList.remove('hidden');
+    setActiveTab(assessmentTab);
   }
 
   function getInfo(view) {
@@ -562,7 +589,17 @@ document.addEventListener('DOMContentLoaded', () => {
       if (panel) panel.classList.toggle('hidden', key !== view);
     });
 
-    radiographViewButtons.forEach(button => {
+    const assessmentFeedback = {A:'Alignment: check the talar position, ankle mortise and distal tibiofibular relationship.',B:'Bones: trace each visible cortex and look for interruption, fracture lines, displacement or angulation.',C:'Cartilage / joints: assess joint spaces, the tibiotalar joint and the talar dome.',S:'Soft tissues: assess for swelling, effusion and other visible soft-tissue abnormalities.'};
+  document.querySelectorAll('.abcs-item').forEach(button => {
+    button.addEventListener('click', () => {
+      document.querySelectorAll('.abcs-item').forEach(item => item.classList.remove('active'));
+      button.classList.add('active');
+      const feedback = document.getElementById('assessment-feedback');
+      if (feedback) feedback.textContent = assessmentFeedback[button.dataset.assess] || '';
+    });
+  });
+
+  radiographViewButtons.forEach(button => {
       button.classList.toggle('active', button.dataset.radview === view);
     });
 
@@ -576,6 +613,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (overviewTab) overviewTab.addEventListener('click', showOverview);
   if (positioningTab) positioningTab.addEventListener('click', () => showProjection('ap'));
   if (radiographsTab) radiographsTab.addEventListener('click', showRadiographs);
+  if (assessmentTab) assessmentTab.addEventListener('click', showAssessment);
 
   anatomyButtons.forEach(button => {
     button.addEventListener('click', () => selectAnatomy(button.dataset.view, button.dataset.anatomy));
