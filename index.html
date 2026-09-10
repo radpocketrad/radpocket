@@ -240,6 +240,26 @@
 }
 @media(max-width:520px){.teach-path{grid-template-columns:1fr}}
 
+
+/* ===== OVERVIEW: REAL ANKLE SERIES VISUAL ===== */
+.three-view-series{margin:28px 0;padding:22px;border:1px solid rgba(110,150,190,.28);border-radius:18px;background:rgba(255,255,255,.025)}
+.three-view-series-header{display:flex;justify-content:space-between;gap:22px;align-items:flex-end}
+.three-view-series-header h2{margin:7px 0 8px}.three-view-series-header p{margin:0;max-width:700px;line-height:1.6}
+.three-view-series-note{max-width:340px;padding:13px 15px;border:1px solid rgba(126,200,255,.22);border-radius:12px;background:rgba(126,200,255,.045);font-size:13px;line-height:1.5}
+.three-view-series-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:20px}
+.three-view-card{border:1px solid rgba(255,255,255,.10);border-radius:15px;background:rgba(255,255,255,.025);overflow:hidden}
+.three-view-card:nth-child(1){border-color:rgba(99,197,255,.30)}.three-view-card:nth-child(2){border-color:rgba(90,220,170,.28)}.three-view-card:nth-child(3){border-color:rgba(170,120,255,.28)}
+.three-view-card-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:13px 15px;border-bottom:1px solid rgba(255,255,255,.08)}
+.three-view-card-head strong{font-size:18px}.three-view-card-head span{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;opacity:.72}
+.three-view-image{height:300px;background:#05070a;padding:10px;display:flex;align-items:center;justify-content:center}
+.three-view-image img{width:100%;height:100%;object-fit:contain;display:block;border-radius:8px}
+.three-view-card-body{padding:14px 15px 16px}.three-view-card-body p{margin:0;line-height:1.5;font-size:13px}
+.three-view-focus{margin-top:11px;padding:10px 11px;border-radius:10px;background:rgba(126,200,255,.055);border:1px solid rgba(126,200,255,.16);font-size:12px;line-height:1.45}
+.three-view-focus strong{display:block;margin-bottom:3px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;opacity:.8}
+.three-view-series-footer{margin-top:16px;padding:13px 15px;border-left:3px solid rgba(126,200,255,.65);background:rgba(126,200,255,.04);line-height:1.55;font-size:13px}
+@media(max-width:850px){.three-view-series-header{flex-direction:column;align-items:stretch}.three-view-series-note{max-width:none}.three-view-series-grid{grid-template-columns:1fr}.three-view-image{height:340px}}
+@media(max-width:520px){.three-view-series{padding:16px}.three-view-image{height:330px}}
+
 </style>
 </head>
 <body>
@@ -273,7 +293,36 @@
     <article class="why-card"><h3>🎯 Lateral — Why this view?</h3><p>Demonstrates the ankle in lateral projection and provides complementary assessment of the distal tibia, talus and hindfoot anatomy.</p></article>
   </section>
 
-    <section class="trauma-grid" aria-label="Trauma considerations">
+    <section class="three-view-series" aria-labelledby="three-view-title">
+    <div class="three-view-series-header">
+      <div>
+        <div class="eyebrow">THE ANKLE SERIES</div>
+        <h2 id="three-view-title">Think in three views</h2>
+        <p>AP, Mortise and Lateral are complementary projections. Reviewing them together gives a more complete assessment of ankle alignment, bones and joint spaces.</p>
+      </div>
+      <div class="three-view-series-note"><strong>Key message:</strong> Each projection answers a different question. Assess image quality first, then compare all three views before focusing on a specific abnormality.</div>
+    </div>
+    <div class="three-view-series-grid">
+      <article class="three-view-card">
+        <div class="three-view-card-head"><strong>AP</strong><span>Frontal view</span></div>
+        <div class="three-view-image"><img src="ankle-ap-radiograph.jpg" alt="Normal ankle AP radiograph"></div>
+        <div class="three-view-card-body"><p>Demonstrates the distal tibia and fibula, malleoli, talus and overall frontal ankle alignment.</p><div class="three-view-focus"><strong>Key focus</strong>Overall bony alignment and ankle joint space.</div></div>
+      </article>
+      <article class="three-view-card">
+        <div class="three-view-card-head"><strong>Mortise</strong><span>Oblique view</span></div>
+        <div class="three-view-image"><img src="ankle-mortise-radiograph.jpg" alt="Normal ankle mortise radiograph"></div>
+        <div class="three-view-card-body"><p>Demonstrates the ankle mortise with reduced malleolar superimposition and allows focused assessment of the joint spaces.</p><div class="three-view-focus"><strong>Key focus</strong>Mortise configuration and distal tibiofibular relationship.</div></div>
+      </article>
+      <article class="three-view-card">
+        <div class="three-view-card-head"><strong>Lateral</strong><span>Sagittal view</span></div>
+        <div class="three-view-image"><img src="ankle-lateral-radiograph.jpg" alt="Normal ankle lateral radiograph"></div>
+        <div class="three-view-card-body"><p>Provides complementary assessment of the distal tibia and fibula, talus, calcaneus and hindfoot relationships.</p><div class="three-view-focus"><strong>Key focus</strong>Talar alignment, hindfoot and posterior structures.</div></div>
+      </article>
+    </div>
+    <div class="three-view-series-footer"><strong>Three views. A more complete picture.</strong> Review AP, Mortise and Lateral together and correlate imaging findings with the clinical information.</div>
+  </section>
+
+  <section class="trauma-grid" aria-label="Trauma considerations">
       <article class="trauma-card"><h2>🚑 Trauma considerations</h2><ul><li>Avoid unnecessary movement of the injured limb.</li><li>Do not force dorsiflexion or rotation when this causes pain or may compromise the injury.</li><li>Adapt positioning to the patient's clinical condition and tolerance.</li><li>Use trauma or horizontal-beam techniques when clinically indicated and in accordance with local protocols.</li><li>Communicate clearly with the patient and clinical team before moving or repositioning the limb.</li></ul></article>
     </section>
   </section>
