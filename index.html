@@ -260,7 +260,7 @@
 </aside>
 <main class="main">
   <header class="topbar"><button class="section-title">Ankle⌄</button><div class="profile">☼ <span>DR</span></div></header>
-  <div class="tabs"><button id="overview-tab" class="tab-active">Overview</button><button id="positioning-tab">Positioning</button><button id="radiographs-tab">Radiographs</button><button id="assessment-tab">Assessment</button><button id="teach-tab">Teach</button></div>
+  <div class="tabs"><button id="overview-tab" class="tab-active">Overview</button><button id="positioning-tab">Positioning</button><button id="radiographs-tab">Radiographs</button><button id="assessment-tab">Assessment</button><button id="teach-tab">Teach</button><button id="references-tab">References</button></div>
   <section class="hero" id="positioning-hero"><div class="eyebrow">LOWER LIMB · ANKLE</div><h1 id="projection-title">Ankle X-ray – AP <span>(Anteroposterior)</span></h1><p id="projection-subtitle">Standard projection for initial assessment of the ankle.</p></section>
   <section class="projection-switcher" id="positioning-switcher"><button class="projection active" data-projection="ap">AP</button><button class="projection" data-projection="mortise">Mortise</button><button class="projection" data-projection="lateral">Lateral</button></section>
 
@@ -288,11 +288,11 @@
       <div class="ap-visual"><h2>Central Ray</h2><div class="image-card"><img src="ankle-ap-central-ray.jpg" alt="AP ankle central ray guide"></div></div>
     </div>
     <div class="quick-grid">
-      <article class="info-card"><h2>① Patient position</h2><ul><li>Patient supine on the X-ray table.</li><li>Leg extended and supported.</li><li>Foot positioned for an AP ankle projection.</li><li>Avoid unnecessary rotation.</li></ul></article>
+      <article class="info-card"><h2>① Patient position</h2><ul><li>Patient supine on the X-ray table.</li><li>Leg extended and supported.</li><li>Foot positioned in a true AP orientation with the long axis of the foot aligned with the lower leg.</li><li>Avoid unnecessary rotation.</li></ul></article>
       <article class="info-card"><h2>② Central ray</h2><ul><li>CR perpendicular to the detector.</li><li>Centre to the ankle joint / midpoint between the malleoli.</li><li>Collimate to the area of interest.</li></ul></article>
     </div>
     <section class="evaluation-section">
-      <div class="evaluation-copy"><h2>③ AP Ankle Evaluation</h2><ul><li>Distal tibia and fibula included.</li><li>Medial and lateral malleoli demonstrated.</li><li>Talar dome and ankle joint visible.</li><li>Assess for rotation and overall image quality.</li></ul></div>
+      <div class="evaluation-copy"><h2>③ AP Ankle Evaluation</h2><ul><li>Distal tibia and fibula included.</li><li>Medial and lateral malleoli demonstrated.</li><li>Talar dome and tibiotalar joint visible.</li><li>Distal tibia and fibula and both malleoli demonstrated.</li><li>Assess for rotation, joint appearance and overall image quality.</li></ul></div>
       <div class="image-card evaluation-image"><img src="ankle-ap-evaluation.jpg" alt="AP ankle radiograph evaluation example"></div>
     </section>
     <article class="error-card projection-errors"><h3>⚠️ Common positioning errors</h3><ul><li>Unwanted internal or external rotation.</li><li>Failure to include the distal tibia and fibula.</li><li>Suboptimal foot positioning where dorsiflexion is achievable.</li></ul><strong>Correction:</strong><p>Recheck leg and foot alignment, centring and collimation before exposure.</p></article>
@@ -560,7 +560,7 @@
     </section>
   </section>
 
-      <section id="references-content" class="content references-section">
+      <section id="references-content" class="content references-section hidden">
       <div class="eyebrow">RADPOCKET · REFERENCES</div>
       <h2>Reference and copyright approach</h2>
       <p>RADPOCKET content is independently written and illustrated. Radiographic techniques are cross-checked against recognised positioning and emergency-radiology references; source material is used for verification rather than reproduced.</p>
@@ -569,10 +569,10 @@
         <article><h3>Trauma reference</h3><ul><li>Accident and Emergency Radiology: A Survival Guide — Raby et al.</li></ul></article>
         <article><h3>RADPOCKET policy</h3><p>Do not reproduce textbook pages, diagrams, tables, screenshots or third-party radiographs unless the material is appropriately licensed or otherwise permitted. Prefer original RADPOCKET artwork, original teaching material and properly licensed/public-domain assets.</p></article>
       </div>
-      <p class="copyright-note">© RADPOCKET. Original RADPOCKET software, written content and artwork are protected by copyright. Third-party trademarks and referenced works remain the property of their respective owners.</p>
+      
     </section>
 
-<footer><strong>RADPOCKET</strong> · Educational reference and learning tool. Follow local departmental protocols and professional judgement.</footer>
+<footer><strong>RADPOCKET</strong> · Educational reference and learning tool. Follow current local protocols, professional guidance, clinical governance and appropriate supervision.</footer>
 </main></div>
 
 <script>
@@ -591,6 +591,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const radiographsTab = document.getElementById('radiographs-tab');
   const assessmentTab = document.getElementById('assessment-tab');
   const teachTab = document.getElementById('teach-tab');
+  const referencesTab = document.getElementById('references-tab');
+  const references = document.getElementById('references-content');
 
   const hero = document.getElementById('positioning-hero');
   const switcher = document.getElementById('positioning-switcher');
@@ -673,7 +675,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function hideMainSections() {
-    [overview, ap, mortise, lateral, radiographs, assessment, teach].forEach(section => {
+    [overview, ap, mortise, lateral, radiographs, assessment, teach, references].forEach(section => {
       if (section) section.classList.add('hidden');
     });
   }
@@ -727,6 +729,15 @@ document.addEventListener('DOMContentLoaded', () => {
     if (switcher) switcher.classList.add('hidden');
     if (teach) teach.classList.remove('hidden');
     setActiveTab(teachTab);
+  }
+
+
+  function showReferences() {
+    hideMainSections();
+    if (hero) hero.classList.add('hidden');
+    if (switcher) switcher.classList.add('hidden');
+    if (references) references.classList.remove('hidden');
+    setActiveTab(referencesTab);
   }
 
   function getInfo(view) {
@@ -794,6 +805,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   if (overviewTab) overviewTab.addEventListener('click', showOverview);
+  if (referencesTab) referencesTab.addEventListener('click', showReferences);
   if (positioningTab) positioningTab.addEventListener('click', () => showProjection('ap'));
   if (radiographsTab) radiographsTab.addEventListener('click', showRadiographs);
   if (assessmentTab) assessmentTab.addEventListener('click', showAssessment);
