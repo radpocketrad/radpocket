@@ -242,16 +242,16 @@
 
 
 /* ===== OVERVIEW: REAL ANKLE SERIES VISUAL ===== */
-.three-view-series{margin:28px 0;padding:22px;border:1px solid rgba(110,150,190,.28);border-radius:18px;background:rgba(255,255,255,.025)}
+.three-view-series{margin:24px 0 28px;padding:20px;border:1px solid rgba(110,150,190,.24);border-radius:18px;background:rgba(255,255,255,.02)}
 .three-view-series-header{display:flex;justify-content:space-between;gap:22px;align-items:flex-end}
 .three-view-series-header h2{margin:7px 0 8px}.three-view-series-header p{margin:0;max-width:700px;line-height:1.6}
 .three-view-series-note{max-width:340px;padding:13px 15px;border:1px solid rgba(126,200,255,.22);border-radius:12px;background:rgba(126,200,255,.045);font-size:13px;line-height:1.5}
-.three-view-series-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:20px}
-.three-view-card{border:1px solid rgba(255,255,255,.10);border-radius:15px;background:rgba(255,255,255,.025);overflow:hidden}
+.three-view-series-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:18px}
+.three-view-card{border:1px solid rgba(255,255,255,.10);border-radius:14px;background:rgba(255,255,255,.018);overflow:hidden}
 .three-view-card:nth-child(1){border-color:rgba(99,197,255,.30)}.three-view-card:nth-child(2){border-color:rgba(90,220,170,.28)}.three-view-card:nth-child(3){border-color:rgba(170,120,255,.28)}
 .three-view-card-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:13px 15px;border-bottom:1px solid rgba(255,255,255,.08)}
 .three-view-card-head strong{font-size:18px}.three-view-card-head span{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;opacity:.72}
-.three-view-image{height:300px;background:#05070a;padding:10px;display:flex;align-items:center;justify-content:center}
+.three-view-image{height:270px;background:#05070a;padding:9px;display:flex;align-items:center;justify-content:center}
 .three-view-image img{width:100%;height:100%;object-fit:contain;display:block;border-radius:8px}
 .three-view-card-body{padding:14px 15px 16px}.three-view-card-body p{margin:0;line-height:1.5;font-size:13px}
 .three-view-focus{margin-top:11px;padding:10px 11px;border-radius:10px;background:rgba(126,200,255,.055);border:1px solid rgba(126,200,255,.16);font-size:12px;line-height:1.45}
@@ -260,26 +260,56 @@
 @media(max-width:850px){.three-view-series-header{flex-direction:column;align-items:stretch}.three-view-series-note{max-width:none}.three-view-series-grid{grid-template-columns:1fr}.three-view-image{height:340px}}
 @media(max-width:520px){.three-view-series{padding:16px}.three-view-image{height:330px}}
 
+
+/* ===== RADPOCKET BRAND LOGO ===== */
+.brand{display:flex;align-items:center;justify-content:center;padding:8px 6px 16px;}
+.brand-logo-image{display:block;width:100%;max-width:220px;height:auto;object-fit:contain;border-radius:4px;}
+@media(max-width:850px){.brand-logo-image{max-width:200px;}}
+
 </style>
 </head>
 <body>
 <div class="app">
 <aside class="sidebar">
-  <div class="brand"><div class="logo">RAD<span>POCKET</span></div><div class="tagline">RADIOGRAPHY REFERENCE<br>& LEARNING</div></div>
-  <div class="search">⌕ <span>Search...</span></div>
-  <nav>
+  <div class="brand"><img class="brand-logo-image" src="radpocket-logo.jpg" alt="RADPOCKET — Radiology on the Go"></div>
+  <div class="search" role="search">⌕ <span>Search RADPOCKET...</span></div>
+  <div class="sidebar-label">Main menu</div>
+  <nav aria-label="Main navigation">
     <button class="nav-item">⌂ <span>Home</span></button>
-    <button class="nav-item active">🦴 <span>Lower Limb</span><b>⌃</b></button>
-    <div class="subnav"><button>Hip</button><button>Femur</button><button>Knee</button><button>Tibia & Fibula</button><button class="selected">Ankle</button><button>Foot</button></div>
-    <button class="nav-item">🦴 <span>Upper Limb</span><b>›</b></button><button class="nav-item">☷ <span>Spine</span><b>›</b></button><button class="nav-item">♁ <span>Chest</span></button><button class="nav-item">◉ <span>Abdomen</span></button><button class="nav-item">♟ <span>Paediatrics</span></button><button class="nav-item">✚ <span>Trauma</span></button><button class="nav-item">▰ <span>Teaching</span></button><button class="nav-item">✓ <span>Assessments</span></button>
+    <button class="nav-item active">◉ <span>Lower Limb</span><b>⌃</b></button>
+    <div class="subnav">
+      <button>Hip</button><button>Femur</button><button>Knee</button><button>Tibia &amp; Fibula</button><button class="selected">Ankle</button><button>Foot</button>
+    </div>
+    <button class="nav-item">◌ <span>Upper Limb</span><b>›</b></button>
+    <button class="nav-item">⌁ <span>Spine</span><b>›</b></button>
+    <button class="nav-item">◍ <span>Chest</span></button>
+    <button class="nav-item">◈ <span>Abdomen</span></button>
+    <button class="nav-item">♙ <span>Paediatrics</span></button>
+    <button class="nav-item">✚ <span>Trauma</span></button>
+    <button class="nav-item">▣ <span>Teaching</span></button>
+    <button class="nav-item">✓ <span>Assessments</span></button>
   </nav>
+  <div class="sidebar-label">Within Ankle</div>
+  <nav aria-label="Ankle sections">
+    <button class="nav-item" data-shell-tab="overview">⌂ <span>Overview</span></button>
+    <button class="nav-item" data-shell-tab="positioning">◫ <span>Positioning</span></button>
+    <button class="nav-item" data-shell-tab="radiographs">▧ <span>Radiographs</span></button>
+    <button class="nav-item" data-shell-tab="assessment">✓ <span>Assessment</span></button>
+    <button class="nav-item" data-shell-tab="teach">◒ <span>Teach</span></button>
+    <button class="nav-item" data-shell-tab="references">▤ <span>References</span></button>
+  </nav>
+  <div class="sidebar-mini-card"><strong>Radiography</strong><span>Made simple.</span></div>
 </aside>
 <main class="main">
-  <header class="topbar"><button class="section-title">Ankle⌄</button><div class="profile">☼ <span>DR</span></div></header>
-  <div class="tabs"><button id="overview-tab" class="tab-active">Overview</button><button id="positioning-tab">Positioning</button><button id="radiographs-tab">Radiographs</button><button id="assessment-tab">Assessment</button><button id="teach-tab">Teach</button><button id="references-tab">References</button></div>
-  <section class="hero" id="positioning-hero"><div class="eyebrow">LOWER LIMB · ANKLE</div><h1 id="projection-title">Ankle X-ray – AP <span>(Anteroposterior)</span></h1><p id="projection-subtitle">Standard projection for initial assessment of the ankle.</p></section>
-  <section class="projection-switcher" id="positioning-switcher"><button class="projection active" data-projection="ap">AP</button><button class="projection" data-projection="mortise">Mortise</button><button class="projection" data-projection="lateral">Lateral</button></section>
-
+  <header class="topbar">
+    <div class="topbar-left"><button class="mobile-menu" type="button" aria-label="Open menu">☰</button><div class="crumb">Lower Limb /</div><button class="section-title" type="button">Ankle</button></div>
+    <div class="profile"><span class="theme-icon">☼</span><span>DR</span></div>
+  </header>
+  <div class="tabs">
+    <button id="overview-tab" class="tab-active">Overview</button><button id="positioning-tab">Positioning</button><button id="radiographs-tab">Radiographs</button><button id="assessment-tab">Assessment</button><button id="teach-tab">Teach</button><button id="references-tab">References</button>
+  </div>
+  <section class="hero hidden" id="positioning-hero"><div class="eyebrow">LOWER LIMB · ANKLE</div><h1 id="projection-title">Ankle X-ray – AP <span>(Anteroposterior)</span></h1><p id="projection-subtitle">Standard projection for initial assessment of the ankle.</p></section>
+  <section class="projection-switcher hidden" id="positioning-switcher"><button class="projection active" data-projection="ap">AP</button><button class="projection" data-projection="mortise">Mortise</button><button class="projection" data-projection="lateral">Lateral</button></section>
   <section id="overview-content" class="content">
     <section class="overview-intro">
       <div class="eyebrow">ANKLE RADIOGRAPHY</div>
@@ -287,11 +317,7 @@
       <p>The standard ankle series commonly includes AP, Mortise and Lateral projections. Select a projection to explore positioning, central ray and image evaluation.</p>
     </section>
 
-  <section class="why-grid" aria-label="Why this view">
-    <article class="why-card"><h3>🎯 AP — Why this view?</h3><p>Provides an overall frontal assessment of the ankle and demonstrates the distal tibia, distal fibula, talus and ankle region.</p></article>
-    <article class="why-card"><h3>🎯 Mortise — Why this view?</h3><p>Designed to demonstrate the ankle mortise and joint spaces with reduced superimposition of the malleoli.</p></article>
-    <article class="why-card"><h3>🎯 Lateral — Why this view?</h3><p>Demonstrates the ankle in lateral projection and provides complementary assessment of the distal tibia, talus and hindfoot anatomy.</p></article>
-  </section>
+
 
     <section class="three-view-series" aria-labelledby="three-view-title">
     <div class="three-view-series-header">
@@ -852,6 +878,18 @@ document.addEventListener('DOMContentLoaded', () => {
   if (assessmentTab) assessmentTab.addEventListener('click', showAssessment);
   if (teachTab) teachTab.addEventListener('click', showTeach);
   if (referencesTab) referencesTab.addEventListener('click', showReferences);
+
+  document.querySelectorAll('[data-shell-tab]').forEach(button => {
+    button.addEventListener('click', () => {
+      const target = button.dataset.shellTab;
+      if (target === 'overview') showOverview();
+      else if (target === 'positioning') showProjection('ap');
+      else if (target === 'radiographs') showRadiographs();
+      else if (target === 'assessment') showAssessment();
+      else if (target === 'teach') showTeach();
+      else if (target === 'references') showReferences();
+    });
+  });
 
   anatomyButtons.forEach(button => {
     button.addEventListener('click', () => selectAnatomy(button.dataset.view, button.dataset.anatomy));

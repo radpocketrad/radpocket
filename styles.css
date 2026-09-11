@@ -1,35 +1,73 @@
 *{box-sizing:border-box}body{margin:0;background:#08111d;color:#eaf0f7;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}.app{display:flex;min-height:100vh}.sidebar{width:285px;background:#07101a;border-right:1px solid #26384b;padding:24px 14px;position:sticky;top:0;height:100vh;overflow:auto}.logo{font-size:31px;font-weight:900;letter-spacing:1px}.logo span{color:#68b2f6}.tagline{font-size:11px;letter-spacing:2px;color:#b8c5d4;line-height:1.5;margin-top:5px}.search{margin:26px 0 20px;border:1px solid #3a5068;border-radius:24px;padding:13px 16px;font-size:22px;color:#d6e3ef}.search span{font-size:16px;color:#93a5b9;margin-left:10px}nav{display:flex;flex-direction:column;gap:6px}.nav-item,.subnav button{border:0;background:transparent;color:#c8d2de;text-align:left;font-size:16px;padding:13px 15px;border-radius:10px;cursor:pointer}.nav-item{display:flex;align-items:center;gap:15px}.nav-item b{margin-left:auto}.nav-item.active{background:linear-gradient(90deg,#113b67,#0d2744);color:#9dcbff}.subnav{display:flex;flex-direction:column;margin-left:36px;border-left:1px solid #31516d;padding-left:9px}.subnav button{padding:10px 12px}.subnav .selected{background:#14385f;color:#9dccff}.main{flex:1;min-width:0;background:radial-gradient(circle at top right,#10233a 0,#08111d 42%,#08111d 100%)}.topbar{height:64px;border-bottom:1px solid #2a3c50;display:flex;align-items:center;justify-content:space-between;padding:0 30px}.section-title{background:none;border:0;color:#f1f5fa;font-size:27px;font-weight:700}.profile{display:flex;gap:18px;align-items:center;font-size:22px}.profile span{border:1px solid #62778e;border-radius:50%;width:44px;height:44px;display:grid;place-items:center;font-size:15px}.tabs{height:52px;border-bottom:1px solid #2a3c50;display:flex;gap:15px;padding:0 30px;overflow:auto}.tabs button{background:none;border:0;color:#aebccd;padding:0 24px;font-size:16px;cursor:pointer}.tabs .tab-active{color:#79b9fa;border-bottom:3px solid #4da3ef}.hero{padding:30px 30px 16px}.eyebrow{font-size:12px;letter-spacing:2px;color:#72b7f5;font-weight:700}.hero h1{font-size:48px;margin:8px 0}.hero h1 span{font-weight:500;color:#c6d2df}.hero p{font-size:21px;color:#b6c5d5;margin:0}.projection-switcher{display:flex;gap:10px;padding:10px 30px 24px}.projection{background:#111f2e;border:1px solid #36516a;color:#c9d8e8;padding:10px 18px;border-radius:22px;font-size:15px;cursor:pointer}.projection.active{background:#1b5c96;border-color:#6eb8ff;color:white}.content{padding:0 30px 40px}.image-card{border:1px solid #36516a;border-radius:18px;overflow:hidden;background:#0b1622;box-shadow:0 12px 30px rgba(0,0,0,.25)}.image-card img{width:100%;display:block;max-height:980px;object-fit:cover;object-position:top}.quick-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}.info-card,.pearl{border:1px solid #30485f;background:#0c1825;border-radius:16px;padding:20px}.info-card h2{margin:0 0 12px;color:#9dcbff;font-size:18px}.info-card ul{margin:0;padding-left:20px;color:#c7d2df;line-height:1.65}.pearl{margin-top:18px;border-color:#1d6cad;background:linear-gradient(90deg,#0b1c2b,#0d2436);color:#d9e7f5}.pearl strong{color:#79bfff}.placeholder{margin:20px 30px;padding:50px;border:1px dashed #49637b;border-radius:18px;background:#0b1622;text-align:center}.placeholder h2{font-size:32px}.placeholder button{padding:12px 20px;border:0;border-radius:10px;background:#2a74b6;color:white;cursor:pointer}.hidden{display:none}footer{border-top:1px solid #24384b;padding:28px 30px;color:#8fa1b5;font-size:14px}@media(max-width:900px){.sidebar{display:none}.hero h1{font-size:34px}.quick-grid{grid-template-columns:1fr}.topbar,.tabs,.hero,.projection-switcher,.content{padding-left:18px;padding-right:18px}.tabs button{padding:0 12px}.image-card img{max-height:none}}
-
-
-/* Interactive radiograph anatomy */
-.radiograph-header{margin-bottom:18px}
-.radiograph-header h2{font-size:32px;margin:7px 0}
-.radiograph-header p{margin:0;color:#b6c5d5;font-size:17px}
-.radiograph-layout{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:18px;align-items:start}
-.radiograph-card,.anatomy-panel{border:1px solid #36516a;border-radius:18px;background:#0b1622;box-shadow:0 12px 30px rgba(0,0,0,.25)}
-.radiograph-card{padding:12px}
-.radiograph-stage{position:relative;width:100%;overflow:hidden;border-radius:10px;background:#000}
-.radiograph-stage img{display:block;width:100%;height:auto;max-height:900px;object-fit:contain}
-.anatomy-panel{padding:20px;position:sticky;top:20px}
-.anatomy-panel h3{margin:0 0 6px;color:#9dcbff;font-size:20px}
-.anatomy-panel p{margin:0 0 18px;color:#9bacbd;line-height:1.5}
-.anatomy-buttons{display:grid;gap:9px}
-.anatomy-button{width:100%;padding:12px 14px;border-radius:10px;border:1px solid #36516a;background:#111f2e;color:#d9e6f3;text-align:left;font-size:15px;cursor:pointer;transition:.2s ease}
-.anatomy-button:hover{border-color:#6eb8ff;background:#132a40}
-.anatomy-button.active{background:#1b5c96;border-color:#79b9fa;color:#fff;box-shadow:0 0 0 1px rgba(121,185,250,.2)}
-
-.anatomy-annotation{--x:50%;--y:50%;--line-length:18%;position:absolute;left:var(--x);top:var(--y);width:0;height:0;pointer-events:none;opacity:0}
-.anatomy-annotation.visible{opacity:1}
-.annotation-dot{position:absolute;width:11px;height:11px;border-radius:50%;background:#79b9fa;border:2px solid #fff;box-shadow:0 0 0 4px rgba(121,185,250,.2);transform:translate(-50%,-50%);z-index:2}
-.annotation-line{position:absolute;top:-1px;width:var(--line-length);height:2px;background:#79b9fa;box-shadow:0 0 8px rgba(121,185,250,.45);transform-origin:left center}
-.annotation-label{position:absolute;top:0;white-space:nowrap;background:rgba(7,16,26,.94);border:1px solid #4f7da5;border-radius:8px;padding:7px 10px;color:#f1f7ff;font-size:14px;font-weight:700;transform:translateY(-50%);box-shadow:0 8px 18px rgba(0,0,0,.28)}
-
-.anatomy-annotation[data-side="right"] .annotation-line{left:5px}
-.anatomy-annotation[data-side="right"] .annotation-label{left:calc(var(--line-length) + 12px)}
-.anatomy-annotation[data-side="left"] .annotation-line{right:5px;transform:rotate(180deg)}
-.anatomy-annotation[data-side="left"] .annotation-label{right:calc(var(--line-length) + 12px)}
-
-@media(max-width:900px){
-  .radiograph-layout{grid-template-columns:1fr}
-  .anatomy-panel{position:static}
+/* =========================================================
+   RADPOCKET v2 — application shell
+   The ankle module remains the reference content; this layer
+   establishes the reusable visual system for future modules.
+   ========================================================= */
+:root{
+  --rp-bg:#050b12;
+  --rp-surface:#091522;
+  --rp-surface-2:#0c1a29;
+  --rp-border:rgba(128,184,224,.18);
+  --rp-border-strong:rgba(99,197,255,.38);
+  --rp-text:#eef6fc;
+  --rp-muted:#9db0c0;
+  --rp-blue:#28a9f5;
+  --rp-blue-soft:#63c5ff;
+  --rp-teal:#3cdbb0;
+  --rp-purple:#9d72ff;
+  --rp-danger:#ff7373;
+  --rp-sidebar:248px;
 }
+*{box-sizing:border-box}
+html{background:var(--rp-bg);scroll-behavior:smooth}
+body{margin:0;background:var(--rp-bg);color:var(--rp-text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,Arial,sans-serif;line-height:1.5}
+button,input{font:inherit}
+.app{min-height:100vh;display:flex;background:radial-gradient(circle at 78% -5%,rgba(25,91,137,.20),transparent 34%),var(--rp-bg)}
+.sidebar{position:fixed;inset:0 auto 0 0;width:var(--rp-sidebar);height:100vh;overflow:auto;z-index:30;background:rgba(5,13,22,.97);border-right:1px solid var(--rp-border);padding:18px 12px 20px;backdrop-filter:blur(14px)}
+.brand{display:block;padding:4px 10px 17px;margin-bottom:2px}
+.brand-logo-image{display:block;width:100%;height:auto;max-width:218px;object-fit:contain;filter:drop-shadow(0 6px 16px rgba(0,0,0,.28))}
+.search{height:42px;display:flex;align-items:center;gap:9px;margin:4px 4px 18px;padding:0 13px;border:1px solid var(--rp-border);border-radius:12px;background:rgba(255,255,255,.025);color:#d7e7f2;font-size:18px}
+.search span{font-size:13px;color:var(--rp-muted)}
+nav{display:flex;flex-direction:column;gap:3px}
+.nav-item,.subnav button{border:1px solid transparent;background:transparent;color:#c6d5e1;text-align:left;cursor:pointer;border-radius:10px}
+.nav-item{display:flex;align-items:center;gap:11px;width:100%;padding:11px 12px;font-size:14px}
+.nav-item:hover{background:rgba(99,197,255,.06);border-color:rgba(99,197,255,.10)}
+.nav-item.active{background:linear-gradient(90deg,rgba(25,139,221,.24),rgba(25,139,221,.07));border-color:rgba(99,197,255,.18);color:#7fd0ff;box-shadow:inset 3px 0 0 var(--rp-blue)}
+.nav-item b{margin-left:auto;color:#71889c}
+.subnav{display:flex;flex-direction:column;margin:1px 0 8px 28px;padding:3px 0 3px 10px;border-left:1px solid rgba(99,197,255,.18);gap:2px}
+.subnav button{padding:8px 10px;font-size:13px}
+.subnav button:hover{background:rgba(255,255,255,.035)}
+.subnav .selected{background:rgba(99,197,255,.10);color:#a8ddff}
+.sidebar-label{margin:19px 12px 7px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#688196;font-weight:800}
+.main{width:calc(100% - var(--rp-sidebar));margin-left:var(--rp-sidebar);min-width:0;background:transparent}
+.topbar{height:68px;position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:0 34px;border-bottom:1px solid var(--rp-border);background:rgba(5,11,18,.86);backdrop-filter:blur(14px)}
+.topbar-left{display:flex;align-items:center;gap:13px;min-width:0}.crumb{font-size:12px;color:#71889c}.section-title{background:none;border:0;color:#f1f7fb;font-size:19px;font-weight:750;padding:0;cursor:default}.profile{display:flex;gap:12px;align-items:center;color:#b7cad9}.profile .theme-icon{font-size:18px;opacity:.8}.profile span{width:34px;height:34px;border:1px solid rgba(145,180,207,.35);border-radius:50%;display:grid;place-items:center;font-size:12px;font-weight:700;background:#0b1826}
+.tabs{position:sticky;top:68px;z-index:19;height:54px;display:flex;gap:4px;padding:0 34px;overflow:auto;border-bottom:1px solid var(--rp-border);background:rgba(6,13,21,.90);backdrop-filter:blur(12px)}
+.tabs button{position:relative;flex:0 0 auto;background:none;border:0;color:#91a6b7;padding:0 17px;font-size:13px;font-weight:650;cursor:pointer}.tabs button:hover{color:#d9eaf5}.tabs button.tab-active,.tabs button.active{color:#fff}.tabs button.tab-active:after,.tabs button.active:after{content:"";position:absolute;left:13px;right:13px;bottom:0;height:2px;border-radius:2px;background:var(--rp-blue)}
+.hero{max-width:1250px;margin:0 auto;padding:40px 38px 14px}.hero h1{font-size:clamp(34px,4vw,54px);letter-spacing:-.035em;line-height:1.05;margin:8px 0 10px}.hero h1 span{font-weight:450;color:#aebdca}.hero p{font-size:17px;color:#9fb2c1;margin:0;max-width:780px}.eyebrow{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#6ec8ff;font-weight:800}
+.projection-switcher{max-width:1250px;margin:0 auto;padding:10px 38px 22px}.projection{background:#0b1927;border:1px solid var(--rp-border);color:#bdd0df;padding:9px 17px;border-radius:999px;font-size:13px;font-weight:650;cursor:pointer}.projection:hover{border-color:var(--rp-border-strong)}.projection.active{background:rgba(40,169,245,.18);border-color:rgba(99,197,255,.65);color:#fff}
+.content{max-width:1250px;margin:0 auto;padding:0 38px 50px}.overview-intro h2{font-size:30px;letter-spacing:-.02em;margin:7px 0 8px}.overview-intro p{color:#9fb2c1}
+.image-card,.info-card,.why-card,.error-card,.trauma-card,.assessment-card,.teach-lesson,.assessment-case,.systematic-search,.three-view-series{box-shadow:0 16px 45px rgba(0,0,0,.18)}
+.image-card{background:#06101a;border-color:var(--rp-border)}
+.three-view-series{border-color:var(--rp-border);background:linear-gradient(180deg,rgba(10,26,40,.72),rgba(7,17,27,.72));padding:22px}
+.three-view-series-header{display:flex;justify-content:space-between;gap:24px;align-items:flex-end}.three-view-series-header p{color:#a9bac7}.three-view-series-note{border-color:rgba(99,197,255,.20);background:rgba(99,197,255,.045);color:#c9d9e5}
+.three-view-series-grid{gap:14px}.three-view-card{background:rgba(4,12,20,.72);border-color:var(--rp-border)}.three-view-image{height:285px;background:#02070c}.three-view-card-body p{color:#b6c8d5}.three-view-focus{background:rgba(99,197,255,.055);border-color:rgba(99,197,255,.16)}
+.three-view-card:nth-child(1) .three-view-card-head{color:#f4fbff}.three-view-card:nth-child(2) .three-view-card-head{color:#f4fbff}.three-view-card:nth-child(3) .three-view-card-head{color:#f4fbff}
+footer{max-width:1250px;margin:0 auto;border-top:1px solid var(--rp-border);padding:24px 38px 34px;color:#72899b;background:transparent}
+footer strong{color:#b8c9d6}
+/* make existing cards feel like one design system */
+.quick-grid,.assessment-grid,.projection-teach-grid,.teach-pitfalls{gap:14px}.info-card,.assessment-card,.teach-lesson,.assessment-case,.systematic-search,.why-card,.error-card,.trauma-card{background:rgba(8,22,34,.76);border-color:var(--rp-border)}
+.info-card h2{color:#a8dcff}.assessment-card h3,.teach-lesson h3{color:#eaf5fb}
+.radiograph-display{background:#02070c;border-color:var(--rp-border)}.anatomy-list{background:rgba(8,22,34,.88);border-color:var(--rp-border)}
+.anatomy-button:hover,.anatomy-button.active{background:rgba(99,197,255,.10);border-color:rgba(99,197,255,.28)}
+.anatomy-show-all{background:rgba(99,197,255,.10);border-color:rgba(99,197,255,.38)}
+/* mobile application shell */
+.mobile-menu{display:none}.mobile-bottom-nav{display:none}
+@media(max-width:900px){
+  :root{--rp-sidebar:0px}.sidebar{display:none}.main{width:100%;margin-left:0}.topbar{height:60px;padding:0 16px}.tabs{top:60px;padding:0 10px;height:50px}.tabs button{padding:0 13px}.hero,.content,.projection-switcher{padding-left:18px;padding-right:18px}.hero{padding-top:28px}.topbar-left .crumb{display:none}.profile .theme-icon{display:none}.mobile-menu{display:grid;place-items:center;width:36px;height:36px;border:1px solid var(--rp-border);border-radius:10px;background:#091724;color:#dcebf5}.topbar-left{gap:9px}.three-view-series-grid{grid-template-columns:1fr}.three-view-image{height:340px}
+}
+@media(max-width:520px){
+  .hero h1{font-size:31px}.overview-intro h2{font-size:25px}.content{padding-bottom:32px}.three-view-series{padding:16px}.three-view-image{height:310px}.three-view-series-footer{font-size:12px}.quick-grid{grid-template-columns:1fr}.ap-visual-grid{grid-template-columns:1fr}
+}
+.sidebar-mini-card{margin:22px 4px 0;padding:15px 14px;border:1px solid rgba(99,197,255,.14);border-radius:12px;background:linear-gradient(145deg,rgba(16,48,73,.35),rgba(8,21,33,.65));color:#b9ccda}.sidebar-mini-card strong{display:block;color:#e5f2fa;font-size:12px}.sidebar-mini-card span{display:block;color:#7d95a7;font-size:11px;margin-top:2px}
