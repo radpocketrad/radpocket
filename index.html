@@ -186,7 +186,7 @@
 .radiograph-stage .radiograph-image{position:absolute;top:0;height:100%;max-width:none!important;max-height:none!important;object-fit:fill;border-radius:0;display:block;}
 .stage-ap{aspect-ratio:1200/1631}.stage-ap .radiograph-image{left:19.666667%;width:60.666667%;}
 .stage-mortise{aspect-ratio:1200/1470}.stage-mortise .radiograph-image{left:23.673469%;width:52.653061%;}
-.stage-lateral{aspect-ratio:1920/3444}.stage-lateral .radiograph-image{left:0;width:100%;height:100%;object-fit:fill;}
+.stage-lateral{width:min(100%,620px);aspect-ratio:1920/3444;height:auto;min-height:0;flex:0 0 auto}.stage-lateral .radiograph-image{left:0;top:0;width:100%;height:100%;object-fit:contain!important;object-position:center center!important;}
 .radiograph-panel.hidden{display:none!important;}
 
 
@@ -499,33 +499,33 @@
       <div class="radiograph-atlas">
         <div class="radiograph-display"><div class="radiograph-stage stage-lateral">
           <img class="radiograph-image" src="ankle-lateral-radiograph.jpg" alt="Lateral ankle radiograph">
-          <div class="anatomy-overlay" aria-hidden="true"><svg class="anatomy-svg" viewBox="0 0 1920 3444" preserveAspectRatio="none">
+          <div class="anatomy-overlay" aria-hidden="true"><svg class="anatomy-svg" viewBox="0 0 1920 3444" preserveAspectRatio="xMidYMid meet">
             <g class="anatomy-marker lateral-label-box" data-view="lateral" data-marker="tibia">
-              <line x1="780" y1="1420" x2="455" y2="1325"/><circle class="outer" cx="780" cy="1420" r="11"/><circle class="inner" cx="780" cy="1420" r="4"/>
+              <line x1="690" y1="1420" x2="455" y2="1325"/><circle class="outer" cx="780" cy="1420" r="11"/><circle class="inner" cx="780" cy="1420" r="4"/>
               <rect class="label-box" x="90" y="1280" width="365" height="86" rx="18"/><text x="272" y="1335" text-anchor="middle">Tibia</text>
             </g>
             <g class="anatomy-marker lateral-label-box" data-view="lateral" data-marker="fibula">
-              <line x1="1120" y1="1480" x2="1460" y2="1395"/><circle class="outer" cx="1120" cy="1480" r="11"/><circle class="inner" cx="1120" cy="1480" r="4"/>
+              <line x1="1110" y1="1480" x2="1460" y2="1395"/><circle class="outer" cx="1120" cy="1480" r="11"/><circle class="inner" cx="1120" cy="1480" r="4"/>
               <rect class="label-box" x="1460" y="1350" width="365" height="86" rx="18"/><text x="1642" y="1405" text-anchor="middle">Fibula</text>
             </g>
             <g class="anatomy-marker lateral-label-box" data-view="lateral" data-marker="joint">
-              <line x1="820" y1="1880" x2="455" y2="1785"/><circle class="outer" cx="820" cy="1880" r="11"/><circle class="inner" cx="820" cy="1880" r="4"/>
+              <line x1="790" y1="1875" x2="455" y2="1785"/><circle class="outer" cx="820" cy="1880" r="11"/><circle class="inner" cx="820" cy="1880" r="4"/>
               <rect class="label-box" x="45" y="1715" width="410" height="112" rx="18"/><text x="250" y="1763" text-anchor="middle"><tspan x="250" dy="0">Tibiotalar</tspan><tspan x="250" dy="34">joint space</tspan></text>
             </g>
             <g class="anatomy-marker lateral-label-box" data-view="lateral" data-marker="talus">
-              <line x1="860" y1="2080" x2="455" y2="2000"/><circle class="outer" cx="860" cy="2080" r="11"/><circle class="inner" cx="860" cy="2080" r="4"/>
+              <line x1="820" y1="2070" x2="455" y2="2000"/><circle class="outer" cx="860" cy="2080" r="11"/><circle class="inner" cx="860" cy="2080" r="4"/>
               <rect class="label-box" x="130" y="1955" width="325" height="86" rx="18"/><text x="292" y="2010" text-anchor="middle">Talus</text>
             </g>
             <g class="anatomy-marker lateral-label-box" data-view="lateral" data-marker="navicular">
-              <line x1="500" y1="2360" x2="410" y2="2420"/><circle class="outer" cx="500" cy="2360" r="11"/><circle class="inner" cx="500" cy="2360" r="4"/>
+              <line x1="475" y1="2325" x2="410" y2="2420"/><circle class="outer" cx="500" cy="2360" r="11"/><circle class="inner" cx="500" cy="2360" r="4"/>
               <rect class="label-box" x="55" y="2375" width="355" height="86" rx="18"/><text x="232" y="2430" text-anchor="middle">Navicular</text>
             </g>
             <g class="anatomy-marker lateral-label-box" data-view="lateral" data-marker="subtalar">
-              <line x1="1080" y1="2180" x2="1460" y2="2110"/><circle class="outer" cx="1080" cy="2180" r="11"/><circle class="inner" cx="1080" cy="2180" r="4"/>
+              <line x1="1015" y1="2180" x2="1460" y2="2110"/><circle class="outer" cx="1080" cy="2180" r="11"/><circle class="inner" cx="1080" cy="2180" r="4"/>
               <rect class="label-box" x="1460" y="2060" width="365" height="112" rx="18"/><text x="1642" y="2108" text-anchor="middle"><tspan x="1642" dy="0">Subtalar</tspan><tspan x="1642" dy="34">joint</tspan></text>
             </g>
             <g class="anatomy-marker lateral-label-box" data-view="lateral" data-marker="calcaneus">
-              <line x1="1360" y1="2480" x2="1460" y2="2540"/><circle class="outer" cx="1360" cy="2480" r="11"/><circle class="inner" cx="1360" cy="2480" r="4"/>
+              <line x1="1370" y1="2480" x2="1460" y2="2540"/><circle class="outer" cx="1360" cy="2480" r="11"/><circle class="inner" cx="1360" cy="2480" r="4"/>
               <rect class="label-box" x="1460" y="2495" width="365" height="86" rx="18"/><text x="1642" y="2550" text-anchor="middle">Calcaneus</text>
             </g>
           </svg></div>
