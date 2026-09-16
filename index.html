@@ -363,6 +363,32 @@
   .main > .module-view .tab-panel{width:100%;}
 }
 </style>
+
+<style>
+/* ===== RADPOCKET HOME DASHBOARD ===== */
+.home-view{padding:28px clamp(18px,4vw,42px) 46px;max-width:1280px;margin:0 auto;width:100%;box-sizing:border-box}
+.home-intro{padding:10px 0 24px}
+.home-intro .eyebrow{color:#54c6ff;letter-spacing:.18em;font-weight:800;font-size:12px}
+.home-intro h1{font-size:clamp(34px,5vw,58px);line-height:1.05;margin:8px 0 12px;color:#eef7ff}
+.home-intro p{max-width:760px;color:#a9bac9;font-size:17px;line-height:1.65;margin:0}
+.home-search{margin:20px 0 26px;display:flex;align-items:center;gap:12px;min-height:54px;padding:0 18px;border:1px solid #234057;border-radius:16px;background:#091825;color:#a9bfce;box-sizing:border-box}
+.home-search .search-icon{font-size:24px;color:#70d0ff}.home-search span{font-size:14px}
+.home-regions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.home-region-card{position:relative;min-height:178px;overflow:hidden;border:1px solid #203a4f;border-radius:20px;background:linear-gradient(145deg,#0d1b27,#08121a);cursor:pointer;box-shadow:0 12px 28px rgba(0,0,0,.14);transition:transform .18s ease,border-color .18s ease}
+.home-region-card:hover{transform:translateY(-2px);border-color:#2e9fd5}
+.home-region-card .home-region-image{position:absolute;inset:0 0 0 48%;opacity:.68;background-size:cover;background-position:center;mask-image:linear-gradient(to right,transparent 0%,black 45%);-webkit-mask-image:linear-gradient(to right,transparent 0%,black 45%)}
+.home-region-card.lower .home-region-image{background-image:url('knee-ap-radiograph.jpg')}
+.home-region-card.upper .home-region-image{background:radial-gradient(circle at 68% 48%,rgba(45,185,255,.35),transparent 42%),linear-gradient(135deg,transparent 30%,rgba(54,150,210,.22) 60%,rgba(25,95,135,.08))}
+.home-region-card.spine .home-region-image{background:radial-gradient(ellipse at 68% 50%,rgba(140,190,225,.28),transparent 38%),linear-gradient(135deg,transparent 25%,rgba(72,130,170,.20))}
+.home-region-card.chest .home-region-image{background:radial-gradient(ellipse at 70% 45%,rgba(52,190,220,.25),transparent 38%),linear-gradient(135deg,transparent 25%,rgba(42,100,135,.2))}
+.home-region-content{position:relative;z-index:2;padding:24px;max-width:72%}
+.home-region-icon{font-size:25px;margin-bottom:12px;display:block}.home-region-card h2{font-size:25px;margin:0 0 7px;color:#f0f7fb}.home-region-card p{margin:0;color:#a7bdcd;line-height:1.5;font-size:14px}.home-arrow{position:absolute;right:20px;bottom:20px;font-size:28px;color:#dff5ff}
+.home-quick{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:18px}
+.home-quick-card{min-height:118px;padding:20px;border:1px solid #203a4f;border-radius:17px;background:#091722;box-sizing:border-box;cursor:pointer}.home-quick-card h3{margin:8px 0 5px;font-size:18px;color:#eef7ff}.home-quick-card p{margin:0;color:#8fa7b8;font-size:12px;line-height:1.45}.home-quick-icon{font-size:24px}
+.home-resource{margin-top:16px;padding:18px 20px;border:1px solid #203a4f;border-radius:17px;background:linear-gradient(90deg,#0a1823,#0b141c);display:flex;align-items:center;justify-content:space-between;gap:18px}.home-resource strong{font-size:17px}.home-resource span{color:#91a9ba;font-size:13px}.home-quote{margin-top:16px;padding:18px 20px;border-radius:17px;background:#0b1721;border:1px solid rgba(80,190,245,.13);text-align:center;color:#b8ccda;font-style:italic}
+@media(max-width:900px){.home-view{padding:22px 16px 36px}.home-intro{padding-top:4px}.home-intro h1{font-size:36px}.home-intro p{font-size:15px}.home-regions{grid-template-columns:1fr}.home-region-card{min-height:160px}.home-region-content{max-width:78%;padding:21px}.home-quick{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.home-quick-card{padding:14px 10px;min-height:112px}.home-quick-card h3{font-size:14px}.home-quick-card p{font-size:11px}.home-resource{align-items:flex-start}.home-resource span{display:block}}
+@media(max-width:430px){.home-intro h1{font-size:32px}.home-quick{grid-template-columns:1fr 1fr}.home-quick-card:last-child{grid-column:1/-1}.home-region-card h2{font-size:22px}}
+</style>
 </head>
 <body>
 <div class="mobile-nav-backdrop" aria-hidden="true"></div>
@@ -373,7 +399,7 @@
 <div class="search" role="search">⌕ <span>Search RADPOCKET...</span></div>
 <div class="sidebar-label">Main menu</div>
 <nav aria-label="Main navigation">
-<button class="nav-item">⌂ <span>Home</span></button>
+<button class="nav-item" data-module="home">⌂ <span>Home</span></button>
 <button class="nav-item active">◉ <span>Lower Limb</span><b>⌃</b></button>
 <div class="subnav">
 <button>Hip</button><button>Femur</button><button class="" data-module="knee">Knee</button><button>Tibia &amp; Fibula</button><button class="selected" data-module="ankle">Ankle</button><button>Foot</button>
@@ -400,9 +426,34 @@
 </aside>
 <main class="main">
 <header class="topbar">
-<div class="topbar-left"><button aria-label="Open menu" class="mobile-menu" type="button">☰</button><div class="crumb">Lower Limb /</div><button class="section-title" type="button">Ankle</button></div>
+<div class="topbar-left"><button aria-label="Open menu" class="mobile-menu" type="button">☰</button><div class="crumb">RADPOCKET /</div><button class="section-title" type="button">Home</button></div>
 <div class="profile"><span class="theme-icon">☼</span><span>DR</span></div>
 </header>
+<div class="module-view" id="home-module">
+  <section class="home-view">
+    <div class="home-intro">
+      <div class="eyebrow">RADPOCKET · RADIOGRAPHY LEARNING</div>
+      <h1>Radiology on the go.</h1>
+      <p>Practical positioning, radiographs, anatomy and assessment — organised by body region and built for quick clinical learning.</p>
+      <div class="home-search" aria-label="Search RADPOCKET"><span class="search-icon">⌕</span><span>Search for a region, projection or topic…</span></div>
+    </div>
+    <div class="home-regions">
+      <article class="home-region-card lower" data-open-lower-limb tabindex="0" role="button" aria-label="Open Lower Limb navigation">
+        <div class="home-region-image"></div><div class="home-region-content"><span class="home-region-icon">🦴</span><h2>Lower Limb</h2><p>Hip · Femur · Knee<br>Tibia &amp; Fibula · Ankle · Foot</p></div><span class="home-arrow">›</span>
+      </article>
+      <article class="home-region-card upper" tabindex="0" role="button"><div class="home-region-image"></div><div class="home-region-content"><span class="home-region-icon">🦴</span><h2>Upper Limb</h2><p>Shoulder · Humerus · Elbow<br>Forearm · Wrist · Hand</p></div><span class="home-arrow">›</span></article>
+      <article class="home-region-card spine" tabindex="0" role="button"><div class="home-region-image"></div><div class="home-region-content"><span class="home-region-icon">▥</span><h2>Spine</h2><p>Cervical · Thoracic · Lumbar<br>Vertebral column</p></div><span class="home-arrow">›</span></article>
+      <article class="home-region-card chest" tabindex="0" role="button"><div class="home-region-image"></div><div class="home-region-content"><span class="home-region-icon">◉</span><h2>Chest &amp; Abdomen</h2><p>Chest · Abdomen · Pelvis</p></div><span class="home-arrow">›</span></article>
+    </div>
+    <div class="home-quick">
+      <article class="home-quick-card"><div class="home-quick-icon">✚</div><h3>Trauma</h3><p>Quick reference for acute injuries</p></article>
+      <article class="home-quick-card"><div class="home-quick-icon">◆</div><h3>Teaching</h3><p>Structured learning pathways</p></article>
+      <article class="home-quick-card"><div class="home-quick-icon">✓</div><h3>Assessments</h3><p>Cases and self-checks</p></article>
+    </div>
+    <div class="home-resource"><div><strong>▤ &nbsp; Resources</strong><br><span>Guidelines, protocols and further reading</span></div><span>›</span></div>
+    <div class="home-quote">“Better imaging. Brighter practice.”</div>
+  </section>
+</div>
 <div class="module-view hidden" id="knee-module"><nav aria-label="Knee sections" class="module-tabs"><button class="active" data-knee-tab="overview" type="button">Overview</button><button data-knee-tab="positioning" type="button">Positioning</button><button data-knee-tab="radiographs" type="button">Radiographs</button><button data-knee-tab="assessment" type="button">Assessment</button><button data-knee-tab="teach" type="button">Teach</button><button data-knee-tab="references" type="button">References</button></nav><section class="tab-panel" id="knee-overview">
 <div class="knee-hero"><div class="eyebrow">LOWER LIMB · TRAUMA-FOCUSED</div><h1>Knee Radiography</h1><p>A practical approach to positioning, image quality and systematic assessment of the AP and lateral knee — with an emergency-radiology focus on subtle fractures, effusion and injuries that are easy to overlook.</p><div class="source-strip"><span class="source-pill">Merrill's Atlas</span><span class="source-pill">Bontrager</span><span class="source-pill">Raby · A&amp;E Radiology</span><span class="source-pill">RCR</span><span class="source-pill">ACR</span></div></div>
 <div class="knee-grid"><div class="knee-card"><h2>Start with two views</h2><p>For the standard knee series, use the AP and lateral projections as the foundation of assessment. Additional projections are selected according to the clinical question and local protocol.</p><ul><li>AP: overall bony alignment, joint spaces and tibial plateau.</li><li>Lateral: patella, effusion, alignment and subtle fracture signs.</li><li>Do not let an abnormality on one view stop the search on the other.</li></ul></div><div class="knee-card"><h2>Trauma mindset</h2><p>In acute injury, deliberately search beyond the site of maximum tenderness. A small avulsion, plateau impaction or joint effusion can be the clue to a more important injury.</p><div class="clinical-callout"><strong>Useful habit:</strong> quality → alignment → bones → joints → soft tissues → subtle signs.</div></div></div>
@@ -1134,21 +1185,24 @@ document.addEventListener('DOMContentLoaded', () => {
   const crumb=document.querySelector('.crumb');
   const mainTabs=document.querySelector('.tabs');
   const kneeModuleTabs=document.querySelectorAll('[data-knee-tab]');
+  const homeModule=document.getElementById('home-module');
   function setModule(module){
     const knee=module==='knee';
-    ankleContent.forEach(el=>el.classList.toggle('module-nav-hidden',knee));
+    const home=module==='home';
+    ankleContent.forEach(el=>el.classList.toggle('module-nav-hidden',home||knee));
+    if(homeModule) homeModule.classList.toggle('hidden',!home);
     if(kneeModule) kneeModule.classList.toggle('hidden',!knee);
-    if(ankleSideNav) ankleSideNav.classList.toggle('module-nav-hidden',knee);
+    if(ankleSideNav) ankleSideNav.classList.toggle('module-nav-hidden',home||knee);
     if(kneeSideNav) kneeSideNav.classList.toggle('module-nav-hidden',!knee);
     if(kneeSideLabel) kneeSideLabel.classList.toggle('module-nav-hidden',!knee);
-    if(mainTabs) mainTabs.classList.toggle('module-nav-hidden',knee);
-    if(sectionTitle) sectionTitle.textContent=knee?'Knee':'Ankle';
-    if(crumb) crumb.textContent='Lower Limb /';
-    document.querySelectorAll('[data-module="ankle"], [data-module="knee"]').forEach(b=>{
+    if(mainTabs) mainTabs.classList.toggle('module-nav-hidden',home||knee);
+    if(sectionTitle) sectionTitle.textContent=home?'Home':(knee?'Knee':'Ankle');
+    if(crumb) crumb.textContent=home?'RADPOCKET /':'Lower Limb /';
+    document.querySelectorAll('[data-module="home"], [data-module="ankle"], [data-module="knee"]').forEach(b=>{
       b.classList.toggle('selected', b.dataset.module===module);
     });
     if(knee){ showKneeTab('overview'); }
-    else if(typeof showOverview==='function'){ showOverview(); }
+    else if(!home && typeof showOverview==='function'){ showOverview(); }
     window.scrollTo({top:0,behavior:'smooth'});
   }
   function showKneeTab(name){
@@ -1166,7 +1220,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }));
   kneeModuleTabs.forEach(b=>b.addEventListener('click',()=>showKneeTab(b.dataset.kneeTab)));
   document.querySelectorAll('[data-knee-side-tab]').forEach(b=>b.addEventListener('click',()=>showKneeTab(b.dataset.kneeSideTab)));
-  setModule('ankle');
+  setModule('home');
   // Knee projection toggle
   document.querySelectorAll('#knee-radiographs .view-tab').forEach(btn=>btn.addEventListener('click',()=>{
     document.querySelectorAll('#knee-radiographs .view-tab').forEach(x=>x.classList.remove('active'));
@@ -1176,6 +1230,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if(ap) ap.style.display=v==='ap'?'block':'none';
     if(lat) lat.style.display=v==='lat'?'block':'none';
   }));
+  document.querySelectorAll('[data-open-lower-limb]').forEach(card=>{
+    const open=()=>{ setModule('home'); document.body.classList.add('mobile-nav-open'); const menu=document.querySelector('.mobile-menu'); if(menu) menu.setAttribute('aria-expanded','true'); };
+    card.addEventListener('click',open); card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open();}});
+  });
 })();
 </script>
 </body></html>
