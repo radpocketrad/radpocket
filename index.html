@@ -289,8 +289,8 @@
   /* The hamburger is the only module/navigation selector in the compact header. */
   .mobile-lower-limb-nav{display:none!important}
   .mobile-menu{display:grid!important;place-items:center;position:relative;z-index:111;width:44px;height:44px;min-width:44px;border:1px solid rgba(99,197,255,.20);border-radius:12px;background:#091724;color:#dcebf5;font-size:22px;line-height:1;cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
-  .sidebar{display:block!important;position:fixed;left:0;top:0;bottom:0;width:min(86vw,330px);height:100dvh;max-height:100dvh;overflow-y:auto;overscroll-behavior:contain;transform:translate3d(-105%,0,0);transition:transform .22s ease;z-index:110;box-shadow:18px 0 40px rgba(0,0,0,.55);padding-top:12px}
-  body.mobile-nav-open .sidebar{transform:translate3d(0,0,0)}
+  .sidebar{display:none!important;position:fixed;left:0;top:0;bottom:0;width:min(86vw,330px);height:100dvh;max-height:100dvh;overflow-y:auto;overscroll-behavior:contain;transform:translate3d(-105%,0,0);transition:transform .22s ease;z-index:110;box-shadow:18px 0 40px rgba(0,0,0,.55);padding-top:12px;-webkit-overflow-scrolling:touch}
+  body.mobile-nav-open .sidebar{display:block!important;transform:translate3d(0,0,0)}
   .mobile-sidebar-head{display:flex;align-items:center;justify-content:space-between;padding:4px 8px 14px 10px;margin-bottom:4px;border-bottom:1px solid rgba(99,197,255,.12)}
   .mobile-sidebar-head strong{font-size:14px;letter-spacing:.08em;color:#eaf6ff}
   .mobile-sidebar-close{width:40px;height:40px;border:1px solid rgba(99,197,255,.18);border-radius:10px;background:#091724;color:#dcebf5;font-size:28px;line-height:1;cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
@@ -306,7 +306,7 @@
 .main > .module-view { width:100%; min-width:0; }
 .main > .module-view.hidden { display:none !important; }
 .main > .module-view .module-tabs { width:100%; }
-@media(max-width:900px){ .main > .module-view .module-tabs{top:110px;} }
+@media(max-width:900px){ .main > .module-view .module-tabs{top:60px;} }
 </style>
 <style>
 /* ===== KNEE MODULE ===== */
@@ -321,7 +321,26 @@
 
 .module-view.hidden{display:none!important}
 .module-tabs{display:flex;gap:8px;overflow:auto;padding:10px 18px;border-bottom:1px solid rgba(110,150,190,.18);background:rgba(5,10,16,.92);position:sticky;top:0;z-index:20}.module-tabs button{border:0;background:transparent;color:#91a5b5;padding:10px 14px;border-radius:10px;font-weight:700;white-space:nowrap;cursor:pointer}.module-tabs button.active{background:rgba(45,185,255,.15);color:#fff}.module-nav-hidden{display:none!important}
-</style></head>
+</style>
+<style id="mobile-final-layout-fix">
+/* ===== iPHONE FINAL SHELL ===== */
+@media (max-width:900px){
+  html,body{width:100%;min-width:0;overflow-x:hidden}
+  .main{position:relative;padding-top:60px}
+  .topbar{position:fixed!important;left:0;right:0;top:0;width:100%;height:60px;z-index:1000!important}
+  .tabs{position:sticky!important;top:60px!important;z-index:900!important}
+  .module-tabs{position:sticky!important;top:60px!important;z-index:900!important}
+  .module-view{position:relative;z-index:1}
+  .knee-hero{margin-top:0}
+  .mobile-menu{position:relative;z-index:1001!important}
+  .profile{position:relative;z-index:1001}
+  body.mobile-nav-open{overflow:hidden}
+  body.mobile-nav-open .mobile-nav-backdrop{z-index:1100}
+  body.mobile-nav-open .sidebar{z-index:1200}
+  .mobile-sidebar-head{position:sticky;top:0;z-index:2;background:rgba(5,13,22,.98)}
+}
+</style>
+</head>
 <body>
 <div class="mobile-nav-backdrop" aria-hidden="true"></div>
 <div class="app">
@@ -356,7 +375,12 @@
 </nav><div class="sidebar-label module-nav-hidden" id="within-knee-label">Within Knee</div><nav aria-label="Knee sections" class="module-nav-hidden" id="within-knee-nav"><button class="nav-item" data-knee-side-tab="overview">Overview</button><button class="nav-item" data-knee-side-tab="positioning">Positioning</button><button class="nav-item" data-knee-side-tab="radiographs">Radiographs</button><button class="nav-item" data-knee-side-tab="assessment">Assessment</button><button class="nav-item" data-knee-side-tab="teach">Teach</button><button class="nav-item" data-knee-side-tab="references">References</button></nav>
 <div class="sidebar-mini-card"><strong>Radiography</strong><span>Made simple.</span></div>
 </aside>
-<main class="main"><div class="module-view hidden" id="knee-module"><nav aria-label="Knee sections" class="module-tabs"><button class="active" data-knee-tab="overview" type="button">Overview</button><button data-knee-tab="positioning" type="button">Positioning</button><button data-knee-tab="radiographs" type="button">Radiographs</button><button data-knee-tab="assessment" type="button">Assessment</button><button data-knee-tab="teach" type="button">Teach</button><button data-knee-tab="references" type="button">References</button></nav><section class="tab-panel" id="knee-overview">
+<main class="main">
+<header class="topbar">
+<div class="topbar-left"><button aria-label="Open menu" class="mobile-menu" type="button">☰</button><div class="crumb">Lower Limb /</div><button class="section-title" type="button">Ankle</button></div>
+<div class="profile"><span class="theme-icon">☼</span><span>DR</span></div>
+</header>
+<div class="module-view hidden" id="knee-module"><nav aria-label="Knee sections" class="module-tabs"><button class="active" data-knee-tab="overview" type="button">Overview</button><button data-knee-tab="positioning" type="button">Positioning</button><button data-knee-tab="radiographs" type="button">Radiographs</button><button data-knee-tab="assessment" type="button">Assessment</button><button data-knee-tab="teach" type="button">Teach</button><button data-knee-tab="references" type="button">References</button></nav><section class="tab-panel" id="knee-overview">
 <div class="knee-hero"><div class="eyebrow">LOWER LIMB · TRAUMA-FOCUSED</div><h1>Knee Radiography</h1><p>A practical approach to positioning, image quality and systematic assessment of the AP and lateral knee — with an emergency-radiology focus on subtle fractures, effusion and injuries that are easy to overlook.</p><div class="source-strip"><span class="source-pill">Merrill's Atlas</span><span class="source-pill">Bontrager</span><span class="source-pill">Raby · A&amp;E Radiology</span><span class="source-pill">RCR</span><span class="source-pill">ACR</span></div></div>
 <div class="knee-grid"><div class="knee-card"><h2>Start with two views</h2><p>For the standard knee series, use the AP and lateral projections as the foundation of assessment. Additional projections are selected according to the clinical question and local protocol.</p><ul><li>AP: overall bony alignment, joint spaces and tibial plateau.</li><li>Lateral: patella, effusion, alignment and subtle fracture signs.</li><li>Do not let an abnormality on one view stop the search on the other.</li></ul></div><div class="knee-card"><h2>Trauma mindset</h2><p>In acute injury, deliberately search beyond the site of maximum tenderness. A small avulsion, plateau impaction or joint effusion can be the clue to a more important injury.</p><div class="clinical-callout"><strong>Useful habit:</strong> quality → alignment → bones → joints → soft tissues → subtle signs.</div></div></div>
 <div class="section-heading"><div><div class="eyebrow">THE TWO PROJECTIONS</div><h2>Actual Knee Radiographs</h2></div></div>
@@ -417,10 +441,6 @@
 <li><strong>Bontrager's Textbook of Radiographic Positioning and Related Anatomy.</strong> Knee positioning, anatomy and image evaluation reference.</li>
 </ol><div class="warning-callout"><strong>Educational note:</strong> RADPOCKET is a learning reference, not a substitute for departmental protocols, clinical examination, formal reporting standards or professional judgement.</div></div>
 </section></div>
-<header class="topbar">
-<div class="topbar-left"><button aria-label="Open menu" class="mobile-menu" type="button">☰</button><div class="crumb">Lower Limb /</div><button class="section-title" type="button">Ankle</button></div>
-<div class="profile"><span class="theme-icon">☼</span><span>DR</span></div>
-</header>
 
 <div class="tabs" data-module-content="ankle">
 <button class="tab-active" id="overview-tab">Overview</button><button id="positioning-tab">Positioning</button><button id="radiographs-tab">Radiographs</button><button id="assessment-tab">Assessment</button><button id="teach-tab">Teach</button><button id="references-tab">References</button>
@@ -1106,7 +1126,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     if(knee){ showKneeTab('overview'); }
     else if(typeof showOverview==='function'){ showOverview(); }
-    window.scrollTo({top:0,behavior:'smooth'});
+    window.scrollTo(0,0);
   }
   function showKneeTab(name){
     const names=['overview','positioning','radiographs','assessment','teach','references'];
