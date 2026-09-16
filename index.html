@@ -282,6 +282,11 @@
   .lateral-label-box text{font-size:24px}
   .lateral-label-box .label-box{stroke-width:2.5}
 }
+
+/* ===== MASTER MODULE LAYOUT FIX ===== */
+.main > .module-view { width:100%; min-width:0; }
+.main > .module-view.hidden { display:none !important; }
+.main > .module-view .module-tabs { width:100%; }
 </style>
 <style>
 /* ===== KNEE MODULE ===== */
@@ -329,7 +334,7 @@
 </nav><div class="sidebar-label module-nav-hidden" id="within-knee-label">Within Knee</div><nav aria-label="Knee sections" class="module-nav-hidden" id="within-knee-nav"><button class="nav-item" data-knee-side-tab="overview">Overview</button><button class="nav-item" data-knee-side-tab="positioning">Positioning</button><button class="nav-item" data-knee-side-tab="radiographs">Radiographs</button><button class="nav-item" data-knee-side-tab="assessment">Assessment</button><button class="nav-item" data-knee-side-tab="teach">Teach</button><button class="nav-item" data-knee-side-tab="references">References</button></nav>
 <div class="sidebar-mini-card"><strong>Radiography</strong><span>Made simple.</span></div>
 </aside>
-<div class="module-view hidden" id="knee-module"><nav aria-label="Knee sections" class="module-tabs"><button class="active" data-knee-tab="overview" type="button">Overview</button><button data-knee-tab="positioning" type="button">Positioning</button><button data-knee-tab="radiographs" type="button">Radiographs</button><button data-knee-tab="assessment" type="button">Assessment</button><button data-knee-tab="teach" type="button">Teach</button><button data-knee-tab="references" type="button">References</button></nav><section class="tab-panel" id="knee-overview">
+<main class="main"><div class="module-view hidden" id="knee-module"><nav aria-label="Knee sections" class="module-tabs"><button class="active" data-knee-tab="overview" type="button">Overview</button><button data-knee-tab="positioning" type="button">Positioning</button><button data-knee-tab="radiographs" type="button">Radiographs</button><button data-knee-tab="assessment" type="button">Assessment</button><button data-knee-tab="teach" type="button">Teach</button><button data-knee-tab="references" type="button">References</button></nav><section class="tab-panel" id="knee-overview">
 <div class="knee-hero"><div class="eyebrow">LOWER LIMB · TRAUMA-FOCUSED</div><h1>Knee Radiography</h1><p>A practical approach to positioning, image quality and systematic assessment of the AP and lateral knee — with an emergency-radiology focus on subtle fractures, effusion and injuries that are easy to overlook.</p><div class="source-strip"><span class="source-pill">Merrill's Atlas</span><span class="source-pill">Bontrager</span><span class="source-pill">Raby · A&amp;E Radiology</span><span class="source-pill">RCR</span><span class="source-pill">ACR</span></div></div>
 <div class="knee-grid"><div class="knee-card"><h2>Start with two views</h2><p>For the standard knee series, use the AP and lateral projections as the foundation of assessment. Additional projections are selected according to the clinical question and local protocol.</p><ul><li>AP: overall bony alignment, joint spaces and tibial plateau.</li><li>Lateral: patella, effusion, alignment and subtle fracture signs.</li><li>Do not let an abnormality on one view stop the search on the other.</li></ul></div><div class="knee-card"><h2>Trauma mindset</h2><p>In acute injury, deliberately search beyond the site of maximum tenderness. A small avulsion, plateau impaction or joint effusion can be the clue to a more important injury.</p><div class="clinical-callout"><strong>Useful habit:</strong> quality → alignment → bones → joints → soft tissues → subtle signs.</div></div></div>
 <div class="section-heading"><div><div class="eyebrow">THE TWO PROJECTIONS</div><h2>Actual Knee Radiographs</h2></div></div>
@@ -389,7 +394,7 @@
 <li><strong>Merrill's Atlas of Radiographic Positioning and Procedures.</strong> Knee positioning and evaluation reference.</li>
 <li><strong>Bontrager's Textbook of Radiographic Positioning and Related Anatomy.</strong> Knee positioning, anatomy and image evaluation reference.</li>
 </ol><div class="warning-callout"><strong>Educational note:</strong> RADPOCKET is a learning reference, not a substitute for departmental protocols, clinical examination, formal reporting standards or professional judgement.</div></div>
-</section></div><main class="main">
+</section></div>
 <header class="topbar">
 <div class="topbar-left"><button aria-label="Open menu" class="mobile-menu" type="button">☰</button><div class="crumb">Lower Limb /</div><button class="section-title" type="button">Ankle</button></div>
 <div class="profile"><span class="theme-icon">☼</span><span>DR</span></div>
