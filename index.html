@@ -283,10 +283,32 @@
   .lateral-label-box .label-box{stroke-width:2.5}
 }
 
+/* ===== MOBILE LOWER LIMB MODULE SWITCHER ===== */
+.mobile-lower-limb-nav{display:none}
+@media(max-width:900px){
+  .mobile-lower-limb-nav{display:flex;align-items:center;gap:6px;overflow-x:auto;padding:7px 12px;border-bottom:1px solid var(--rp-border);background:rgba(5,13,22,.96);-webkit-overflow-scrolling:touch;scrollbar-width:none;position:sticky;top:60px;z-index:18}
+  .mobile-lower-limb-nav::-webkit-scrollbar{display:none}
+  .mobile-lower-limb-label{flex:0 0 auto;font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#688196;margin-right:3px}
+  .mobile-module-choice{flex:0 0 auto;border:1px solid rgba(99,197,255,.16);background:#091724;color:#9fb2c1;border-radius:999px;padding:7px 14px;font-size:12px;font-weight:750;cursor:pointer;touch-action:manipulation}
+  .mobile-module-choice.active{background:rgba(99,197,255,.14);border-color:rgba(99,197,255,.55);color:#fff}
+  .tabs{top:110px}
+}
+
+/* ===== MOBILE NAVIGATION FIX ===== */
+@media(max-width:900px){
+  .sidebar{display:block!important;position:fixed;left:0;top:0;bottom:0;width:min(86vw,320px);height:100vh;transform:translateX(-105%);transition:transform .22s ease;z-index:100;box-shadow:18px 0 40px rgba(0,0,0,.45);}
+  body.mobile-nav-open .sidebar{transform:translateX(0);}
+  .mobile-nav-backdrop{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:90;}
+  body.mobile-nav-open .mobile-nav-backdrop{display:block;}
+  .mobile-menu{display:grid!important;place-items:center;}
+  .sidebar .subnav{display:flex;}
+}
+
 /* ===== MASTER MODULE LAYOUT FIX ===== */
 .main > .module-view { width:100%; min-width:0; }
 .main > .module-view.hidden { display:none !important; }
 .main > .module-view .module-tabs { width:100%; }
+@media(max-width:900px){ .main > .module-view .module-tabs{top:110px;} }
 </style>
 <style>
 /* ===== KNEE MODULE ===== */
@@ -303,6 +325,7 @@
 .module-tabs{display:flex;gap:8px;overflow:auto;padding:10px 18px;border-bottom:1px solid rgba(110,150,190,.18);background:rgba(5,10,16,.92);position:sticky;top:0;z-index:20}.module-tabs button{border:0;background:transparent;color:#91a5b5;padding:10px 14px;border-radius:10px;font-weight:700;white-space:nowrap;cursor:pointer}.module-tabs button.active{background:rgba(45,185,255,.15);color:#fff}.module-nav-hidden{display:none!important}
 </style></head>
 <body>
+<div class="mobile-nav-backdrop" aria-hidden="true"></div>
 <div class="app">
 <aside class="sidebar">
 <div class="brand"><img alt="RADPOCKET — Radiology on the Go" class="brand-logo-image" src="radpocket-logo-transparent.png"/></div>
@@ -399,6 +422,11 @@
 <div class="topbar-left"><button aria-label="Open menu" class="mobile-menu" type="button">☰</button><div class="crumb">Lower Limb /</div><button class="section-title" type="button">Ankle</button></div>
 <div class="profile"><span class="theme-icon">☼</span><span>DR</span></div>
 </header>
+<div class="mobile-lower-limb-nav" aria-label="Lower Limb modules">
+  <span class="mobile-lower-limb-label">Lower Limb</span>
+  <button type="button" class="mobile-module-choice active" data-module="ankle">Ankle</button>
+  <button type="button" class="mobile-module-choice" data-module="knee">Knee</button>
+</div>
 <div class="tabs" data-module-content="ankle">
 <button class="tab-active" id="overview-tab">Overview</button><button id="positioning-tab">Positioning</button><button id="radiographs-tab">Radiographs</button><button id="assessment-tab">Assessment</button><button id="teach-tab">Teach</button><button id="references-tab">References</button>
 </div>
@@ -1041,6 +1069,20 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+
+// ===== MOBILE NAVIGATION =====
+(function(){
+  const menu=document.querySelector('.mobile-menu');
+  const sidebar=document.querySelector('.sidebar');
+  const backdrop=document.querySelector('.mobile-nav-backdrop');
+  function closeNav(){ document.body.classList.remove('mobile-nav-open'); if(menu) menu.setAttribute('aria-expanded','false'); }
+  function toggleNav(){ document.body.classList.toggle('mobile-nav-open'); if(menu) menu.setAttribute('aria-expanded',document.body.classList.contains('mobile-nav-open')?'true':'false'); }
+  if(menu){ menu.setAttribute('aria-expanded','false'); menu.addEventListener('click',toggleNav); }
+  if(backdrop) backdrop.addEventListener('click',closeNav);
+  if(sidebar) sidebar.addEventListener('click',e=>{ if(e.target.closest('[data-module]')) closeNav(); });
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeNav(); });
+})();
+
 // ===== RADPOCKET MODULE SWITCHING: ANKLE + KNEE =====
 (function(){
   const ankleContent=document.querySelectorAll('[data-module-content="ankle"]');
@@ -1052,6 +1094,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const crumb=document.querySelector('.crumb');
   const mainTabs=document.querySelector('.tabs');
   const kneeModuleTabs=document.querySelectorAll('[data-knee-tab]');
+  const mobileModuleChoices=document.querySelectorAll('.mobile-module-choice');
   function setModule(module){
     const knee=module==='knee';
     ankleContent.forEach(el=>el.classList.toggle('module-nav-hidden',knee));
@@ -1065,6 +1108,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('[data-module="ankle"], [data-module="knee"]').forEach(b=>{
       b.classList.toggle('selected', b.dataset.module===module);
     });
+    mobileModuleChoices.forEach(b=>b.classList.toggle('active',b.dataset.module===module));
     if(knee){ showKneeTab('overview'); }
     else if(typeof showOverview==='function'){ showOverview(); }
     window.scrollTo({top:0,behavior:'smooth'});
@@ -1078,9 +1122,17 @@ document.addEventListener('DOMContentLoaded', () => {
     kneeModuleTabs.forEach(b=>b.classList.toggle('active',b.dataset.kneeTab===name));
     document.querySelectorAll('[data-knee-side-tab]').forEach(b=>b.classList.toggle('active',b.dataset.kneeSideTab===name));
   }
-  document.querySelectorAll('[data-module]').forEach(b=>b.addEventListener('click',()=>setModule(b.dataset.module)));
+  document.querySelectorAll('.sidebar [data-module]').forEach(b=>b.addEventListener('click',e=>{
+    e.preventDefault();
+    setModule(b.dataset.module);
+  }));
+  mobileModuleChoices.forEach(b=>b.addEventListener('click',e=>{
+    e.preventDefault();
+    setModule(b.dataset.module);
+  }));
   kneeModuleTabs.forEach(b=>b.addEventListener('click',()=>showKneeTab(b.dataset.kneeTab)));
   document.querySelectorAll('[data-knee-side-tab]').forEach(b=>b.addEventListener('click',()=>showKneeTab(b.dataset.kneeSideTab)));
+  setModule('ankle');
   // Knee projection toggle
   document.querySelectorAll('#knee-radiographs .view-tab').forEach(btn=>btn.addEventListener('click',()=>{
     document.querySelectorAll('#knee-radiographs .view-tab').forEach(x=>x.classList.remove('active'));
