@@ -326,8 +326,10 @@
 /* ===== iPHONE FINAL SHELL ===== */
 @media (max-width:900px){
   html,body{width:100%;min-width:0;overflow-x:hidden}
-  .main{position:relative;padding-top:60px}
-  .topbar{position:fixed!important;left:0;right:0;top:0;width:100%;height:60px;z-index:1000!important}
+  /* Keep the shell header in normal document flow on iOS Safari.
+     Sticky is more reliable here than a fixed header inside .main. */
+  .main{position:relative;padding-top:0!important}
+  .topbar{position:sticky!important;left:auto;right:auto;top:0!important;width:100%;height:60px;z-index:1000!important}
   .tabs{position:sticky!important;top:60px!important;z-index:900!important}
   .module-tabs{position:sticky!important;top:60px!important;z-index:900!important}
   .module-view{position:relative;z-index:1}
