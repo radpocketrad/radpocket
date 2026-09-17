@@ -262,6 +262,13 @@
 @media(max-width:520px){.three-view-series{padding:16px}.three-view-image{height:330px}}
 
 
+/* ===== KNEE OVERVIEW: TWO-VIEW SERIES ===== */
+.knee-two-view-series .three-view-series-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.knee-two-view-series .three-view-card:nth-child(2){border-color:rgba(90,220,170,.28)}
+@media(max-width:850px){
+  .knee-two-view-series .three-view-series-grid{grid-template-columns:1fr}
+}
+
 /* ===== RADPOCKET BRAND LOGO ===== */
 .brand{display:flex;align-items:center;justify-content:center;padding:8px 6px 16px;}
 .brand-logo-image{display:block;width:100%;max-width:220px;height:auto;object-fit:contain;border-radius:4px;}
@@ -455,51 +462,58 @@
   </section>
 </div>
 <div class="module-view hidden" id="knee-module"><nav aria-label="Knee sections" class="module-tabs"><button class="active" data-knee-tab="overview" type="button">Overview</button><button data-knee-tab="positioning" type="button">Positioning</button><button data-knee-tab="radiographs" type="button">Radiographs</button><button data-knee-tab="assessment" type="button">Assessment</button><button data-knee-tab="teach" type="button">Teach</button><button data-knee-tab="references" type="button">References</button></nav><section class="tab-panel" id="knee-overview">
-  <div class="knee-hero">
-    <div class="eyebrow">KNEE RADIOGRAPHY</div>
-    <h1>Knee X-ray Overview</h1>
-    <p>The standard knee assessment commonly begins with AP and lateral projections. Select a section to explore positioning, image evaluation and a systematic approach to trauma.</p>
-  </div>
+<section class="overview-intro">
+<div class="eyebrow">KNEE RADIOGRAPHY</div>
+<h2>Knee X-ray Overview</h2>
+<p>The standard knee series commonly includes AP and Lateral projections. Select a section to explore positioning, central ray, image evaluation and a systematic approach to trauma.</p>
+</section>
 
-  <div class="knee-card">
-    <div class="eyebrow">THE KNEE SERIES</div>
-    <h2>Start with two views</h2>
-    <p>AP and lateral projections provide complementary information about alignment, the femorotibial joint, tibial plateau, patella and surrounding soft tissues. Review both views together before focusing on a specific abnormality.</p>
-    <div class="clinical-callout"><strong>Key message:</strong> Assess image quality first, then compare AP and lateral views systematically. An abnormality on one projection should be checked on the other.</div>
-    <div class="knee-grid">
-      <div class="check"><strong>AP · Frontal view</strong><span>Overall alignment, femorotibial joint spaces, tibial plateau, femoral condyles, tibial spines and proximal fibula.</span></div>
-      <div class="check"><strong>Lateral · Side view</strong><span>Patella, femoral condyle relationship, joint space, soft tissues and joint effusion.</span></div>
-    </div>
-  </div>
+<section aria-labelledby="knee-two-view-title" class="three-view-series knee-two-view-series">
+<div class="three-view-series-header">
+<div>
+<div class="eyebrow">THE KNEE SERIES</div>
+<h2 id="knee-two-view-title">Think in two views</h2>
+<p>AP and Lateral are complementary projections. Reviewing them together provides a more complete assessment of knee alignment, bones, joint spaces, patellofemoral relationships and soft-tissue signs.</p>
+</div>
+<div class="three-view-series-note"><strong>Key message:</strong> Each projection answers a different question. Assess image quality first, then compare both views before focusing on a specific abnormality.</div>
+</div>
 
-  <div class="knee-grid">
-    <div class="knee-card">
-      <h2>Two views. One assessment.</h2>
-      <p>Use the AP to assess overall alignment and the tibial plateau. Use the lateral to assess the patella, posterior structures and soft-tissue signs. Then return to both views before concluding the search.</p>
-      <ul>
-        <li>Check positioning and exposure before interpretation.</li>
-        <li>Assess alignment, bones and joint spaces systematically.</li>
-        <li>Search beyond the site of maximum tenderness in trauma.</li>
-      </ul>
-    </div>
-    <div class="knee-card">
-      <h2>Trauma mindset</h2>
-      <p>Small avulsion fragments, tibial plateau injuries, patellar fractures and joint effusion can be easy to overlook. The mechanism and clinical information should guide the search pattern.</p>
-      <div class="clinical-callout"><strong>Useful habit:</strong> quality → alignment → bones → joints → soft tissues → subtle signs.</div>
-    </div>
-  </div>
+<div class="three-view-series-grid">
+<article class="three-view-card">
+<div class="three-view-card-head"><strong>AP</strong><span>Frontal view</span></div>
+<div class="three-view-image"><img alt="Normal knee AP radiograph" src="knee-ap-radiograph.jpg"/></div>
+<div class="three-view-card-body">
+<p>Demonstrates the distal femur, proximal tibia and fibula, tibial plateau, tibial spines and overall femorotibial alignment.</p>
+<div class="three-view-focus"><strong>Key focus</strong>Overall alignment, femorotibial joint space and tibial plateau.</div>
+</div>
+</article>
 
-  <div class="knee-card">
-    <h2>🚑 Trauma considerations</h2>
-    <ul>
-      <li>Avoid unnecessary movement of an acutely injured knee.</li>
-      <li>Adapt positioning to pain, mobility and the suspected injury.</li>
-      <li>Do not force flexion when significant injury or fracture is suspected.</li>
-      <li>Consider a horizontal-beam lateral when clinically indicated and according to local protocol.</li>
-      <li>Look beyond the point of maximum tenderness.</li>
-      <li>If concern remains despite apparently normal radiographs, follow the local pathway for further imaging.</li>
-    </ul>
-  </div>
+<article class="three-view-card">
+<div class="three-view-card-head"><strong>Lateral</strong><span>Side view</span></div>
+<div class="three-view-image"><img alt="Normal knee lateral radiograph" src="knee-lateral-radiograph.jpg"/></div>
+<div class="three-view-card-body">
+<p>Demonstrates the patella, femoral condyles, tibial plateau, femoropatellar relationship and surrounding soft tissues.</p>
+<div class="three-view-focus"><strong>Key focus</strong>True lateral alignment, patella and joint effusion / fat-fluid level.</div>
+</div>
+</article>
+</div>
+
+<div class="three-view-series-footer"><strong>Two views. A more complete picture.</strong> Review AP and Lateral together, then correlate the radiographic findings with the clinical information and mechanism of injury.</div>
+</section>
+
+<section aria-label="Trauma considerations" class="trauma-grid">
+<article class="trauma-card">
+<h2>🚑 Trauma considerations</h2>
+<ul>
+<li>Avoid unnecessary movement of an acutely injured knee.</li>
+<li>Adapt positioning to pain, mobility and the suspected injury.</li>
+<li>Do not force flexion when significant injury or fracture is suspected.</li>
+<li>Consider a horizontal-beam lateral when clinically indicated and according to local trauma protocol.</li>
+<li>Look beyond the point of maximum tenderness and search both projections systematically.</li>
+<li>If concern remains despite apparently normal radiographs, follow the local pathway for further imaging.</li>
+</ul>
+</article>
+</section>
 </section>
 
 <section class="tab-panel" id="knee-positioning" style="display:none">
@@ -559,7 +573,7 @@
       <li><strong>Intercondylar/tunnel views:</strong> may be requested to assess the intercondylar region.</li>
       <li><strong>Patellar projections:</strong> may be requested for a specific patellofemoral clinical question.</li>
     </ul>
-    <div class="clinical-callout"><div class="eyebrow">KNEE RADIOGRAPHY</div><h2>Radiographs</h2><p class="section-intro">Read the projections as a pair. Each view answers a different part of the clinical question, and together they give you a more complete assessment.</p><div class="callout"><strong>RADPOCKET principle</strong><span>Two projections. One assessment. Don’t let one reassuring view stop the search.</span></div><div class="grid-2"><article class="card"><div class="card-kicker">PROJECTION 01</div><h3>AP Knee</h3><p>Use the AP to assess overall alignment and the femorotibial compartment.</p><ul><li>Distal femur and femoral condyles</li><li>Tibial plateau and tibial spines</li><li>Proximal tibia and fibula</li><li>Femorotibial joint space and alignment</li></ul><div class="mini-note"><strong>Image check:</strong> Look for unwanted rotation, adequate coverage and a clearly assessable joint.</div></article><article class="card"><div class="card-kicker">PROJECTION 02</div><h3>Lateral Knee</h3><p>Use the lateral to assess the patella, femoral condyles, joint and surrounding soft tissues.</p><ul><li>Distal femur and proximal tibia/fibula</li><li>Patella and patellofemoral relationship</li><li>Femorotibial joint</li><li>Suprapatellar and anterior soft tissues</li></ul><div class="mini-note"><strong>Image check:</strong> Look for a true lateral, adequate exposure and femoral-condyle congruity.</div></article></div><div class="grid-3"><article class="card compact"><h3>AP</h3><p>Think alignment, tibial plateau, femorotibial joint space and proximal fibula.</p></article><article class="card compact"><h3>Lateral</h3><p>Think patella, condyle relationship, effusion and subtle fat–fluid levels.</p></article><article class="card compact"><h3>Together</h3><p>Use the second projection to challenge what you think you saw on the first.</p></article></div><div class="callout"><strong>Trauma tip</strong><span>A normal-looking AP does not make the lateral optional. Search both projections before calling the examination reassuring.</span></div><div class="placeholder-card"><div class="card-kicker">NEXT PHASE</div><h3>Interactive knee anatomy</h3><p>The radiographs will follow the same RADPOCKET pattern as Ankle: selectable anatomy labels, leader lines, <strong>Show all anatomy</strong> and <strong>Clear selection</strong>.</p></div></div>
+    <div class="clinical-callout"><strong>Trauma tip:</strong> additional projections do not replace appropriate clinical assessment or further imaging when significant injury remains suspected.</div>
   </div>
 </section>
 
@@ -569,7 +583,7 @@
     <div class="knee-card"><h2>AP Knee</h2><p><strong>Demonstrate:</strong> distal femur, proximal tibia and fibula, femorotibial joint, tibial plateau, tibial spines and overall alignment.</p><div class="clinical-callout"><strong>Evaluation:</strong> positioning → joint space → plateau → condyles → proximal fibula → soft tissues.</div></div>
     <div class="knee-card"><h2>Lateral Knee</h2><p><strong>Demonstrate:</strong> distal femur, proximal tibia/fibula, patella, femoropatellar relationship and surrounding soft tissues.</p><div class="clinical-callout"><strong>Evaluation:</strong> true lateral → condylar congruity → patella → joint space → effusion/soft-tissue signs.</div></div>
   </div>
-  <div class="knee-card"><div class="eyebrow">KNEE RADIOGRAPHY</div><h2>Assessment</h2><p class="section-intro">Use the same repeatable search pattern every time. Start with image quality, then work through alignment, bones, joints and soft tissues before making a final search for subtle signs.</p><div class="callout"><strong>RADPOCKET reading sequence</strong><span>Quality → alignment → bones → joints → soft tissues → subtle signs.</span></div><div class="grid-2"><article class="card"><div class="card-kicker">01 · QUALITY</div><h3>Is the image assessable?</h3><ul><li>Correct side and patient details</li><li>Required anatomy included</li><li>Adequate exposure</li><li>Acceptable positioning and minimal motion</li></ul></article><article class="card"><div class="card-kicker">02 · ALIGNMENT</div><h3>Does the knee line up?</h3><ul><li>Overall femorotibial relationship</li><li>Femoral condyle relationship on the lateral</li><li>Patellar position and tracking appearance</li><li>Look for displacement, step or asymmetry</li></ul></article><article class="card"><div class="card-kicker">03 · BONES</div><h3>Trace the cortex</h3><ul><li>Distal femur and femoral condyles</li><li>Tibial plateau and tibial spines</li><li>Proximal fibula</li><li>Patella</li></ul><div class="mini-note"><strong>RADPOCKET habit:</strong> Follow the cortex rather than only looking at the obvious painful area.</div></article><article class="card"><div class="card-kicker">04 · JOINTS</div><h3>Check the joint relationships</h3><ul><li>Femorotibial joint space</li><li>Tibial plateau contour</li><li>Patellofemoral relationship</li><li>Any depression, widening, step or asymmetry</li></ul></article><article class="card"><div class="card-kicker">05 · SOFT TISSUES</div><h3>Look beyond the bone</h3><ul><li>Suprapatellar soft tissues</li><li>Joint effusion</li><li>Prepatellar soft tissues</li><li>Fat–fluid level when appropriately demonstrated</li></ul></article><article class="card"><div class="card-kicker">06 · SUBTLE SIGNS</div><h3>Search again</h3><ul><li>Small avulsion fragments</li><li>Cortical irregularity</li><li>Tibial plateau depression</li><li>Patellar fracture or osteochondral abnormality</li><li>Fibular head or neck injury</li></ul></article></div><div class="grid-3"><article class="card compact"><h3>Tibial plateau</h3><p>Look for subtle depression, cortical disruption and abnormal joint contour.</p></article><article class="card compact"><h3>Patella</h3><p>Trace the cortex and check the patellofemoral relationship.</p></article><article class="card compact"><h3>Fibular head</h3><p>Include and deliberately inspect the proximal fibula.</p></article><article class="card compact"><h3>Effusion</h3><p>Check the suprapatellar region and surrounding soft tissues.</p></article><article class="card compact"><h3>Lipohaemarthrosis</h3><p>A fat–fluid level can be an important clue in the appropriate trauma setting.</p></article><article class="card compact"><h3>Avulsion injury</h3><p>Small fragments may be easy to overlook—search the expected attachment sites.</p></article></div><div class="callout"><strong>Clinical checkpoint</strong><span>The Pittsburgh Knee Rule is a clinical decision-support tool used in traumatic knee pain. It considers age and ability to weight-bear when deciding whether radiography is indicated. Apply local pathways and clinical judgement.</span></div></div>
+  <div class="knee-card"><h2>Interactive anatomy — coming next</h2><p>The final AP and lateral radiographs will use the same teaching pattern as Ankle: selectable anatomy labels, leader lines anchored to the image, <strong>Show all anatomy</strong> and <strong>Clear selection</strong>.</p></div>
 </section>
 
 <section class="tab-panel" id="knee-assessment" style="display:none">
@@ -611,7 +625,7 @@
     <p class="small-note">Decision rules support clinical assessment and local referral pathways; they do not replace professional judgement.</p>
   </div>
 
-  <div class="knee-card"><h2>Trauma imaging pathway</h2><p>When acute trauma meets clinical criteria for imaging, knee radiography is an initial examination in appropriate scenarios. If radiographs are negative or indeterminate but occult fracture or significant internal injury remains suspected, further imaging should be selected according to the clinical question and local pathway. ACR lists MRI without contrast and CT without contrast as appropriate in selected acute-trauma scenarios, depending on the suspected abnormality.</p><div class="warning-callout"><div class="eyebrow">KNEE RADIOGRAPHY</div><h2>Teach</h2><p class="section-intro">Build a habit that works under pressure: check the image, find the alignment, trace the bones, inspect the joints, then search again.</p><div class="callout"><strong>RADPOCKET habit sequence</strong><span>Quality → alignment → bones → joints → soft tissues → subtle signs.</span></div><div class="grid-2"><article class="card"><div class="card-kicker">STEP 01</div><h3>Check the image</h3><p>Before interpreting anatomy, make sure the examination is technically assessable.</p><div class="mini-note">Positioning → exposure → motion → marker → coverage.</div></article><article class="card"><div class="card-kicker">STEP 02</div><h3>Check alignment</h3><p>Compare the femorotibial relationship and use the lateral to assess condyle congruity and patellar position.</p></article><article class="card"><div class="card-kicker">STEP 03</div><h3>Check the bones</h3><p>Trace the cortex systematically from distal femur through the tibia and fibula, then inspect the patella.</p></article><article class="card"><div class="card-kicker">STEP 04</div><h3>Check the joint</h3><p>Look at the femorotibial and patellofemoral relationships. Search for depression, widening, step and asymmetry.</p></article><article class="card"><div class="card-kicker">STEP 05</div><h3>Search again</h3><p>Return to the whole image. Look at soft tissues, effusion, subtle fragments and areas away from maximum tenderness.</p></article><article class="card"><div class="card-kicker">TRAUMA TECHNIQUE</div><h3>Horizontal-beam lateral</h3><p>When movement or flexion is not appropriate, use a horizontal-beam lateral according to the local trauma pathway. Do not force an injured knee into a standard position.</p><div class="mini-note"><strong>Teaching point:</strong> An adequately exposed true lateral can help demonstrate an effusion or fat–fluid level.</div></article></div><div class="callout"><strong>RADPOCKET reminder</strong><span>Radiographic assessment sits alongside the history and examination. If significant injury remains a concern, follow the local trauma pathway and consider further imaging when clinically indicated.</span></div><div class="card"><h3>Teach it in one sentence</h3><p><strong>Make the image assessable, prove the alignment, trace every bone, inspect every joint, then search the soft tissues and subtle signs.</strong></p></div></div></div>
+  <div class="knee-card"><h2>Trauma imaging pathway</h2><p>When acute trauma meets clinical criteria for imaging, knee radiography is an initial examination in appropriate scenarios. If radiographs are negative or indeterminate but occult fracture or significant internal injury remains suspected, further imaging should be selected according to the clinical question and local pathway. ACR lists MRI without contrast and CT without contrast as appropriate in selected acute-trauma scenarios, depending on the suspected abnormality.</p><div class="warning-callout"><strong>Clinical context matters:</strong> a normal radiograph does not automatically exclude every clinically important injury.</div></div>
 </section>
 
 <section class="tab-panel" id="knee-teach" style="display:none">
