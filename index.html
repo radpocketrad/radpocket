@@ -589,6 +589,66 @@
 }
 </style>
 
+
+<style>
+/* ===== KNEE MODULE DESKTOP TAB BAR =====
+   Match the Ankle module: one horizontal navigation row on Web/PC.
+*/
+@media(min-width:901px){
+  .main > .module-view .module-tabs{
+    position:sticky;
+    top:0;
+    z-index:80;
+    display:flex !important;
+    flex-direction:row !important;
+    align-items:stretch !important;
+    justify-content:center !important;
+    width:100% !important;
+    height:56px !important;
+    min-height:56px !important;
+    box-sizing:border-box;
+    overflow-x:auto;
+    overflow-y:hidden;
+    flex-wrap:nowrap !important;
+    gap:4px !important;
+    padding:0 18px !important;
+    background:rgba(5,13,21,.96);
+    border-bottom:1px solid rgba(99,197,255,.14);
+    white-space:nowrap;
+    scrollbar-width:none;
+  }
+  .main > .module-view .module-tabs::-webkit-scrollbar{display:none}
+  .main > .module-view .module-tabs button{
+    display:flex !important;
+    flex:0 0 auto !important;
+    width:auto !important;
+    min-width:104px;
+    height:56px !important;
+    align-items:center !important;
+    justify-content:center !important;
+    padding:0 18px !important;
+    margin:0 !important;
+    border:0 !important;
+    border-radius:0 !important;
+    background:transparent !important;
+    color:#91a5b5 !important;
+    font-size:14px !important;
+    font-weight:700 !important;
+    white-space:nowrap !important;
+    cursor:pointer;
+  }
+  .main > .module-view .module-tabs button:hover{
+    color:#eaf6ff !important;
+    background:rgba(45,185,255,.07) !important;
+  }
+  .main > .module-view .module-tabs button.active{
+    color:#fff !important;
+    background:linear-gradient(180deg,rgba(45,185,255,.18),rgba(45,185,255,.08)) !important;
+    box-shadow:inset 0 -3px 0 #39b9ff;
+  }
+}
+</style>
+
 </head>
 <body>
 <div aria-hidden="true" class="mobile-nav-backdrop"></div>
