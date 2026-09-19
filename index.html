@@ -411,6 +411,117 @@
   .knee-positioning-projection{padding:18px;border-radius:18px}
 }
 </style>
+
+<style>
+/* ===== KNEE POSITIONING: AP + LATERAL SEPARATED TEACHING BLOCKS ===== */
+.knee-projection-block{
+  margin-top:28px;
+  padding:22px;
+  border:1px solid rgba(110,150,190,.26);
+  border-radius:20px;
+  background:linear-gradient(180deg,rgba(255,255,255,.025),rgba(255,255,255,.012));
+}
+.knee-projection-block .projection-section-heading{margin-bottom:18px}
+.projection-visual-stack{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:12px;
+  margin:18px 0;
+}
+.projection-visual-card{
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:15px;
+  background:#071019;
+}
+.projection-visual-label{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  padding:11px 13px;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.projection-visual-label span{
+  width:24px;height:24px;border-radius:50%;
+  display:grid;place-items:center;
+  background:rgba(45,185,255,.14);
+  border:1px solid rgba(45,185,255,.35);
+  color:#dff5ff;font-size:11px;font-weight:800;
+}
+.projection-visual-label strong{font-size:13px}
+.projection-visual-card .image-card{
+  min-height:250px;
+  background:#02060a;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:9px;
+}
+.projection-visual-card .image-card img{
+  width:100%;
+  height:250px;
+  object-fit:contain;
+  display:block;
+  border-radius:9px;
+}
+.projection-visual-card p{
+  padding:10px 13px 13px;
+  margin:0;
+  font-size:12px;
+  line-height:1.5;
+  color:#91a5b5;
+}
+.image-placeholder{
+  height:250px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  text-align:center;
+  background:linear-gradient(145deg,#071019,#0b1722);
+  color:#8fa6b7;
+  border:1px dashed rgba(126,200,255,.22);
+  margin:9px;
+  border-radius:9px;
+}
+.image-placeholder strong{color:#c8dce9;font-size:13px}
+.image-placeholder span{font-size:11px;opacity:.72}
+.projection-divider{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin:30px 0 4px;
+  color:#648092;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.16em;
+}
+.projection-divider::before,
+.projection-divider::after{
+  content:"";
+  height:1px;
+  flex:1;
+  background:linear-gradient(90deg,transparent,rgba(99,197,255,.28),transparent);
+}
+.projection-divider span{
+  padding:6px 9px;
+  border:1px solid rgba(99,197,255,.16);
+  border-radius:999px;
+  background:rgba(99,197,255,.04);
+}
+.ap-projection-block{border-color:rgba(99,197,255,.30)}
+.lateral-projection-block{border-color:rgba(90,220,170,.25)}
+.trauma-positioning-section{border-color:rgba(230,168,77,.24)}
+@media(max-width:850px){
+  .knee-projection-block{padding:16px;border-radius:17px}
+  .projection-visual-stack{grid-template-columns:1fr}
+  .projection-visual-card .image-card,
+  .projection-visual-card .image-card img,
+  .image-placeholder{height:300px;min-height:300px}
+}
+</style>
+
 </head>
 <body>
 <div aria-hidden="true" class="mobile-nav-backdrop"></div>
@@ -533,11 +644,13 @@
 <p>Build a reproducible knee examination by positioning the whole limb deliberately, centring accurately and adapting the technique to the patient's pain, mobility and clinical situation. Follow local departmental protocols where they differ.</p>
 </div>
 </div>
+
 <div class="knee-card">
 <h2>Key principle</h2>
 <p>Position the patient safely first, then establish the required relationship between the knee, detector and central ray. In trauma, do not force flexion or rotation simply to reproduce a routine position.</p>
 <div class="clinical-callout"><strong>Positioning habit:</strong> patient → part → central ray → coverage → image evaluation.</div>
 </div>
+
 <div class="knee-card">
 <h2>General positioning points</h2>
 <ul>
@@ -549,56 +662,69 @@
 <li>Before exposure, check centring, collimation, side marker, motion and whether the requested anatomy will be demonstrated.</li>
 </ul>
 </div>
-<section class="knee-positioning-projection">
+
+<!-- AP KNEE: deliberately separated as its own teaching block -->
+<section class="knee-positioning-projection knee-projection-block ap-projection-block">
 <div class="projection-section-heading">
 <div class="eyebrow">PROJECTION 01</div>
 <h2>AP Knee</h2>
-<p>Establish a true AP relationship of the knee while keeping the tibial plateau and femorotibial joint appropriately demonstrated.</p>
+<p>Establish the intended AP relationship of the knee while adequately demonstrating the distal femur, proximal tibia/fibula, tibial plateau and femorotibial joint.</p>
 </div>
-<div class="ap-visual-grid">
-<div class="ap-visual">
-<h2>AP Knee Positioning</h2>
-<div class="image-card"><img alt="Knee AP radiographic positioning guide" src="knee-ap-positioning(2).jpg"/></div>
+
+<div class="projection-visual-stack">
+<article class="projection-visual-card">
+<div class="projection-visual-label"><span>01</span><strong>Positioning</strong></div>
+<div class="image-card"><img alt="AP knee positioning guide" src="knee-ap-positioning(2).jpg"/></div>
+<p>Position the patient and entire lower limb to establish the required AP relationship.</p>
+</article>
+
+<article class="projection-visual-card">
+<div class="projection-visual-label"><span>02</span><strong>Central ray</strong></div>
+<div class="image-card"><img alt="AP knee central ray guide" src="knee-ap-central-ray(4).jpg"/></div>
+<p>Centre the beam using the departmental technique and adjust for the patient's anatomy where required.</p>
+</article>
+
+<article class="projection-visual-card">
+<div class="projection-visual-label"><span>03</span><strong>Evaluation</strong></div>
+<div class="image-card"><img alt="AP knee radiograph evaluation example" src="knee-ap-evaluation(2).jpg"/></div>
+<p>Use the resulting image to check positioning, joint demonstration, coverage and exposure.</p>
+</article>
 </div>
-<div class="ap-visual">
-<h2>Central Ray</h2>
-<div class="image-card"><img alt="Knee AP central ray guide" src="knee-ap-central-ray(4).jpg"/></div>
-</div>
-</div>
+
 <div class="quick-grid">
 <article class="info-card">
-<h2>① Patient position</h2>
+<h2>① Patient &amp; part position</h2>
 <ul>
-<li>Supine or seated, with the leg extended as tolerated.</li>
-<li>Centre the knee to the central ray and the midline of the detector/table.</li>
-<li>Rotate the entire leg slightly internally as required to obtain a true AP; avoid relying on foot position alone.</li>
-<li>Support the limb as required for comfort and stability.</li>
+<li>Position the patient according to the clinical indication and local departmental technique.</li>
+<li>For a supine AP, keep the leg extended as tolerated and support the limb for comfort and stability.</li>
+<li>For weight-bearing AP, use the departmental standing technique when loading is clinically appropriate and safe.</li>
+<li>Rotate the whole limb only as required to obtain the intended AP relationship; do not judge knee rotation from the foot alone.</li>
 </ul>
 </article>
+
 <article class="info-card">
 <h2>② Central ray</h2>
 <ul>
-<li>Centre approximately 1.25 cm (½ inch) distal to the apex of the patella.</li>
-<li>For an average patient, the CR is perpendicular to the detector.</li>
-<li>To parallel the tibial plateau, a commonly taught Bontrager method uses the ASIS-to-tibial-tuberosity distance: 3°–5° caudad for a thin patient (&lt;19 cm), perpendicular for an average patient (19–24 cm), and 3°–5° cephalad for a thicker patient (&gt;24 cm).</li>
-<li>Use the validated local technique where it differs.</li>
+<li>Centre at the knee joint using the departmental centring landmark.</li>
+<li>For the weight-bearing technique, centre at the level of the upper tibial condyles according to the adopted departmental method.</li>
+<li>For a supine technique, a common convention is approximately 1.25 cm (½ inch) distal to the patellar apex, with tube angulation adjusted to the tibial plateau when required by the technique and patient habitus.</li>
+<li>Use the validated local technique where it differs and ensure the tibial plateau and femorotibial joint are adequately demonstrated.</li>
 </ul>
 </article>
 </div>
-<section class="evaluation-section">
-<div class="evaluation-copy">
+
+<article class="info-card evaluation-copy">
 <h2>③ AP Knee Evaluation</h2>
 <ul>
 <li>Distal femur, proximal tibia and fibula and knee joint included.</li>
-<li>No significant rotation: femoral and tibial condyles appear appropriately symmetric.</li>
+<li>No significant rotation, with the femoral and tibial condyles appropriately symmetric for the chosen technique.</li>
 <li>Femorotibial joint space and tibial plateau adequately demonstrated.</li>
 <li>Proximal fibula and tibial spines included.</li>
-<li>Patella outlined through the distal femur where expected on the AP view.</li>
-<li>Soft tissues and bony trabeculation adequately demonstrated without motion.</li>
+<li>Patella appropriately projected through the distal femur for the AP view.</li>
+<li>Soft tissues and bony trabeculation adequately demonstrated without significant motion.</li>
 </ul>
-</div>
-<div class="image-card evaluation-image"><img alt="AP knee radiograph evaluation example" src="knee-ap-evaluation(2).jpg"/></div>
-</section>
+</article>
+
 <article class="error-card projection-errors">
 <h3>⚠️ Common positioning errors</h3>
 <ul>
@@ -609,46 +735,85 @@
 </ul>
 <strong>Correction:</strong><p>Recheck the whole-limb alignment, patellar direction, centring and CR relationship before exposure.</p>
 </article>
+
 <div class="pearl"><strong>💡 Positioning pearl:</strong> Think about the femoral epicondyles and tibial plateau—not just the foot—when deciding whether the knee is truly AP.</div>
 </section>
-<section class="knee-positioning-projection">
+
+<!-- Strong visual separation between AP and lateral -->
+<div class="projection-divider" aria-hidden="true">
+<span>AP COMPLETE</span>
+</div>
+
+<!-- LATERAL KNEE: deliberately separated as its own teaching block -->
+<section class="knee-positioning-projection knee-projection-block lateral-projection-block">
 <div class="projection-section-heading">
 <div class="eyebrow">PROJECTION 02</div>
 <h2>Lateral Knee</h2>
-<p>The lateral projection is particularly important for assessing the patella, femoropatellar relationship, joint effusion and subtle trauma findings.</p>
+<p>The lateral projection demonstrates the patella, femoropatellar relationship, distal femur, proximal tibia/fibula and suprapatellar soft tissues.</p>
 </div>
+
+<div class="projection-visual-stack projection-visual-stack-lateral">
+<article class="projection-visual-card image-placeholder-card">
+<div class="projection-visual-label"><span>01</span><strong>Positioning</strong></div>
+<div class="image-placeholder">
+<strong>Lateral positioning image</strong>
+<span>To be added</span>
+</div>
+<p>The affected side is positioned down where tolerated, with the whole limb adjusted to achieve the required lateral relationship.</p>
+</article>
+
+<article class="projection-visual-card image-placeholder-card">
+<div class="projection-visual-label"><span>02</span><strong>Central ray</strong></div>
+<div class="image-placeholder">
+<strong>Lateral central-ray image</strong>
+<span>To be added</span>
+</div>
+<p>Use the departmental centring landmark and tube angle for the selected lateral technique.</p>
+</article>
+
+<article class="projection-visual-card image-placeholder-card">
+<div class="projection-visual-label"><span>03</span><strong>Evaluation</strong></div>
+<div class="image-placeholder">
+<strong>Lateral evaluation radiograph</strong>
+<span>To be added</span>
+</div>
+<p>Assess condylar congruity, patellar profile, joint relationship and suprapatellar soft tissues.</p>
+</article>
+</div>
+
 <div class="quick-grid">
 <article class="info-card">
-<h2>① Patient position</h2>
+<h2>① Patient &amp; part position</h2>
 <ul>
-<li>For a routine mediolateral view, place the affected side down where tolerated.</li>
-<li>Flex the knee approximately 20°–30° when clinically appropriate; avoid forcing flexion in acute trauma.</li>
-<li>Place the unaffected leg behind the affected limb to prevent over-rotation.</li>
-<li>Support the affected ankle/foot if required and adjust body rotation until a true lateral is obtained.</li>
+<li>Place the affected side down where tolerated and support the limb.</li>
+<li>Use the flexion adopted by the departmental technique and adapt it to the clinical situation.</li>
+<li>Bring the unaffected limb forward and support it so it does not interfere with the affected knee.</li>
+<li>Support the affected ankle as required and adjust the whole limb until the femoral condyles are appropriately superimposed.</li>
 </ul>
 </article>
+
 <article class="info-card">
 <h2>② Central ray</h2>
 <ul>
-<li>A commonly taught mediolateral technique uses a 5°–7° cephalad CR.</li>
-<li>Centre approximately 2.5 cm (1 inch) distal to the medial epicondyle.</li>
-<li>If the lower leg can be elevated so that the femur and lower leg are appropriately aligned, a perpendicular CR may be used according to technique.</li>
-<li>Collimate to the knee joint and include the distal femur, proximal tibia/fibula and relevant soft tissues.</li>
+<li>Use the departmental centring landmark and tube angle for the chosen lateral technique.</li>
+<li>A common technique centres around the medial tibial condyle/upper tibial-condyle level with the CR perpendicular to the relevant limb axis.</li>
+<li>A small cephalad tube angle may be used in some techniques to assist femoral-condyle superimposition; it is not a universal requirement.</li>
+<li>Do not mix centring landmarks from different technique systems; follow the validated local method.</li>
 </ul>
 </article>
 </div>
-<div class="lateral-positioning-diagram">
-<div class="knee-card">
-<h2>True lateral checklist</h2>
+
+<article class="info-card evaluation-copy">
+<h2>③ True lateral evaluation</h2>
 <ul>
-<li>Posterior aspects of the femoral condyles appropriately superimposed.</li>
-<li>Patella close to a true lateral profile.</li>
-<li>Femoropatellar relationship demonstrated.</li>
-<li>Proximal fibula appropriately superimposed by the tibia.</li>
-<li>Knee joint and suprapatellar soft tissues included.</li>
+<li>Femoral condyles appropriately superimposed for the chosen technique.</li>
+<li>Patella close to a true lateral profile and the femoropatellar relationship demonstrated.</li>
+<li>Distal femur and proximal tibia/fibula included.</li>
+<li>Suprapatellar soft tissues adequately demonstrated so joint effusion or a fat–fluid level can be assessed when relevant.</li>
+<li>Exposure and sharpness sufficient to assess cortical margins and soft tissues.</li>
 </ul>
-</div>
-</div>
+</article>
+
 <article class="error-card projection-errors">
 <h3>⚠️ Common positioning errors</h3>
 <ul>
@@ -659,8 +824,14 @@
 </ul>
 <strong>Correction:</strong><p>Adjust the patient's trunk and entire limb together, then reassess condylar superimposition and soft-tissue visibility.</p>
 </article>
+
 <div class="pearl"><strong>💡 Positioning pearl:</strong> A true lateral is a whole-limb position. Small rotational errors can change the appearance of the femoral condyles and patellofemoral joint.</div>
 </section>
+
+<div class="projection-divider" aria-hidden="true">
+<span>LATERAL COMPLETE</span>
+</div>
+
 <section class="knee-positioning-projection trauma-positioning-section">
 <div class="projection-section-heading">
 <div class="eyebrow">TRAUMA</div>
@@ -670,14 +841,16 @@
 <div class="knee-card trauma-positioning-card">
 <h2>Do not force the position</h2>
 <ul>
-<li>Keep the injured limb supported in the position of tolerance.</li>
-<li>Use a horizontal beam with the detector positioned to obtain the lateral projection without unnecessary knee movement.</li>
-<li>Avoid forcing flexion when fracture, dislocation or significant injury is suspected.</li>
-<li>Prioritise adequate exposure and a true lateral relationship that allows assessment of the suprapatellar soft tissues.</li>
+<li>Keep the patient on the trolley/bed and support the injured limb in the position of tolerance.</li>
+<li>Use a vertical detector with a horizontal beam to obtain the lateral without unnecessary knee movement.</li>
+<li>Do not force flexion or extension when fracture or significant injury is suspected.</li>
+<li>Centre at the upper tibial-condyle level using the departmental horizontal-beam technique and collimate to include the distal femur, proximal tibia and suprapatellar soft tissues.</li>
+<li>Adequate exposure and condylar congruity are essential because the lateral may reveal effusion or a fat–fluid level.</li>
 </ul>
-<div class="warning-callout"><strong>Trauma check:</strong> The RCR audit standard for horizontal-beam lateral knee radiographs assesses adequate exposure and congruity of the medial and lateral femoral condyles within 7 mm. The RCR notes that an adequately exposed true lateral improves conspicuity of joint effusions and lipohaemarthroses.</div>
+<div class="warning-callout"><strong>Trauma check:</strong> Assess exposure and femoral-condyle congruity, and ensure the suprapatellar soft tissues are adequately demonstrated for assessment of effusion or a fat–fluid level.</div>
 </div>
 </section>
+
 <section class="knee-positioning-projection">
 <div class="projection-section-heading">
 <div class="eyebrow">ADDITIONAL PROJECTIONS</div>
@@ -694,12 +867,16 @@
 <p>Oblique or intercondylar/tunnel projections may be used for specific questions involving the proximal tibiofibular joint, condylar anatomy or intercondylar region.</p>
 </div>
 <div class="knee-card">
-<h2>Patellofemoral views</h2>
-<p>Tangential patellar projections may be requested for a specific patellofemoral question, provided the patient's condition allows the required positioning.</p>
+<h2>Patellofemoral / stress views</h2>
+<p>Tangential patellar projections may be used for a specific patellofemoral question. Stress projections should only be performed when clinically indicated and according to local protocol.</p>
 </div>
 </div>
 <div class="clinical-callout"><strong>Trauma tip:</strong> Additional views do not replace clinical assessment or appropriate further imaging when significant injury remains suspected. If the patient cannot safely flex the knee, do not force a skyline, tunnel or other non-essential position.</div>
 </section>
+
+<div class="reference-note">
+<strong>Positioning references:</strong> Clark's Positioning in Radiography, Bontrager's positioning texts, and Raby et al., Accident &amp; Emergency Radiology: A Survival Guide, were used to cross-check the positioning and trauma framework. Technique variations exist; follow local departmental protocol where methods differ.
+</div>
 </section>
 <section class="tab-panel" id="knee-radiographs" style="display:none">
 <div class="section-heading"><div><div class="eyebrow">RADIOGRAPHS</div><h2>Two projections</h2><p>The radiograph teaching panel will be completed after the core knee content is finalised. The assessment framework below is the structure the final images will follow.</p></div></div>
